@@ -2,6 +2,8 @@
 session_start();
 ob_start();
 include_once '../conexao.php';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +20,7 @@ include_once '../conexao.php';
     <?php
     
      
+        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
        
     ?>
 <!-- Página de Login -->
@@ -29,12 +32,12 @@ include_once '../conexao.php';
                 <h1 class="display-4 text-dark mb-3 animated slideInDown">Login</h1>
                 <!-- LOGIN -->
                 <div class="form-floating" style="padding-top: 2rem;">
-                    <input type="email" class="form-control senha" id="floatingInput" placeholder="name@example.com" name="email_usuario">
+                    <input type="email" class="form-control senha" id="floatingInput" placeholder="name@example.com" name="email_usuario" value="<?php if(isset($dados['email_usuario'])){ echo $dados['email_usuario'];}?>">
                     <label for="floatingInput" style="padding-top: 3rem;">Email</label>
                 </div>
                 <!-- SENHA -->
                 <div class="form-floating" style="padding-top: 2rem;">
-                    <input type="password" class="form-control senha" id="floatingPassword" placeholder="Password" name="senha_usuario">
+                    <input type="password" class="form-control senha" id="floatingPassword" placeholder="Password" name="senha_usuario" value="<?php if(isset($dados['senha_usuario'])){ echo $dados['senha_usuario'];}?>">
                     <label for="floatingPassword" style="padding-top: 3rem;">Senha</label>
                 </div>
                 <!-- BOTÃO falta criar uma pasta para o index para redirecionar -->
@@ -57,13 +60,10 @@ include_once '../conexao.php';
 
 
 
-
-$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 //'".$dados['usuario']."'
 if(!empty($dados['SendLogin'])){
   
-    $nome_usuario = "nome_usuario";
-    $email_usuario = "email_usuario";
+   
     //var_dump($dados);
 //                                             TEM PORRA ERRADA AQUI kkkkkkkk JA ARRUMEI 
     $query_usuario = "SELECT codigo, nome_usuario, email_usuario, senha_usuario 
@@ -74,15 +74,13 @@ if(!empty($dados['SendLogin'])){
     $result_usuario->bindParam(':email_usuario', $dados['email_usuario'], PDO::PARAM_STR);
     $result_usuario->execute();
     
-    if(($result_usuario)AND ($result_usuario->rowCount()!=0)){
+    if(($result_usuario) AND ($result_usuario->rowCount()!=0)){
     $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-    // var_dump($row_usuario);
+    var_dump($row_usuario);
     if(password_verify($dados['senha_usuario'], $row_usuario['senha_usuario'] )){
         $_SESSION['codigo'] = $row_usuario['codigo'];
         $_SESSION['nome_usuario'] = $row_usuario['nome_usuario'];
         header("Location: dashboard.php");
-    }else{
-        $_SESSION['msg'] = "<p style='color: #ff0000'> Error: Usuário ou senha invalida! </p>";
     }
     }else{
         $_SESSION['msg'] = "<p style='color: #ff0000'> Error: Usuário ou senha invalida! </p>";
