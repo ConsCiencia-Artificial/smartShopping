@@ -28,7 +28,7 @@ include_once '../conexao.php';
     <div class="col-sm"></div>
     <div class="col-sm container-fluid text-center border border-dark rounded d-flex mx-auto">
         <main class="form-signin w-100 m-auto mt-5">
-            <form action="dashboard.php" method="POST">
+            <form action="" method="POST">
                 <h1 class="display-4 text-dark mb-3 animated slideInDown">Login</h1>
                 <!-- LOGIN -->
                 <div class="form-floating" style="padding-top: 2rem;">
@@ -65,7 +65,7 @@ if(!empty($dados['SendLogin'])){
   
    
     //var_dump($dados);
-//                                             TEM PORRA ERRADA AQUI kkkkkkkk JA ARRUMEI 
+//                                             TEM ERRADA AQUI kkkkkkkk JA ARRUMEI 
     $query_usuario = "SELECT codigo, nome_usuario, email_usuario, senha_usuario 
     FROM tb_cadastro_usuario 
     WHERE email_usuario = :email_usuario
@@ -76,15 +76,16 @@ if(!empty($dados['SendLogin'])){
     $result_usuario->bindParam(':email_usuario', $dados['email_usuario'], PDO::PARAM_STR);
     $result_usuario->execute();
 
-    isset($_SESSION['codigo'], $_SESSION['nome_usuario']);
+    
     
     if(($result_usuario) AND ($result_usuario->rowCount()!=0)){
     $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-    var_dump($row_usuario);
-    if(password_verify($dados['senha_usuario'], $row_usuario['senha_usuario'] )){
-        $_SESSION['codigo'] = $row_usuario['codigo'];
-        $_SESSION['nome_usuario'] = $row_usuario['nome_usuario'];
-        header("Location: dashboard.php");
+    //var_dump($row_usuario);
+      if(password_verify($dados['senha_usuario'], $row_usuario['senha_usuario'] )){
+        echo "usuario logado";
+    }
+  else{
+        $_SESSION['msg'] = "<p style='color: #ff0000'> Error: Usuário ou senha invalida! </p>";
     }
     }else{
         $_SESSION['msg'] = "<p style='color: #ff0000'> Error: Usuário ou senha invalida! </p>";
