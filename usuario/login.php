@@ -70,9 +70,13 @@ if(!empty($dados['SendLogin'])){
     FROM tb_cadastro_usuario 
     WHERE email_usuario = :email_usuario
     LIMIT 1";
+
+
     $result_usuario = $conn -> prepare($query_usuario);
     $result_usuario->bindParam(':email_usuario', $dados['email_usuario'], PDO::PARAM_STR);
     $result_usuario->execute();
+
+    isset($_SESSION['codigo'], $_SESSION['nome_usuario']);
     
     if(($result_usuario) AND ($result_usuario->rowCount()!=0)){
     $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
