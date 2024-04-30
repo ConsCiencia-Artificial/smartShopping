@@ -14,7 +14,7 @@
         <div class="col-sm"></div>
         <div class="col-sm container-fluid text-center border border-dark rounded d-flex mx-auto">
             <main class="form-signin w-100 m-auto mt-3">
-                <form action="login.php" method="POST">
+                <form action="" method="POST">
                     <!-- CADASTRO -->
                     <h1 class="display-4 text-dark mb-3 animated slideInDown">Cadastro</h1>
 
@@ -79,7 +79,7 @@ if(!empty($_POST))
     $stmt->execute();
 
     echo "<script>alert('Cadastrado com Successo')</script>";
-
+    header("Location: login.php");
   } catch (PDOException $e) {
     echo "Erro ao cadastrar: ". $e->getMessage();
   }

@@ -17,15 +17,10 @@ include_once '../conexao.php';
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <?php
-    
-     
-        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-       
-    ?>
+   
 <!-- Página de Login -->
 <div class="login container-fluid row position-absolute top-50 start-50 translate-middle">
-    <div class="col-sm"></div>
+<div class="col-sm"></div>
     <div class="col-sm container-fluid text-center border border-dark rounded d-flex mx-auto">
         <main class="form-signin w-100 m-auto mt-5">
             <form action="" method="POST">
@@ -58,8 +53,36 @@ include_once '../conexao.php';
 ?>
 <?php
 
+if (!empty($_POST)) 
+{	
+    
+    $email = $_POST['email_usuario'];
+    $senha = $_POST['senha_usuario'];
 
+   
 
+    $rs = $conn->query("SELECT * FROM tb_cadastro_usuario where email_usuario='$email'and 
+                                                    senha_usuario='$senha'");
+    
+    $rs -> execute();
+    
+    if($rs->fetch(PDO::FETCH_ASSOC) == true)
+    { 
+        $row = $rs->fetch();
+        $_SESSION['codigo'] = $row['codigo'];
+        $_SESSION['nome_usuario'] = $row['nome_usuario'];
+        $_SESSION['email_usuario'] = $row['email_usuario'];
+        $_SESSION['senha_usuario'] = $row['senha_usuario'];
+        header('Location:dashboard.php');
+    }
+    else
+    {
+        echo"<script>
+                    alert('Nome de usuário ou senha incorreto');
+             </script>";
+    }
+}
+/*
 //'".$dados['usuario']."'
 if(!empty($dados['SendLogin'])){
   
@@ -68,7 +91,7 @@ if(!empty($dados['SendLogin'])){
 //                                             TEM ERRADA AQUI kkkkkkkk JA ARRUMEI 
     $query_usuario = "SELECT codigo, nome_usuario, email_usuario, senha_usuario 
     FROM tb_cadastro_usuario 
-    WHERE email_usuario = :email_usuario
+    WHERE email_usuario = :email_usuario 
     LIMIT 1";
 
 
@@ -78,13 +101,13 @@ if(!empty($dados['SendLogin'])){
 
     
     
-    if(($result_usuario) AND ($result_usuario->rowCount()!=0)){
+    if(($result_usuario) AND ($result_usuario->rowCount() != 0)){
     $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-    //var_dump($row_usuario);
-      if(password_verify($dados['senha_usuario'], $row_usuario['senha_usuario'] )){
+    var_dump($row_usuario);
+      if($dados['senha_usuario'] == $row_usuario['senha_usuario']){ 
         echo "usuario logado";
-    }
-  else{
+        
+    }else{
         $_SESSION['msg'] = "<p style='color: #ff0000'> Error: Usuário ou senha invalida! </p>";
     }
     }else{
@@ -94,7 +117,7 @@ if(!empty($dados['SendLogin'])){
 if(isset( $_SESSION['msg'])){
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
-}
+}*/
 ?>
 
 

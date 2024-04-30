@@ -18,7 +18,7 @@ include_once '../conexao.php';
  <a href="sair.php">voltar</a>
 
  <h1><?php echo "bem vindo ".$_SESSION['nome_usuario']; ?></h1>
- <?php var_dump($_SESSION['nome_usuario']) ;
+ <?php var_dump($_SESSION['email_usuario']);
  ?>
 </body>
 </html>
