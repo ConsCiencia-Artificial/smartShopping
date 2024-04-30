@@ -1,11 +1,3 @@
-<?php
-session_start();
-ob_start();
-include_once '../conexao.php';
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -47,10 +39,7 @@ include_once '../conexao.php';
 </div>
 </body>
 </html>
-<?php
-// EXEMPLO DE CRIPTOGRAFAR SENHA
-//echo password_hash(123456, PASSWORD_DEFAULT);
-?>
+
 <?php
 
 if (!empty($_POST)) 
@@ -59,28 +48,26 @@ if (!empty($_POST))
     $email = $_POST['email_usuario'];
     $senha = $_POST['senha_usuario'];
 
+    
    
+    include_once '../conexao.php';
 
-    $rs = $conn->query("SELECT * FROM tb_cadastro_usuario where email_usuario='$email'and 
-                                                    senha_usuario='$senha'");
+   
+    $select = $conn->prepare("SELECT * FROM tb_cadastro_usuario where email_usuario='$email'and 
+    senha_usuario='$senha'");
+    $select->execute();
+  
+    $row = $select->fetch();
     
-    $rs -> execute();
+       
+        session_start();
+        $_SESSION["email_usuario"]= $row['email_usuario'];
+        $_SESSION['nome_usuario']= $row['nome_usuario'];
+       //var_dump($_SESSION);
+       $conn = null;
+         header('Location:dashboard.php');
     
-    if($rs->fetch(PDO::FETCH_ASSOC) == true)
-    { 
-        $row = $rs->fetch();
-        $_SESSION['codigo'] = $row['codigo'];
-        $_SESSION['nome_usuario'] = $row['nome_usuario'];
-        $_SESSION['email_usuario'] = $row['email_usuario'];
-        $_SESSION['senha_usuario'] = $row['senha_usuario'];
-        header('Location:dashboard.php');
-    }
-    else
-    {
-        echo"<script>
-                    alert('Nome de usuário ou senha incorreto');
-             </script>";
-    }
+    
 }
 /*
 //'".$dados['usuario']."'

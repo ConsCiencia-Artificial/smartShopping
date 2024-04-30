@@ -1,6 +1,5 @@
 <?php
 session_start();
-ob_start();
 include_once '../conexao.php';
 ?>
 
@@ -17,9 +16,10 @@ include_once '../conexao.php';
  <h1>Bem vindo!</h1>
  <a href="sair.php">voltar</a>
 
- <h1><?php echo "bem vindo ".$_SESSION['nome_usuario']; ?></h1>
- <?php var_dump($_SESSION['email_usuario']);
- ?>
+ <?php echo "bem vindo ".$_SESSION['email_usuario']; ?><br>
+ <?php echo "bem vindo ".$_SESSION['nome_usuario']; ?>
+
+ 
 </body>
 </html>
 
