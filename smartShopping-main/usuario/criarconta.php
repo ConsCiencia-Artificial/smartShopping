@@ -14,7 +14,7 @@
         <div class="col-sm"></div>
         <div class="col-sm container-fluid text-center border border-dark rounded d-flex mx-auto">
             <main class="form-signin w-100 m-auto mt-3">
-                <form action="" method="POST">
+                <form action="login.php" method="POST">
                     <!-- CADASTRO -->
                     <h1 class="display-4 text-dark mb-3 animated slideInDown">Cadastro</h1>
 
@@ -69,17 +69,17 @@ if(!empty($_POST))
   include_once('..\conexao.php');
 
   try {
-    $stmt = $conn->prepare("INSERT INTO tb_cadastro_usuario(nome_usuario, email_usuario, senha_usuario, cd_usuario) VALUES (:nome_usuario, :email_usuario, :senha_usuario, :cd_usuario)");
+    $stmt = $conn->prepare("INSERT INTO tb_cadastro_usuario(nome_usuario, email_usuario, senha_usuario, codigo) VALUES (:nome_usuario, :email_usuario, :senha_usuario, :codigo)");
 
     $stmt->bindParam(':nome_usuario', $nome_usuario);
     $stmt->bindParam(':email_usuario', $email_usuario);
     $stmt->bindParam(':senha_usuario', $senha_usuario);
-    $stmt->bindParam(':cd_usuario' , $cd_usuario);
+    $stmt->bindParam(':codigo' , $codigo);
 
     $stmt->execute();
 
     echo "<script>alert('Cadastrado com Successo')</script>";
-    header("Location: login.php");
+
   } catch (PDOException $e) {
     echo "Erro ao cadastrar: ". $e->getMessage();
   }
