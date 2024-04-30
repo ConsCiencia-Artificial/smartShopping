@@ -1,28 +1,3 @@
-<!--<?php
-//session_start();
-//include_once '../conexao.php';
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PG | Praia Grande Shopping</title>
-    <link rel="shortcut icon" href="img/favicon3.ico" type="image/x-icon" />
-    
-</head>
-<body>
- <h1>Bem vindo!</h1>
- <a href="sair.php">voltar</a>
-
- <?php // echo "bem vindo ".$_SESSION['email_usuario']; ?><br>
- <?php // echo "bem vindo ".$_SESSION['nome_usuario']; ?>
-
- 
-</body>
-</html>
--->
 <?php
 session_start();
 include_once '../conexao.php';
@@ -99,7 +74,7 @@ include_once '../conexao.php';
                             <div class="col">
                                 <div>
                                     <p id="comentarioCliente1">
-                                        <img src="../img/otho.png" class="rounded-circle" style="width: 33px;" alt="">
+                                        <img src="../img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> <?php echo $_SESSION['nome_usuario']; ?><br>
                                         Confira também nossas Camisetas e Calças na promoção!!! Segue pra mais
                                     </p>
                                     <span id="pontos"></span>
@@ -136,13 +111,13 @@ include_once '../conexao.php';
                             <div class="col">
                                 <div>
                                     <p id="comentarioCliente1">
-                                        <img src="../img/otho.png" class="rounded-circle" style="width: 33px;" alt="">
+                                        <img src="../img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> <?php echo $_SESSION['nome_usuario']; ?><br>
                                         Confira também nossas Camisetas e Calças na promoção!!! Segue pra mais
                                     </p>
                                     <span id="pontos"></span>
                                     <span id="mais">
                                         <p id="comentarioCliente">
-                                            <img src="../img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> Qual o preço?
+                                            <img src="../img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> <?php echo $_SESSION['nome_usuario']; ?> Qual o preço?
                                         </p>
                                         <p id="comentarioCliente">
                                             <img src="../img/otho.png" class="rounded-circle" style="width: 33px;" alt="">Tem tamanho M?
@@ -174,8 +149,13 @@ include_once '../conexao.php';
                         </a>
                     </div>
                     <div class="margin-top-pub" id="usuario/login">
-                    <?php echo "bem vindo ".$_SESSION['nome_usuario']; ?>
+                    <h2> <?php echo $_SESSION['nome_usuario']; ?></h2>
                         
+                    </div>
+                    <div class="margin-top-pub" id="usuario/login">
+                        <a href="sair.php">
+                            <button type="button" class="btn btn-dark">Logout</button>
+                        </a>
                     </div>
                     <div>
                     
