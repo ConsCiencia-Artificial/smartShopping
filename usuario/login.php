@@ -1,3 +1,11 @@
+<?php
+session_start();
+ob_start();
+include_once '../conexao.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,13 +17,18 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-   
+    <?php
+    
+     
+        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+       
+    ?>
 <!-- Página de Login -->
 <div class="login container-fluid row position-absolute top-50 start-50 translate-middle">
-<div class="col-sm"></div>
+    <div class="col-sm"></div>
     <div class="col-sm container-fluid text-center border border-dark rounded d-flex mx-auto">
         <main class="form-signin w-100 m-auto mt-5">
-            <form action="" method="POST">
+            <form action="dashboard.php" method="POST">
                 <h1 class="display-4 text-dark mb-3 animated slideInDown">Login</h1>
                 <!-- LOGIN -->
                 <div class="form-floating" style="padding-top: 2rem;">
@@ -39,46 +52,23 @@
 </div>
 </body>
 </html>
-
+<?php
+// EXEMPLO DE CRIPTOGRAFAR SENHA
+//echo password_hash(123456, PASSWORD_DEFAULT);
+?>
 <?php
 
-if (!empty($_POST)) 
-{	
-    
-    $email = $_POST['email_usuario'];
-    $senha = $_POST['senha_usuario'];
 
-    
-   
-    include_once '../conexao.php';
 
-   
-    $select = $conn->prepare("SELECT * FROM tb_cadastro_usuario where email_usuario='$email'and 
-    senha_usuario='$senha'");
-    $select->execute();
-  
-    $row = $select->fetch();
-    
-       
-        session_start();
-        $_SESSION["email_usuario"]= $row['email_usuario'];
-        $_SESSION['nome_usuario']= $row['nome_usuario'];
-       //var_dump($_SESSION);
-       $conn = null;
-         header('Location:dashboard.php');
-    
-    
-}
-/*
 //'".$dados['usuario']."'
 if(!empty($dados['SendLogin'])){
   
    
     //var_dump($dados);
-//                                             TEM ERRADA AQUI kkkkkkkk JA ARRUMEI 
+//                                             TEM PORRA ERRADA AQUI kkkkkkkk JA ARRUMEI 
     $query_usuario = "SELECT codigo, nome_usuario, email_usuario, senha_usuario 
     FROM tb_cadastro_usuario 
-    WHERE email_usuario = :email_usuario 
+    WHERE email_usuario = :email_usuario
     LIMIT 1";
 
 
@@ -86,16 +76,15 @@ if(!empty($dados['SendLogin'])){
     $result_usuario->bindParam(':email_usuario', $dados['email_usuario'], PDO::PARAM_STR);
     $result_usuario->execute();
 
+    isset($_SESSION['codigo'], $_SESSION['nome_usuario']);
     
-    
-    if(($result_usuario) AND ($result_usuario->rowCount() != 0)){
+    if(($result_usuario) AND ($result_usuario->rowCount()!=0)){
     $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
     var_dump($row_usuario);
-      if($dados['senha_usuario'] == $row_usuario['senha_usuario']){ 
-        echo "usuario logado";
-        
-    }else{
-        $_SESSION['msg'] = "<p style='color: #ff0000'> Error: Usuário ou senha invalida! </p>";
+    if(password_verify($dados['senha_usuario'], $row_usuario['senha_usuario'] )){
+        $_SESSION['codigo'] = $row_usuario['codigo'];
+        $_SESSION['nome_usuario'] = $row_usuario['nome_usuario'];
+        header("Location: dashboard.php");
     }
     }else{
         $_SESSION['msg'] = "<p style='color: #ff0000'> Error: Usuário ou senha invalida! </p>";
@@ -104,7 +93,7 @@ if(!empty($dados['SendLogin'])){
 if(isset( $_SESSION['msg'])){
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
-}*/
+}
 ?>
 
 

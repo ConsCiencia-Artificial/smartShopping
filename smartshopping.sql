@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/04/2024 às 03:32
+-- Tempo de geração: 30/04/2024 às 02:57
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -55,8 +55,7 @@ INSERT INTO `tb_cadastro_usuario` (`cd_usuario`, `nome_usuario`, `email_usuario`
 (1, 'thiago', 'thiago@smartshopping', '123456'),
 (2, 'otho', 'otho.01@hotmail.com', '123'),
 (3, 'otho.ribeiro@etec.sp.gov.br', 'otho.ribeiro@etec.sp.gov.br', '1234'),
-(4, 'otho.ribeiro@etec.sp.gov.brr', 'otho.ribeiro@etec.sp.gov.brr', '1234'),
-(5, 'admin', 'admin@admin', 'admin123');
+(4, 'otho.ribeiro@etec.sp.gov.brr', 'otho.ribeiro@etec.sp.gov.brr', '1234');
 
 --
 -- Índices para tabelas despejadas
@@ -88,7 +87,7 @@ ALTER TABLE `tb_cadastro_loja`
 -- AUTO_INCREMENT de tabela `tb_cadastro_usuario`
 --
 ALTER TABLE `tb_cadastro_usuario`
-  MODIFY `cd_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cd_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
