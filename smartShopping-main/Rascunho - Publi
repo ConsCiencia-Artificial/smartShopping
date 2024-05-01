@@ -1,0 +1,80 @@
+<section>
+    <!--duas publicação-->
+    <div class="row box-first anime shadow-lg" id="white">
+        <!-- IMAGEM E DESCRIÇÃO DO PRODUTO -->
+        <div class="col ">
+            <img src="img/foto1.jpg" class="card-img-top img-tam margin-top-pub" alt="...">
+            <h5 class="card-title margin-top-comm">Nova camiseta, venha conferir!!!</h5>
+        </div>
+
+        <!-- COMENTÁRIOS -->
+        <div class="col">
+            <div>
+                <p id="comentarioCliente1">
+                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">
+                    Confira também nossas Camisetas e Calças na promoção!!! Segue pra mais
+                </p>
+                <span id="pontos"></span>
+                <span id="mais">
+                    <p id="comentarioCliente">
+                        <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> Qual o preço?
+                    </p>
+                    <p id="comentarioCliente">
+                        <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">Tem tamanho M?
+                    </p>
+                </span>
+                <a onclick="vermais()" id="btnVerMais">Ver mais comentários</a>
+            </div>
+        </div>
+
+        <!-- FEEDBACK -->
+        <div class="col">
+            <div class="card-body margin-bottom-comm">
+
+                <input type="text" size="40px" class="rounded border border-secondary p-1 border-opacity-25"
+                    id="comentario">
+                <button onclick="feedback()" class="btn btn-secondary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row box-first anime" id="white">
+        <!-- IMAGEM E DESCRIÇÃO DO PRODUTO -->
+        <div class="col">
+            <img src="img/foto1.jpg" class="card-img-top img-tam margin-top-pub" alt="...">
+            <h5 class="card-title margin-top-comm">Nova camiseta, venha conferir!!!</h5>
+        </div>
+
+        <!-- COMENTÁRIOS -->
+        <div class="col">
+            <div>
+                <p id="comentarioCliente1">
+                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">
+                    Confira também nossas Camisetas e Calças na promoção!!! Segue pra mais
+                </p>
+                <span id="pontos"></span>
+                <span id="mais">
+                    <p id="comentarioCliente">
+                        <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> Qual o preço?
+                    </p>
+                    <p id="comentarioCliente">
+                        <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">Tem tamanho M?
+                    </p>
+                </span>
+                <a onclick="vermais()" id="btnVerMais">Ver mais comentários</a>
+            </div>
+        </div>
+
+        <!-- FEEDBACK -->
+        <div class="col">
+            <div class="card-body margin-bottom-comm">
+
+                <input type="text" size="40px" class="rounded border border-secondary p-1 border-opacity-25"
+                    id="comentario">
+                <button onclick="feedback()" class="btn btn-secondary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+            </div>
+        </div>
+    </div>
+</section>
