@@ -1,6 +1,6 @@
 body {
-	background-color: rgb(241, 241, 241);
-	background-image: url("img/pgs-repeat.png");
+	background-color: #181b22;
+	background-image: url("img/pgs-rep.png");
 	background-repeat: repeat-repeat;
 
 	font-family: "Dosis", sans-serif;
@@ -37,6 +37,21 @@ footer {
 
 /* APENAS " . " */
 
+.card {
+	--bs-card-bg: #ffffff;
+}
+
+.post-padd {
+	padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.card-text-color {
+	color: #000000;
+}
+
 .row {
 	justify-content: flex-end;
 }
@@ -45,60 +60,6 @@ footer {
 	margin-left: 30%;
 }
 
-.sidebar {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 100;
-	/* Coloca atrás do navbar */
-	padding: 48px 0 0;
-	/* Altura do navbar */
-	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-}
-
-.sidebar-sticky {
-	position: relative;
-	top: 0;
-	height: calc(100vh - 48px);
-	padding-top: .5rem;
-	overflow-x: hidden;
-	overflow-y: auto;
-	/* Conteúdo com rolagem, se a viewport é menor que o conteúdo. */
-}
-
-@supports ((position: -webkit-sticky) or (position: sticky)) {
-	.sidebar-sticky {
-		position: -webkit-sticky;
-		position: sticky;
-	}
-}
-
-.sidebar .nav-link {
-	font-weight: 500;
-	color: #333;
-}
-
-.sidebar .nav-link .feather {
-	margin-right: 4px;
-	color: #999;
-}
-
-.sidebar .nav-link.active {
-	color: #007bff;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-	color: inherit;
-}
-
-.sidebar-heading {
-	font-size: .75rem;
-	text-transform: uppercase;
-}
-
-/* Nosso */
 .a {
 	text-decoration: none;
 }
@@ -109,7 +70,17 @@ footer {
 }
 
 .btn-outline-light {
-	--bs-btn-border-color: rgba(0, 0, 0, 0);
+	/* Cor da borda (transparente)*/
+	--bs-btn-border-color: #83696c00;
+
+	/* Cor da borda (quando cursor estiver em cima) (transparente)*/
+	--bs-btn-hover-border-color: #f8f9fc00;
+
+	/* Background */
+	--bs-btn-hover-bg: #e8e8e8;
+
+	/* Texto */
+	--bs-btn-hover-color: #000000;
 }
 
 .btn {
@@ -216,6 +187,60 @@ footer {
 	font-size: 14px;
 	color: rgb(14, 3, 3);
 	font-family: monaco;
+}
+
+/* SIDE BAR */
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	/* Coloca atrás do navbar */
+	padding: 48px 0 0;
+	/* Altura do navbar */
+	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+	position: relative;
+	top: 0;
+	height: calc(100vh - 48px);
+	padding-top: .5rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+	/* Conteúdo com rolagem, se a viewport é menor que o conteúdo. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+	.sidebar-sticky {
+		position: -webkit-sticky;
+		position: sticky;
+	}
+}
+
+.sidebar .nav-link {
+	font-weight: 500;
+	color: #333;
+}
+
+.sidebar .nav-link .feather {
+	margin-right: 4px;
+	color: #999;
+}
+
+.sidebar .nav-link.active {
+	color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+	color: inherit;
+}
+
+.sidebar-heading {
+	font-size: .75rem;
+	text-transform: uppercase;
 }
 
 /* APENAS " # " */

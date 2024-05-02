@@ -53,13 +53,13 @@ include_once 'conexao.php';
 <body>
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block sidebar bg-dark">
+            <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #dd163b;">
                 <div class="sidebar-sticky">
                     <div class="row">
                         <div class="col-sm center">
                             <!-- NAVBAR -->
                             <p class="text-light fw-bolder margin-top-comm">
-                                <img src="img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm margin-bottom-comm"><br>
+                                <img src="img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"><br>
                                 PRAIA GRANDE SHOPPING
                             </p>
 
@@ -77,26 +77,23 @@ include_once 'conexao.php';
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Sobre</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Teste</button>
-                            </a>
                         </div>
                     </div>
                 </div>
             </nav>
 
-
-
             <!-- PUBLICAÇÃO -->
             <main role="main" class="col-md-9 ml-sm-auto px">
                 <div class="container-fluid">
+
+                <!-- inicio das publicações -->
                     <div class="card mb-3 shadow-lg" style="max-width: 720px;">
                         <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="img/foto1.jpg" class="img-fluid rounded-start" alt="...">
+                            <div class="col-md-4 post-padd">
+                                <img src="img/foto1.jpg" class="img-fluid rounded-1" alt="...">
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body">
+                                <div class="card-body card-text-color">
 
                                     <!--título-->
                                     <h5 class="card-title"><b>Nova camiseta, venha conferir!!!</b></h5>
@@ -122,7 +119,7 @@ include_once 'conexao.php';
 
                                         <!-- FEEDBACK -->
                                         <div class="col">
-                                            <div class="card-body margin-bottom-comm">
+                                            <div class="card-body">
 
                                                 <input type="text" size="30px" class="rounded border border-secondary p-1 border-opacity-25" id="comentario">
                                                 <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
@@ -134,6 +131,98 @@ include_once 'conexao.php';
                             </div>
                         </div>
                     </div>
+
+                    <div class="card mb-3 shadow-lg" style="max-width: 720px;">
+                        <div class="row g-0">
+                            <div class="col-md-4 post-padd">
+                                <img src="img/foto1.jpg" class="img-fluid rounded-1" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body card-text-color">
+
+                                    <!--título-->
+                                    <h5 class="card-title"><b>Nova camiseta, venha conferir!!!</b></h5>
+                                    <div class="col">
+
+                                        <!-- comentário -->
+                                        <div>
+                                            <p id="comentarioCliente1">
+                                                <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">
+                                                Confira também nossas Camisetas e Calças na promoção!!! Segue pra mais
+                                            </p>
+                                            <span id="pontos"></span>
+                                            <span id="mais">
+                                                <p id="comentarioCliente">
+                                                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> Qual o preço?
+                                                </p>
+                                                <p id="comentarioCliente">
+                                                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">Tem tamanho M?
+                                                </p>
+                                            </span>
+                                            <a onclick="vermais()" id="btnVerMais">Ver mais comentários</a>
+                                        </div>
+
+                                        <!-- FEEDBACK -->
+                                        <div class="col">
+                                            <div class="card-body">
+
+                                                <input type="text" size="30px" class="rounded border border-secondary p-1 border-opacity-25" id="comentario">
+                                                <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="card-text"><small class="text-muted"></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 shadow-lg" style="max-width: 720px;">
+                        <div class="row g-0">
+                            <div class="col-md-4 post-padd">
+                                <img src="img/foto1.jpg" class="img-fluid rounded-1" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body card-text-color">
+
+                                    <!--título-->
+                                    <h5 class="card-title"><b>Nova camiseta, venha conferir!!!</b></h5>
+                                    <div class="col">
+
+                                        <!-- comentário -->
+                                        <div>
+                                            <p id="comentarioCliente1">
+                                                <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">
+                                                Confira também nossas Camisetas e Calças na promoção!!! Segue pra mais
+                                            </p>
+                                            <span id="pontos"></span>
+                                            <span id="mais">
+                                                <p id="comentarioCliente">
+                                                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> Qual o preço?
+                                                </p>
+                                                <p id="comentarioCliente">
+                                                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">Tem tamanho M?
+                                                </p>
+                                            </span>
+                                            <a onclick="vermais()" id="btnVerMais">Ver mais comentários</a>
+                                        </div>
+
+                                        <!-- FEEDBACK -->
+                                        <div class="col">
+                                            <div class="card-body">
+
+                                                <input type="text" size="30px" class="rounded border border-secondary p-1 border-opacity-25" id="comentario">
+                                                <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="card-text"><small class="text-muted"></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fim das publicações -->
                 </div>
             </main>
             <!-- NAVBAR A DIREITA -->
