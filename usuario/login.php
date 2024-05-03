@@ -91,11 +91,18 @@ if (!empty($_POST))
    $row = $select->fetch();
    
       
-       session_start();
        $_SESSION["email_usuario"]= $row['email_usuario'];
        $_SESSION['nome_usuario']= $row['nome_usuario'];
       //var_dump($_SESSION);
       $conn = null;
-        header('Location: dashboard.php');
+       // header('Location: dashboard.php');
+       if(isset($_SESSION['email_usuario'])){
+        $email = $_SESSION['email_usuario'];
+        header("location: dashboard.php" );
+      }
+      else{
+        header("location:../index.php");
+        exit;	
+      }
 }
 ?>
