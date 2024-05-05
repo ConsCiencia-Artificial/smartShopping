@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
 body {
 	background-color: #181b22;
 	background-image: url("img/pgs-rep.png");
@@ -18,11 +20,16 @@ section {
 
 h1 {
 	font-size: 14px;
-	font-family: monaco;
 	text-transform: uppercase;
 	letter-spacing: .1em;
-	color: #8844EE;
+	/* color: #8844EE; */
 	margin-bottom: 40px;
+}
+
+.smartshopping {
+	font-size: 9px;
+	letter-spacing: .1em;
+	color: #ffffff85;
 }
 
 footer {
@@ -86,6 +93,7 @@ footer {
 
 .btn {
 	margin-bottom: 2%;
+	transition: all 0.2s ease;
 }
 
 .shadow {
@@ -287,7 +295,7 @@ footer {
 
 /* OUTROS */
 
-@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
 
 .mt-100 {
 	margin-top: 100px

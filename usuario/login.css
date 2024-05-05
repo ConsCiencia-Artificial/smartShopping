@@ -10,9 +10,11 @@
 .material-symbols-outlined {
     color: #dd163b;
 }
+
 .material-symbols-outlined2 {
     color: #dd163b;
 }
+
 /* Fim Google icon */
 
 body,
@@ -27,8 +29,8 @@ html {
 
 body {
     background-color: #181b22;
-    background-image: url("..\img/pgs-rep.png");
-	background-repeat: repeat-repeat;
+    background-image: url("http://localhost/smartShopping-main/img/pgs-rep.png");
+    background-repeat: repeat-repeat;
 }
 
 /*--------------------
@@ -148,7 +150,7 @@ Login Box
 }
 
 .box-login-title {
-    width: 35%;
+    width: 38%;
     height: 40px;
     position: absolute;
     float: left;
