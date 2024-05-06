@@ -63,7 +63,7 @@ include_once 'conexao.php';
 
                             <!-- Adicionar "href" -->
                             <a class="nav-link d-grid gap-2 mt-2" href="usuario/login.php">
-                                <button type="button" class="btn btn-outline-light">Login</button>
+                                <button type="button" class="btn btn-outline-light"><?php $_SESSION['nome_usuario']?></button>
                             </a>
 
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
