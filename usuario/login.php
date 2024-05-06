@@ -96,26 +96,6 @@ if (!empty($_POST)) {
 
   $select = $conn->prepare("SELECT * FROM tb_cadastro_usuario where email_usuario='$email'and 
    senha_usuario='$senha'");
-<<<<<<< Updated upstream
-  $select->execute();
-
-  $row = $select->fetch();
-
-
-  $_SESSION["email_usuario"] = $row['email_usuario'];
-  $_SESSION['nome_usuario'] = $row['nome_usuario'];
-  //var_dump($_SESSION);
-  $conn = null;
-  // header('Location: dashboard.php');
-  if (isset($_SESSION['email_usuario'])) {
-    $email = $_SESSION['email_usuario'];
-    // IR PARA DASHBOARD
-    header("location: ../index.php");
-  } else {
-    header("location:../index.php");
-    exit;
-  }
-=======
    $select->execute();
  
    $row = $select->fetch();
@@ -134,6 +114,5 @@ if (!empty($_POST)) {
         header("location:../index.php");
         exit;	
       }
->>>>>>> Stashed changes
 }
 ?>
