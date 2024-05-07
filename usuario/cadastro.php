@@ -156,12 +156,12 @@ if (!empty($_POST)) {
     include_once("..\conexao.php");
 
     try {
-        $stmt = $conn->prepare("INSERT INTO tb_cadastro_usuario(codigo, nome_usuario, email_usuario, senha_usuario) VALUES (:codigo, :nome_usuario, :email_usuario, :senha_usuario)");
+        $stmt = $conn->prepare("INSERT INTO tb_cadastro_usuario(cd_usuario, nome_usuario, email_usuario, senha_usuario) VALUES (:cd_usuario, :nome_usuario, :email_usuario, :senha_usuario)");
 
         $stmt->bindParam(":nome_usuario", $nome_usuario);
         $stmt->bindParam(":email_usuario", $email_usuario);
         $stmt->bindParam(":senha_usuario", $senha_usuario);
-        $stmt->bindParam(":codigo", $codigo);
+        $stmt->bindParam(":cd_usuario", $cd_usuario);
 
         $stmt->execute();
         /*
