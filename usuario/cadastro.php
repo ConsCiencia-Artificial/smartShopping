@@ -58,7 +58,7 @@ session_start();
 </body> -->
 
 
-<body>
+<body style="background-image: url(../img/pgs-rep.png)">
     <div class="box">
         <div class="box-form">
             <div class="box-login-tab"></div>
@@ -140,7 +140,7 @@ session_start();
 if (!empty($_POST)) {
     $nome_usuario = $_POST["nome_usuario"];
     $email_usuario = $_POST["email_usuario"];
-    $senha_usuario = $_POST["senha_usuario"];
+    $senha_usuario = md5($_POST["senha_usuario"]);
     // $cep_usuario = $_POST["cep_usuario"];
     // $end_usuario = $_POST["end_usuario"];
     // $num_usuario = $_POST["num_usuario"];
@@ -156,12 +156,12 @@ if (!empty($_POST)) {
     include_once("..\conexao.php");
 
     try {
-        $stmt = $conn->prepare("INSERT INTO tb_cadastro_usuario(nome_usuario, email_usuario, senha_usuario, cd_usuario) VALUES (:nome_usuario, :email_usuario, :senha_usuario, :cd_usuario)");
+        $stmt = $conn->prepare("INSERT INTO tb_cadastro_usuario(codigo, nome_usuario, email_usuario, senha_usuario) VALUES (:codigo, :nome_usuario, :email_usuario, :senha_usuario)");
 
         $stmt->bindParam(":nome_usuario", $nome_usuario);
         $stmt->bindParam(":email_usuario", $email_usuario);
         $stmt->bindParam(":senha_usuario", $senha_usuario);
-        $stmt->bindParam(":cd_usuario", $cd_usuario);
+        $stmt->bindParam(":codigo", $codigo);
 
         $stmt->execute();
         /*

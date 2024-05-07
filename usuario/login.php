@@ -17,7 +17,7 @@ session_start();
   <script type="text/javascript" src="login.js"></script>
 </head>
 
-<body>
+<body style="background-image: url(../img/pgs-rep.png)">
   <div class='box'>
     <div class='box-form'>
       <div class='box-login-tab'></div>

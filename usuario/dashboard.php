@@ -61,10 +61,10 @@ include_once '../conexao.php';
                             <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
 
                             <!-- Adicionar "href" -->
-                            <a class="nav-link d-grid gap-2 mt-2" href="usuario/login.php">
-                                <button type="button" class="btn btn-outline-light">Login</button>
+                            <a class="nav-link d-grid gap-2 mt-2" href="sair.php">
+                                <button type="button" class="btn btn-outline-light">Logout</button>
                             </a>
-
+        
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Pesquisar</button>
                             </a>
