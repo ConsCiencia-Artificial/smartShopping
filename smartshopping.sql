@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/05/2024 às 03:49
+-- Tempo de geração: 08/05/2024 às 03:45
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `smartshopping`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `post`
+--
+
+CREATE TABLE `post` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(200) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
+  `imagem` varchar(200) DEFAULT NULL,
+  `dt_comentario` varchar(200) DEFAULT NULL,
+  `hora` varchar(200) DEFAULT NULL,
+  `postador` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -66,21 +82,25 @@ INSERT INTO `tb_cadastro_usuario` (`cd_usuario`, `nome_usuario`, `email_usuario`
 --
 
 CREATE TABLE `tb_comentario` (
-  `codigo` int(11) NOT NULL,
-  `descricao_comentario` varchar(255) NOT NULL,
-  `data_comentario` datetime NOT NULL
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `tb_comentario`
 --
 
-INSERT INTO `tb_comentario` (`codigo`, `descricao_comentario`, `data_comentario`) VALUES
-(1, 'produto muito, muito, muito mesmo, ruim nunca mais compro novamente esse bone, nem indicarei apra ninguem ', '2024-05-06 22:44:00');
+INSERT INTO `tb_comentario` (`id`) VALUES
+(1);
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `tb_cadastro_loja`
@@ -98,11 +118,17 @@ ALTER TABLE `tb_cadastro_usuario`
 -- Índices de tabela `tb_comentario`
 --
 ALTER TABLE `tb_comentario`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `post`
+--
+ALTER TABLE `post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cadastro_loja`
@@ -120,7 +146,7 @@ ALTER TABLE `tb_cadastro_usuario`
 -- AUTO_INCREMENT de tabela `tb_comentario`
 --
 ALTER TABLE `tb_comentario`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
