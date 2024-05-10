@@ -111,26 +111,7 @@ include_once '../conexao.php';
                                             <span class="m-b-15 d-block">Confira também nossas Camisetas na promoção!!! Siga para mais </span>
                                         </div>
                                     </div>
-
-
-                                    <!-- COD COMENTÁRIO ANTIGO
-                                        <div>
-                                            <p id="comentarioCliente1">
-                                                <img src="img/otho.png" class="rounded-circle p-2" width="50" alt="">
-                                                Confira também nossas Camisetas e Calças na promoção!!! Segue pra mais
-                                            </p>
-                                            <span id="pontos"></span>
-                                            <span id="mais">
-                                                <p id="comentarioCliente">
-                                                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt=""> Qual o preço?
-                                                </p>
-                                                <p id="comentarioCliente">
-                                                    <img src="img/otho.png" class="rounded-circle" style="width: 33px;" alt="">Tem tamanho M?
-                                                </p>
-                                            </span>
-                                        </div>
-                                    -->
-
+                                    
                                     <div class="row d-flex">
                                         <div class="col">
                                             <div class="card">

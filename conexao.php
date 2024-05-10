@@ -3,7 +3,6 @@ $servername = "localhost:3306";
 $username = "root";
 $password = "";
 
-
 try{
     $conn = new PDO("mysql:host=$servername;dbname=smartshopping",
                     "$username",
