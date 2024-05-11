@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/05/2024 às 03:45
+-- Tempo de geração: 11/05/2024 às 01:46
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -60,20 +60,21 @@ CREATE TABLE `tb_cadastro_usuario` (
   `cd_usuario` int(11) NOT NULL,
   `nome_usuario` varchar(100) NOT NULL,
   `email_usuario` varchar(100) NOT NULL,
-  `senha_usuario` varchar(50) NOT NULL
+  `senha_usuario` varchar(50) NOT NULL,
+  `imagem` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `tb_cadastro_usuario`
 --
 
-INSERT INTO `tb_cadastro_usuario` (`cd_usuario`, `nome_usuario`, `email_usuario`, `senha_usuario`) VALUES
-(1, 'thiago', 'thiago@smartshopping', '123456'),
-(2, 'otho', 'otho.01@hotmail.com', '123'),
-(3, 'otho.ribeiro@etec.sp.gov.br', 'otho.ribeiro@etec.sp.gov.br', '1234'),
-(4, 'otho.ribeiro@etec.sp.gov.brr', 'otho.ribeiro@etec.sp.gov.brr', '1234'),
-(5, 'aline', 'aline@gmail.com', '698d51a19d8a121ce581499d7b701668'),
-(6, 'aline', 'aline@gmail.com', 'c6f057b86584942e415435ffb1fa93d4');
+INSERT INTO `tb_cadastro_usuario` (`cd_usuario`, `nome_usuario`, `email_usuario`, `senha_usuario`, `imagem`) VALUES
+(1, 'thiago', 'thiago@smartshopping', '123456', ''),
+(2, 'otho', 'otho.01@hotmail.com', '123', ''),
+(3, 'otho.ribeiro@etec.sp.gov.br', 'otho.ribeiro@etec.sp.gov.br', '1234', ''),
+(4, 'otho.ribeiro@etec.sp.gov.brr', 'otho.ribeiro@etec.sp.gov.brr', '1234', ''),
+(5, 'aline', 'aline@gmail.com', '698d51a19d8a121ce581499d7b701668', ''),
+(6, 'aline', 'aline@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', '');
 
 -- --------------------------------------------------------
 
