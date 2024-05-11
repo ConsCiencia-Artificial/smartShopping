@@ -1,5 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
 
+
+
+
 body {
 	background-color: #181b22;
 	background-image: url("img/pgs-rep.png");
@@ -9,6 +12,7 @@ body {
 	font-optical-sizing: auto;
 	font-weight: weight;
 	font-style: normal;
+	
 }
 
 section {

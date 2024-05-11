@@ -90,7 +90,7 @@ include_once '../conexao.php';
                         <div class="row g-0 rounded-top">
                             <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
                                 <div class="p-2" id="comentarioCliente1">
-                                    <img src="../img/otho.png" alt="Vendedor" width="40" class="rounded-circle">
+                                    <img src="<?php echo $_SESSION['foto']; ?>" alt="Vendedor" width="40" class="rounded-circle">
                                 </div>
                                 <div class="comment-text w-100 p-2">
                                     <h6 class="font-medium text-light">Otho Oliver Ribeiro</h6>
@@ -261,7 +261,7 @@ include_once '../conexao.php';
     </div>
     </div>
 </body>
-
+<script src="../script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </html>

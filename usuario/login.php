@@ -89,7 +89,7 @@ session_start();
 if (!empty($_POST)) {
 
   $email = $_POST['email_usuario'];
-  $senha = $_POST['senha_usuario'];
+  $senha = md5($_POST['senha_usuario']);
 
   include_once('../conexao.php');
 
@@ -103,6 +103,7 @@ if (!empty($_POST)) {
       
        $_SESSION["email_usuario"]= $row['email_usuario'];
        $_SESSION['nome_usuario']= $row['nome_usuario'];
+       $_SESSION['foto']= $row['foto'];
       //var_dump($_SESSION);
       $conn = null;
        // header('Location: dashboard.php');
