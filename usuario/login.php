@@ -103,11 +103,15 @@ if (!empty($_POST)) {
       
        $_SESSION["email_usuario"]= $row['email_usuario'];
        $_SESSION['nome_usuario']= $row['nome_usuario'];
-       $_SESSION['foto']= $row['foto'];
+       $_SESSION['imagem']= $row['imagem'];
+       $_SESSION['nivel_acesso']= $row['nivel_acesso'];
       //var_dump($_SESSION);
       $conn = null;
        // header('Location: dashboard.php');
-       if(isset($_SESSION['email_usuario'])){
+       if(isset($_SESSION['email_usuario']) && $nivel == 0){
+        $email = $_SESSION['email_usuario'];
+        header("location: home.php" );
+      } elseif(isset($_SESSION['email_usuario']) && $nivel >= 1){
         $email = $_SESSION['email_usuario'];
         header("location: dashboard.php" );
       }

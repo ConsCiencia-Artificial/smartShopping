@@ -1,6 +1,11 @@
 <?php
 session_start();
 include_once '../conexao.php';
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +56,7 @@ include_once '../conexao.php';
 <header>
     <nav class="navbar bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand "><?php echo $_SESSION['nome_usuario']; ?></a>
+        <a class="navbar-brand "><?php echo $_SESSION['foto_postador']; ?></a>
         <form class="d-flex" role="search" method="POST">
         <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
         
@@ -68,13 +73,15 @@ if (!empty($_POST)) {
         
     $descricao = $_POST['descricao'];
     $postador = $_SESSION['nome_usuario'];
+    $foto_postador = $_SESSION['imagem'];
     
     $_SESSION['descricao'] = $descricao;
     $_SESSION['postador'] = $postador;
+    $_SESSION['foto_postador'] = $foto_postador;
     
-    $sql = "INSERT INTO post (descricao, postador) VALUES (?, ?)";
+    $sql = "INSERT INTO post (descricao, postador, foto_postador) VALUES (?, ?, ?)";
     $stmt= $conn->prepare($sql);
-    $stmt->execute([$descricao, $postador]);
+    $stmt->execute([$descricao, $postador, $foto_postador]);
 
     $conn=null;
     // Redireciona para a página de postagem
@@ -123,7 +130,8 @@ if (!empty($_POST)) {
             
             
             while ($post = $stmt->fetch()) {
-                $_SESSION['foto_postador']= $post['foto_postador'];?>
+                $_SESSION['foto_postador']= $post['foto_postador'];
+               ?>
              <main role="main" class="col-md-9 ml-sm-auto px">
                 <div class="container-fluid">
                 <div class="card mb-4 shadow-lg rounded-top" style="max-width: 720px;">
@@ -158,30 +166,51 @@ if (!empty($_POST)) {
         <div class="card-body text-center">
             <h4 class="card-title">Últimos comentários</h4>
         </div>
+        
+        <?php 
+            $sql = "SELECT * FROM tb_comentario ORDER BY id DESC";
+            $com = $conn->prepare($sql);
+            $com->execute();
+           
+            
+            
+            while ($coment = $com->fetch()) {
+                $_SESSION['id_comentario']=$coment['id_comentario'];
+                $_SESSION['comentario']=$coment['comentario'];
+                $_SESSION['comentarista']=$_SESSION['nome_usuario'];
+                $_SESSION['foto_comentarista']= $coment['foto_comentarista'];
+                
+                
+               ?>
         <div class="comment-widgets">
             <!-- Comment Row -->
             <div class="d-flex flex-row comment-row m-t-0">
-                <div class="p-2"><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="50" class="rounded-circle"></div>
+                <div class="p-2"><img src="<?php $_SESSION['foto_comentarista'];?>" alt="user" width="50" class="rounded-circle"></div>
                 <div class="comment-text w-100">
-                    <h6 class="font-medium">Fernando Alves</h6> <span class="m-b-15 d-block">Ainda tem no estoque? </span>
+                    <h6 class="font-medium"><?php $_SESSION['comentarista'];?></h6> <span class="m-b-15 d-block"><?php $_SESSION['comentario'];?> </span>
                     <div class="comment-footer">
                         <span class="text-muted float-right">14 de Janeiro</span>
                     </div>
                 </div>
-            </div>
+            </div><?php
+            if(isset($_SESSION['id_comentario'])-1<3){?>
             <!-- Comment Row -->
+            
             <div class="d-flex flex-row comment-row">
-                <div class="p-2"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user" width="50" class="rounded-circle"></div>
+                <div class="p-2"><img src="<?php $_SESSION['foto_comentarista'];?>" alt="user" width="50" class="rounded-circle"></div>
                 <div class="comment-text active w-100">
-                    <h6 class="font-medium">Diego Andrade</h6>
-                    <span class="m-b-15 d-block">Tem na cor laranja? </span>
+                    <h6 class="font-medium"><?php $_SESSION['comentarista'];?></h6>
+                    <span class="m-b-15 d-block"><?php $_SESSION['comentario'];?> </span>
                     <div class="comment-footer">
                         <span class="text-muted float-right">Hoje, Há 2h atrás</span>
                     </div>
                 </div>
             </div>
         </div>
-        <a onclick="vermais()" id="btnVerMais" style="text-align: center;">Carregar mais...</a>
+            <?php}else{?>
+                <a onclick="vermais()" id="btnVerMais" style="text-align: center;">Carregar mais...</a>
+            <?php}}?>
+       
         <!-- Card -->
     </div>
 </div>
@@ -222,18 +251,3 @@ if (!empty($_POST)) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

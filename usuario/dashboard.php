@@ -84,13 +84,12 @@ include_once '../conexao.php';
                 <div class="container-fluid">
                     <!-- Teste -->
 
-
                     <!-- inicio das publicações -->
                     <div class="card mb-4 shadow-lg rounded-top" style="max-width: 720px;">
                         <div class="row g-0 rounded-top">
                             <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
                                 <div class="p-2" id="comentarioCliente1">
-                                    <img src="<?php echo $_SESSION['foto']; ?>" alt="Vendedor" width="40" class="rounded-circle">
+                                    <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
                                 </div>
                                 <div class="comment-text w-100 p-2">
                                     <h6 class="font-medium text-light">Otho Oliver Ribeiro</h6>
