@@ -62,19 +62,21 @@ include_once '../conexao.php';
 </header>
 <?php
 
+$postador = $_SESSION['nome_usuario'];
+$postador = $_SESSION['postador'];
+$foto_postador = $_SESSION['imagem'];
+
 if (!empty($_POST)) {
 
 
 
     $descricao = $_POST['descricao'];
-    $postador = $_SESSION['nome_usuario'];
-	 $foto_postador = $_SESSION['imagem'];
 
-    $sql = "INSERT INTO post (descricao, postador, foto_postador) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO post (descricao, postador) VALUES (?, ?)";
     $stmt= $conn->prepare($sql);
-    $stmt->execute([$descricao, $postador, $foto_postador]);
+    $stmt->execute([$descricao, $postador]);
 
-	 
+    
     $_SESSION['descricao'] = $descricao;
     $_SESSION['postador'] = $postador;
     $_SESSION['foto_postador'] = $foto_postador;
@@ -131,7 +133,7 @@ while ($post = $stmt->fetch()) {
             <div class="row g-0 rounded-top">
                 <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
                     <div class="p-2" id="comentarioCliente1">
-                        <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
+                        <img src="<?php echo $_SESSION['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
                     </div>
                     <div class="comment-text w-100 p-2">
                         <h6 class="font-medium text-light"><?php echo $post['postador']; ?></h6>
