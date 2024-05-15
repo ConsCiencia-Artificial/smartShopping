@@ -62,20 +62,23 @@ include_once '../conexao.php';
 </header>
 <?php
 
-$postador = $_SESSION['nome_usuario'];
-$foto_postador = $_SESSION['imagem'];
+
+
 
 if (!empty($_POST)) {
 
 
 
     $descricao = $_POST['descricao'];
+    $postador = $_SESSION['nome_usuario'];
+$foto_postador = $_SESSION['imagem'];
 
     $sql = "INSERT INTO post (descricao, postador) VALUES (?, ?)";
     $stmt= $conn->prepare($sql);
     $stmt->execute([$descricao, $postador]);
 
     
+	 
     $_SESSION['descricao'] = $descricao;
     $_SESSION['postador'] = $postador;
     $_SESSION['foto_postador'] = $foto_postador;
@@ -156,42 +159,26 @@ while ($post = $stmt->fetch()) {
                                       <div class="card-body text-center">
                                           <h4 class="card-title">Últimos comentários</h4>
                                       </div>
-                                      <?php
-                                            $com = "SELECT * FROM comentario ORDER BY id DESC";
-                                            $sist = $conn->prepare($com);
-                                            $sist->execute();
-
-                                            while ($coment = $sist->fetch()) {
-
-                                        ?>
                                       <div class="comment-widgets">
                                           <!-- Comment Row -->
                                           <div class="d-flex flex-row comment-row m-t-0">
-                                              <div class="p-2"><img src=<?php echo $coment['foto_comentarista']; ?> alt="user" width="50" class="rounded-circle"></div>
+                                              <div class="p-2"><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="50" class="rounded-circle"></div>
                                               <div class="comment-text w-100">
-                                                  <h6 class="font-medium"><?php echo $coment['comentarista']; ?></h6> <span class="m-b-15 d-block"><?php echo $coment['comentario']; ?> </span>
+                                                  <h6 class="font-medium">Fernando Alves</h6> <span class="m-b-15 d-block">Ainda tem no estoque? </span>
                                                   <div class="comment-footer">
                                                       <span class="text-muted float-right">14 de Janeiro</span>
                                                   </div>
                                               </div>
                                           </div>
                                       </div>
-                                    <div class="col">
-                                        <div class="card-body">
-                                            <form action="" method="POST">
-                                            <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" size="20px" name="comentario">
-                                            <button class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;" type="submit">Enviar</button>
-                                            </form>
-                                        </div>
                                     </div>
+                                  </div>
                                 </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 </main>
 <?php
-} }
+}
 ?>
 
             <!-- Comment Row -->
@@ -214,40 +201,19 @@ while ($post = $stmt->fetch()) {
 <!-- FEEDBACK -->
 
 
-
+<div class="col">
+    <div class="card-body">
+        <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" size="20px">
+        <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+    </div>
+</div>
 </div>
 <p class="card-text"><small class="text-muted"></small></p>
 </div>
 </div>
 </div>
 
-<?php
 
-$comentarista = $_SESSION['nome_usuario'];
-$foto_comentarista = $_SESSION['imagem'];
-
-if (!empty($_POST)) {
-
-
-
-    $comentario = $_POST['comentario'];
-
-    $sql = "INSERT INTO comentario (comentario, comentarista, foto_comentarista) VALUES (?, ?, ?)";
-    $stmt= $conn->prepare($sql);
-    $stmt->execute([$comentario, $comentarista, $foto_comentarista]);
-
-    
-    $_SESSION['comentario'] = $comentario;
-    $_SESSION['comentarista'] = $comentarista;
-    $_SESSION['foto_comentarista'] = $foto_comentarista;
-
-    $conn=null;
-    // Redireciona para a página de postagem
-    header('Location: home.php');
-    exit;
-}
-
-?>
             <!-- PUBLICAÇÃO -->
 
                     <!-- Teste -->
