@@ -153,7 +153,7 @@ if (!empty($_POST)) {
 
 
 
-    include_once("..\conexao.php");
+    include_once('conexao.php');
 
     try {
         $stmt = $conn->prepare("INSERT INTO tb_cadastro_usuario(codigo, nome_usuario, email_usuario, senha_usuario) VALUES (:codigo, :nome_usuario, :email_usuario, :senha_usuario)");

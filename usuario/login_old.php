@@ -91,7 +91,7 @@ if (!empty($_POST)) {
   $email = $_POST['email_usuario'];
   $senha = md5($_POST['senha_usuario']);
 
-  include_once('../conexao.php');
+  include_once('conexao.php');
 
 
   $select = $conn->prepare("SELECT * FROM tb_cadastro_usuario where email_usuario='$email'and 
