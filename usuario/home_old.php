@@ -73,14 +73,15 @@ if (!empty($_POST)) {
     $postador = $_SESSION['nome_usuario'];
     $foto_postador = $_SESSION['imagem'];
 
-    $sql = "INSERT INTO post (descricao, postador, foto_postador) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO post (descricao, postador) VALUES (?, ?)";
     $stmt= $conn->prepare($sql);
-    $stmt->execute([$descricao, $postador, $foto_postador]);
+    $stmt->execute([$descricao, $postador]);
 
     
 	 
     $_SESSION['descricao'] = $descricao;
     $_SESSION['postador'] = $postador;
+    $_SESSION['foto_postador'] = $foto_postador;
 
     $conn=null;
     // Redireciona para a página de postagem
@@ -160,7 +161,7 @@ if (!empty($_POST)) {
                                                     <h4 class="card-title">Últimos comentários</h4>
                                                 </div>
                                                 <div class="comment-widgets">
-                                                    <!-- Comment Row  acoplamento-->
+                                                    <!-- Comment Row -->
                                                     <div class="d-flex flex-row comment-row m-t-0">
                                                         <div class="p-2"><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="50" class="rounded-circle"></div>
                                                         <div class="comment-text w-100">
