@@ -396,8 +396,39 @@ p.field span.i {
 /*--------------------
 SIDE BAR
 ---------------------*/
+.margin-top-comm {
+	margin-top: 3%;
+}
 
-/* SIDE BAR */
+.center {
+	text-align: center;
+	justify-content: center;
+}
+
+.btn {
+	margin-bottom: 2%;
+	transition: all 0.2s ease;
+}
+
+.btn-outline-light {
+	/* Cor da borda (transparente)*/
+	--bs-btn-border-color: #83696c00;
+
+	/* Cor da borda (quando cursor estiver em cima) (transparente)*/
+	--bs-btn-hover-border-color: #f8f9fc00;
+
+	/* Background */
+	--bs-btn-hover-bg: #e8e8e8;
+
+	/* Texto */
+	--bs-btn-hover-color: #000000;
+}
+
+.btn {
+	margin-bottom: 2%;
+	transition: all 0.2s ease;
+}
+
 .row{
     justify-content: flex-end;
 }
