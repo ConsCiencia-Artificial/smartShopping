@@ -1,7 +1,6 @@
 <?php
-include_once('conexao.php');
 session_start();
-
+include_once('conexao.php');
 // var_dump($_POST); die;
 if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
     $email = $_POST['email_usuario'];

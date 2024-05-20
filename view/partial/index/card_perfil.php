@@ -34,7 +34,7 @@ include_once '../app/controller/conexao.php';
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">Email</h5>
-                                        <h4 class="text-muted f-w-400">email@email.com</h4>
+                                        <h4 class="text-muted f-w-400"><?php echo $_SESSION['email_usuario'];  ?></h4>
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">Telefone</h5>

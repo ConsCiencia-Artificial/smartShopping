@@ -105,7 +105,9 @@ if (!empty($_POST)) {
                             <a class="nav-link d-grid gap-2 mt-2" href="../app\controller/sair.php">
                                 <button type="button" class="btn btn-outline-light">Logout</button>
                             </a>
-
+                            <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
+                                 <button type="button" class="btn btn-outline-light">Perfil</button>
+                            </a>
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Pesquisar</button>
                             </a>
