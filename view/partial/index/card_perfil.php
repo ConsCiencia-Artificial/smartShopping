@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once '../app/controller/conexao.php';
+?>
+
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
@@ -7,9 +12,9 @@
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25">
-                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                    <img src="<?php echo $_SESSION['imagem'];  ?>" width="105"  class="img-radius" alt="User-Profile-Image">
                                 </div>
-                                <h1 class="f-w-600">Nome do Cliente</h1>
+                                <h1 class="f-w-600"><?php echo $_SESSION['nome_usuario'];  ?></h1>
                             </div>
                         </div>
                         <div class="col-sm-8">
