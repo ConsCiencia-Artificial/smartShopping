@@ -51,8 +51,8 @@ include_once '../app/controller/conexao.php';
 <header>
     <nav class="navbar bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand "><?php echo $_SESSION['postador']; ?></a>
-        <form class="d-flex" role="search" method="POST">
+        <a class="navbar-brand"></a>
+        <form class="d-flex justify-content-between" role="search" method="POST">
         <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
 
         <button class="btn btn-outline-danger" type="submit">Postar</button>
@@ -98,11 +98,11 @@ if (!empty($_POST)) {
                     <div class="row">
                         <div class="col-sm center">
                             <!-- NAVBAR -->
-                            <img src="../img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm">
-                            <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+                            <img src="<?php echo $_SESSION['imagem'] ?>" alt="logo" width="105" class="img-fluid margin-top-comm">
+                            <p class="text-light fw-bolder mt-3">Seja bem vindo! <br> <?php echo $_SESSION['nome_usuario'] ?></p>
 
                             <!-- Adicionar "href" -->
-                            <a class="nav-link d-grid gap-2 mt-2" href="sair.php">
+                            <a class="nav-link d-grid gap-2 mt-2" href="../app\controller/sair.php">
                                 <button type="button" class="btn btn-outline-light">Logout</button>
                             </a>
 
