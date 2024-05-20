@@ -4,10 +4,10 @@
             <div class="col-xl-6 col-md-12">
                 <div class="card user-card-full">
                     <div class="row m-l-0 m-r-0">
-                        <div class="col-sm-4 bg-c-lite-green user-profile">
-                            <div class="card-block text-center text-white">
+                        <div class="col-sm-4 container bg-c-lite-green user-profile d-flex align-content-center flex-wrap">
+                            <div class="row align-items-end card-block text-center text-white">
                                 <div class="m-b-25">
-                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                    <img src="../assets/img/default-icon.jpg" class="img-radius" alt="Foto do usuário" width='128px' height='128px'>
                                 </div>
                                 <h1 class="f-w-600">Nome do Cliente</h1>
                             </div>
@@ -15,25 +15,26 @@
                         <div class="col-sm-8">
                             <div class="card-block position-relative">
                                 <div class="row">
-
                                     <div class="col-10">
                                         <h3>Configurações</h3>
-                                        
                                     </div>
                                     <div class="col-2">
-                                    <button class="btn btn-outline-dark border-dark center"><span class="material-symbols-outlined">edit</span></button>
+                                        <button class="btn btn-outline-dark border-dark center"><span class="material-symbols-outlined">edit</span></button>
                                     </div>
-
                                 </div>
                                 <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Informações</h4>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <h5 class="m-b-10 f-w-600">Email</h5>
                                         <h4 class="text-muted f-w-400">email@email.com</h4>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <h5 class="m-b-10 f-w-600">Telefone</h5>
-                                        <h4 class="text-muted f-w-400">13 XXXX-XXXXX</h4>
+                                        <h4 class="text-muted f-w-400">XX XXXXX1234</h4>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h5 class="m-b-10 f-w-600">CPF</h5>
+                                        <h4 class="text-muted f-w-400">XXX.XXX.X89-10</h4>
                                     </div>
                                 </div>
                                 <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Entrega</h4>
@@ -46,11 +47,13 @@
 
                                     </div>
                                 </div>
-                                <ul class="social-link list-unstyled m-t-40 m-b-10">
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                                </ul>
+                                <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Pagamento</h4>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h5 class="m-b-10 f-w-600">Forma de pagamento atual</h5>
+                                        <h4 class="text-muted f-w-400">Crédito - XXXX XXXX XXXX 1234</h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -99,7 +99,7 @@ session_start();
                     </div>
                     <div class="box-info">
                         <p><button onclick="closeLoginInfo();" class="b b-info">
-                                <span class="material-symbols-outlined">
+                                <span class="material-symbols-outlined" style="color:white">
                                     close
                                 </span>
                             </button>

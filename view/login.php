@@ -96,9 +96,7 @@
           </div>
           <div class='box-info'>
             <p><button onclick="closeLoginInfo();" class='b b-info'>
-                <span class="material-symbols-outlined">
-                  close
-                </span>
+                <span class="material-symbols-outlined" style="color:white">close</span>
               </button>
             <h3>Ajuda</h3>
             </p>

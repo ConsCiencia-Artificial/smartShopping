@@ -42,6 +42,9 @@
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Contatos</button>
                             </a>
+                            <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">
+                                <button type="button" class="btn btn-outline-light">Sair</button>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
 }
 
 .material-symbols-outlined2 {
-    color: #dd163b;
+    color: #ffffff;
 }
 
 /* Fim Google icon */
@@ -233,7 +233,7 @@ button:focus {
 }
 
 .b-info {
-    opacity: 0.5;
+    opacity: 1;
     float: left;
 }
 
