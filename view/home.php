@@ -52,7 +52,8 @@ include_once '../app/controller/conexao.php';
     <nav class="navbar bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand"></a>
-        <form class="d-flex justify-content-between" role="search" method="POST">
+        <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
+        <input type="file"  id="img_post" name="img_post">
         <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
 
         <button class="btn btn-outline-danger" type="submit">Postar</button>
@@ -63,30 +64,39 @@ include_once '../app/controller/conexao.php';
 <?php
 
 
+if($_POST){
+    $descricao = $_POST["descricao"];
+    $postador = $_SESSION["nome_usuario"];
+    $foto_postador = $_SESSION["imagem"];
+    $img_post = $_FILES["img_post"]["name"];
 
+    if(!empty($descricao) && !empty($img_post)){
+        try {
+            $foto_tmp = $_FILES["img_post"]["tmp_name"];
+            $foto_destino = "../assets/uploads/" . basename($img_post);
+            
+            move_uploaded_file($foto_tmp, $foto_destino);
+            $sql = "INSERT INTO post (descricao, postador, foto_postador, img_post) VALUES (?, ?, ?, ?)";
+            $stmt= $conn->prepare($sql);
+            $stmt->execute([$descricao, $postador, $foto_postador, $foto_destino]);
+        
+            
+             
+            $_SESSION['descricao'] = $descricao;
+            $_SESSION['postador'] = $postador;
+        
+            $conn=null;
 
-if (!empty($_POST)) {
-
-
-
-    $descricao = $_POST['descricao'];
-    $postador = $_SESSION['nome_usuario'];
-    $foto_postador = $_SESSION['imagem'];
-
-    $sql = "INSERT INTO post (descricao, postador, foto_postador) VALUES (?, ?, ?)";
-    $stmt= $conn->prepare($sql);
-    $stmt->execute([$descricao, $postador, $foto_postador]);
-
-    
-	 
-    $_SESSION['descricao'] = $descricao;
-    $_SESSION['postador'] = $postador;
-
-    $conn=null;
-    // Redireciona para a página de postagem
-    header('Location: home.php');
-    exit;
+          } catch(PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+          } 
+          header('Location: home.php');
+          exit;                
+    }
+  
 }
+
+
 
 ?>
 
