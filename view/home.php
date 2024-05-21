@@ -20,33 +20,7 @@ include_once '../app/controller/conexao.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&display=swap" rel="stylesheet">
-    <style type="text/css">
-        /* Chart.js */
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
+    <?php include 'partial/index/index_style.php'; ?>
 </head>
 <header>
     <nav class="navbar bg-dark">
@@ -181,20 +155,9 @@ if($_POST){
                                                                 <span class="text-muted float-right">14 de Janeiro</span>
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-            </main>
-            <?php
-            }
-            ?>
-
-                        <!-- Comment Row -->
-                        <div class="d-flex flex-row comment-row">
+                                                    <div class="d-flex flex-row comment-row">
                             <div class="p-2"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user" width="50" class="rounded-circle"></div>
                             <div class="comment-text active w-100">
                                 <h6 class="font-medium">Diego Andrade</h6>
@@ -219,6 +182,19 @@ if($_POST){
                     <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
                 </div>
             </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+            </main>
+            <?php
+            }
+            ?>
+
+                        <!-- Comment Row -->
+                        
             </div>
             <p class="card-text"><small class="text-muted"></small></p>
             </div>
