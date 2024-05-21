@@ -1,7 +1,6 @@
 <?php
-include_once('conexao.php');
 session_start();
-
+include_once('conexao.php');
 // var_dump($_POST); die;
 if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
     $email = $_POST['email_usuario'];
@@ -22,7 +21,7 @@ if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
         $_SESSION['nivel_acesso'] = $row['nivel_acesso'];
         $conn = null;
         // var_dump($_SESSION); die;
-        header("Location: ../usuario/home.php");
+        header("Location: ../../view/home.php");
     } else {
         $variavel = "Usuário ou senha inválido!";
         header("Location: ../../view/login.php?variavel=" . urlencode($variavel));

@@ -22,6 +22,9 @@
                 // var_dump($_SESSION); die;
                 if (!empty($_SESSION['email_usuario'])) {
                 ?>
+                    <a class="nav-link d-grid gap-2 mt-2" href="view/home.php">
+                        <button type="button" class="btn btn-outline-light">Home</button>
+                    </a>
                     <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
                         <button type="button" class="btn btn-outline-light">Perfil</button>
                     </a>

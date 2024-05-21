@@ -33,6 +33,9 @@
                             <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
                                 <button type="button" class="btn btn-outline-light">Início</button>
                             </a>
+                            <a class="nav-link d-grid gap-2 mt-2" href="home.php">
+                                <button type="button" class="btn btn-outline-light">Home</button>
+                            </a>
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Pesquisar</button>
                             </a>
