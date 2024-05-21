@@ -27,7 +27,7 @@
                             <!-- NAVBAR -->
                             <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
                             <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
-
+                            
                             <!-- Verificar se está logado -->
 
                             <a class="nav-link d-grid gap-2 mt-2" href="../index.php">

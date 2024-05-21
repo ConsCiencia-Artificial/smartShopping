@@ -24,50 +24,48 @@ include_once '../app/controller/conexao.php';
 </head>
 <header>
     <nav class="navbar bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand"></a>
-        <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
-        <input type="file"  id="img_post" name="img_post">
-        <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
+        <div class="container-fluid">
+            <a class="navbar-brand"></a>
+            <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
+                <input type="file" id="img_post" name="img_post">
+                <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
 
-        <button class="btn btn-outline-danger" type="submit">Postar</button>
-        </form>
-    </div>
+                <button class="btn btn-outline-danger" type="submit">Postar</button>
+            </form>
+        </div>
     </nav>
 </header>
 <?php
 
 
-if($_POST){
+if ($_POST) {
     $descricao = $_POST["descricao"];
     $postador = $_SESSION["nome_usuario"];
     $foto_postador = $_SESSION["imagem"];
     $img_post = $_FILES["img_post"]["name"];
 
-    if(!empty($descricao) && !empty($img_post)){
+    if (!empty($descricao) && !empty($img_post)) {
         try {
             $foto_tmp = $_FILES["img_post"]["tmp_name"];
             $foto_destino = "../assets/uploads/" . basename($img_post);
-            
+
             move_uploaded_file($foto_tmp, $foto_destino);
             $sql = "INSERT INTO post (descricao, postador, foto_postador, img_post) VALUES (?, ?, ?, ?)";
-            $stmt= $conn->prepare($sql);
+            $stmt = $conn->prepare($sql);
             $stmt->execute([$descricao, $postador, $foto_postador, $foto_destino]);
-        
-            
-             
+
+
+
             $_SESSION['descricao'] = $descricao;
             $_SESSION['postador'] = $postador;
-        
-            $conn=null;
 
-          } catch(PDOException $e) {
+            $conn = null;
+        } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
-          } 
-          header('Location: home.php');
-          exit;                
+        }
+        header('Location: home.php');
+        exit;
     }
-  
 }
 
 
@@ -83,15 +81,9 @@ if($_POST){
                         <div class="col-sm center">
                             <!-- NAVBAR -->
                             <img src="<?php echo $_SESSION['imagem'] ?>" alt="logo" width="105" class="img-fluid margin-top-comm">
-                            <p class="text-light fw-bolder mt-3">Seja bem vindo! <br> <?php echo $_SESSION['nome_usuario'] ?></p>
+                            <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;">Seja bem vindo! <br> <?php echo $_SESSION['nome_usuario'] ?></p>
 
                             <!-- Adicionar "href" -->
-                            <a class="nav-link d-grid gap-2 mt-2" href="../app\controller/sair.php">
-                                <button type="button" class="btn btn-outline-light">Logout</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
-                                 <button type="button" class="btn btn-outline-light">Perfil</button>
-                            </a>
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Pesquisar</button>
                             </a>
@@ -100,6 +92,12 @@ if($_POST){
                             </a>
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Sobre</button>
+                            </a>
+                            <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
+                                <button type="button" class="btn btn-outline-light">Perfil</button>
+                            </a>
+                            <a class="nav-link d-grid gap-2 mt-2" href="../app\controller/sair.php">
+                                <button type="button" class="btn btn-outline-light">Sair</button>
                             </a>
                         </div>
                     </div>
@@ -112,126 +110,111 @@ if($_POST){
             $stmt->execute();
 
             while ($post = $stmt->fetch()) {
-                $_SESSION['postador']=$post['postador'];
-                
-            ?>
-            <main role="main" class="col-md-9 ml-sm-auto px">
-                <div class="container-fluid">
-                    <div class="card mb-4 shadow-lg rounded-top" style="max-width: 720px;">
-                        <div class="row g-0 rounded-top">
-                            <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
-                                <div class="p-2" id="comentarioCliente1">
-                                    <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
-                                </div>
-                                <div class="comment-text w-100 p-2">
-                                    <h6 class="font-medium text-light"><?php echo $post['postador']; ?></h6>
-                                </div>
-                            </div>
-                            <div class="col-md-6 post-padd">
-                                <img src="<?php echo $post['img_post'] ?>" class="img-fluid rounded-1" alt="...">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-body card-text-color">
-                                    <!--título-->
-                                    <div class="col">
-                                        <!-- comentário -->
-                                        <div class="d-flex flex-row comment-row m-t-0">
-                                            <span class="m-b-15 d-block"><?php echo $post['descricao']; ?></span>
-                                        </div>
+                $_SESSION['postador'] = $post['postador'];
 
-                                        <div class="row d-flex">
+            ?>
+                <main role="main" class="col-md-9 ml-sm-auto px">
+                    <div class="container-fluid">
+                        <div class="card mb-4 shadow-lg rounded-top" style="max-width: 720px;">
+                            <div class="row g-0 rounded-top">
+                                <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
+                                    <div class="p-2" id="comentarioCliente1">
+                                        <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
+                                    </div>
+                                    <div class="comment-text w-100 p-2">
+                                        <h6 class="font-medium text-light"><?php echo $post['postador']; ?></h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 post-padd">
+                                    <img src="<?php echo $post['img_post'] ?>" class="img-fluid rounded-1" alt="...">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body card-text-color">
+                                        <!--título-->
                                         <div class="col">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Últimos comentários</h4>
-                                                </div>
-                                                <div class="comment-widgets">
-                                                    <!-- Comment Row  acoplamento-->
-                                                    <div class="d-flex flex-row comment-row m-t-0">
-                                                        <div class="p-2"><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                                        <div class="comment-text w-100">
-                                                            <h6 class="font-medium">Fernando Alves</h6> <span class="m-b-15 d-block">Ainda tem no estoque? </span>
-                                                            <div class="comment-footer">
-                                                                <span class="text-muted float-right">14 de Janeiro</span>
+                                            <!-- comentário -->
+                                            <div class="d-flex flex-row comment-row m-t-0">
+                                                <span class="m-b-15 d-block"><?php echo $post['descricao']; ?></span>
+                                            </div>
+
+                                            <div class="row d-flex">
+                                                <div class="col">
+                                                    <div class="card">
+                                                        <div class="card-body text-center">
+                                                            <h4 class="card-title">Últimos comentários</h4>
+                                                        </div>
+                                                        <div class="comment-widgets">
+                                                            <!-- Comment Row  acoplamento-->
+                                                            <div class="d-flex flex-row comment-row m-t-0">
+                                                                <div class="p-2"><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                                                <div class="comment-text w-100">
+                                                                    <h6 class="font-medium">Fernando Alves</h6> <span class="m-b-15 d-block">Ainda tem no estoque? </span>
+                                                                    <div class="comment-footer">
+                                                                        <span class="text-muted float-right">14 de Janeiro</span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="d-flex flex-row comment-row">
+                                                                <div class="p-2"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                                                <div class="comment-text active w-100">
+                                                                    <h6 class="font-medium">Diego Andrade</h6>
+                                                                    <span class="m-b-15 d-block">Tem na cor laranja? </span>
+                                                                    <div class="comment-footer">
+                                                                        <span class="text-muted float-right">Hoje, Há 2h atrás</span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        
+                                                        <a onclick="vermais()" id="btnVerMais" style="text-align: center;">Carregar mais...</a>
+                                                        <!-- Card -->
                                                     </div>
-                                                    <div class="d-flex flex-row comment-row">
-                            <div class="p-2"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text active w-100">
-                                <h6 class="font-medium">Diego Andrade</h6>
-                                <span class="m-b-15 d-block">Tem na cor laranja? </span>
-                                <div class="comment-footer">
-                                    <span class="text-muted float-right">Hoje, Há 2h atrás</span>
+                                                </div>
+                                            </div>
+                                            <!-- FEEDBACK -->
+
+
+                                            <div class="col">
+                                                <div class="card-body">
+                                                    <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" size="20px">
+                                                    <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a onclick="vermais()" id="btnVerMais" style="text-align: center;">Carregar mais...</a>
-                    <!-- Card -->
-                </div>
-            </div>
-            </div>
-            <!-- FEEDBACK -->
-
-
-            <div class="col">
-                <div class="card-body">
-                    <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" size="20px">
-                    <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
-                </div>
-            </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-            </main>
+                </main>
             <?php
             }
             ?>
 
-                        <!-- Comment Row -->
-                        
-            </div>
-            <p class="card-text"><small class="text-muted"></small></p>
-            </div>
-            </div>
-            </div>
+            <!-- Comment Row -->
+
+        </div>
+        <p class="card-text"><small class="text-muted"></small></p>
+    </div>
+    </div>
+    </div>
 
 
-            <!-- PUBLICAÇÃO -->
+    <!-- PUBLICAÇÃO -->
 
-                    <!-- Teste -->
-
-
-            <!-- Fim das publicações -->
-                </div>
-
-            </main>
+    <!-- Teste -->
 
 
-</div>
-</div>
+    <!-- Fim das publicações -->
+    </div>
+
+    </main>
+
+
+    </div>
+    </div>
 </body>
 <script src="../script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

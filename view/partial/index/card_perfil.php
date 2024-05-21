@@ -12,7 +12,13 @@ include_once '../app/controller/conexao.php';
                         <div class="col-sm-4 container bg-c-lite-green user-profile d-flex align-content-center flex-wrap">
                             <div class="row align-items-end card-block text-center text-white">
                                 <div class="m-b-25">
-                                    <img src="<?php echo $_SESSION['imagem'];  ?>" width="105"  class="img-radius" alt="User-Profile-Image">
+                                    <?php
+                                    if (!empty($_SESSION['imagem'])) {
+                                    ?>
+                                        <img src="<?php echo $_SESSION['imagem'];  ?>" width="105" class="img-radius" alt="User-Profile-Image">
+                                    <?php } else { ?>
+                                        <img src="../assets/img/default-icon.jpg" width="105" class="img-radius" alt="User-Profile-Image">
+                                    <?php } ?>
                                 </div>
                                 <h1 class="f-w-600"><?php echo $_SESSION['nome_usuario'];  ?></h1>
                             </div>
@@ -35,18 +41,18 @@ include_once '../app/controller/conexao.php';
                                     </div>
                                     <div class="col-sm-4">
                                         <h5 class="m-b-10 f-w-600">Telefone</h5>
-                                        <h4 class="text-muted f-w-400">XX XXXXX1234</h4>
+                                        <h4 class="text-muted f-w-400">Não cadastrado</h4>
                                     </div>
                                     <div class="col-sm-4">
                                         <h5 class="m-b-10 f-w-600">CPF</h5>
-                                        <h4 class="text-muted f-w-400">XXX.XXX.X89-10</h4>
+                                        <h4 class="text-muted f-w-400">Não cadastrado</h4>
                                     </div>
                                 </div>
                                 <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Entrega</h4>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">Endereço para entrega</h5>
-                                        <h4 class="text-muted f-w-400">Rua. X, nº 0</h4>
+                                        <h4 class="text-muted f-w-400">Não cadastrado</h4>
                                     </div>
                                     <div class="col-sm-6">
 
@@ -56,7 +62,7 @@ include_once '../app/controller/conexao.php';
                                 <div class="row">
                                     <div class="col-sm">
                                         <h5 class="m-b-10 f-w-600">Forma de pagamento atual</h5>
-                                        <h4 class="text-muted f-w-400">Crédito - XXXX XXXX XXXX 1234</h4>
+                                        <h4 class="text-muted f-w-400">Não cadastrado</h4>
                                     </div>
                                 </div>
                             </div>
