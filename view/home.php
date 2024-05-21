@@ -107,7 +107,7 @@ if($_POST){
             </nav>
 
             <?php
-            $sql = "SELECT * FROM post ORDER BY id DESC";
+            $sql = "SELECT * FROM post ORDER BY id_post DESC";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
 
