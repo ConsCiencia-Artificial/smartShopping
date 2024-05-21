@@ -158,14 +158,14 @@ if($_POST){
                                                         
                                                     </div>
                                                     <div class="d-flex flex-row comment-row">
-                            <div class="p-2"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text active w-100">
-                                <h6 class="font-medium">Diego Andrade</h6>
-                                <span class="m-b-15 d-block">Tem na cor laranja? </span>
-                                <div class="comment-footer">
-                                    <span class="text-muted float-right">Hoje, Há 2h atrás</span>
-                                </div>
-                            </div>
+                                                    <div class="p-2"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                                    <div class="comment-text active w-100">
+                                                        <h6 class="font-medium">Diego Andrade</h6>
+                                                        <span class="m-b-15 d-block">Tem na cor laranja? </span>
+                                                        <div class="comment-footer">
+                                                            <span class="text-muted float-right">Hoje, Há 2h atrás</span>
+                                                        </div>
+                                                    </div>
                         </div>
                     </div>
                     <a onclick="vermais()" id="btnVerMais" style="text-align: center;">Carregar mais...</a>
@@ -192,7 +192,7 @@ if($_POST){
             <?php
             }
             ?>
-
+            
                         <!-- Comment Row -->
                         
             </div>
