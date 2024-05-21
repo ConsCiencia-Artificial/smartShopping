@@ -30,7 +30,7 @@ body {
 }
 
 .padding {
-    padding: 3rem !important
+    padding: 2rem !important
 }
 
 .user-card-full {
@@ -74,10 +74,17 @@ body {
 }
 
 .img-radius {
-    border-radius: 5px;
+    border-radius: 4rem;
 }
 
+.container .fakeImg {
+    background: no-repeat center;
+    background-size: cover;
+}
 
+.container {
+    display: inline-block;
+}
 
 h6 {
     font-size: 14px;

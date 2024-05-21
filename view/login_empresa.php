@@ -25,30 +25,22 @@
           <div class="row">
             <div class="col-sm center">
               <!-- NAVBAR -->
-              <img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm">
+              <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
               <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
 
               <!-- Verificar se está logado -->
-              <?php
-              // var_dump($_SESSION); die;
-              if (!empty($_SESSION['email_usuario'])) {
-              ?>
-                <a class="nav-link d-grid gap-2 mt-2" href="app/controller/sair.php">
-                  <button type="submit" class="btn btn-outline-light">Sair</button>
-                </a>
-              <?php } else { ?>
-                <a class="nav-link d-grid gap-2 mt-2" href="view/login.php">
-                  <button type="button" class="btn btn-outline-light">Entrar</button>
-                </a>
-              <?php } ?>
+
+              <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
+                <button type="button" class="btn btn-outline-light">Início</button>
+              </a>
               <a class="nav-link d-grid gap-2 mt-2" href="#">
                 <button type="button" class="btn btn-outline-light">Pesquisar</button>
               </a>
               <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Contatos</button>
+                <button type="button" class="btn btn-outline-light">Sobre</button>
               </a>
               <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Sobre</button>
+                <button type="button" class="btn btn-outline-light">Contatos</button>
               </a>
             </div>
           </div>
@@ -64,7 +56,7 @@
                   login
                 </span>
               </div>
-              <h2 style="padding-top: 15px;">ENTRAR</h2>
+              <h2 style="padding-top: 15px;">EMPRESA</h2>
             </div>
             <div class='box-login'>
               <form action="../app/controller/loginController.php" method="POST">
@@ -75,7 +67,7 @@
                     </span>
                   </button>
                   <p class='field'>
-                    <label for='user'>E-MAIL</label>
+                    <label for='user'>E-MAIL CORPORATIVO</label>
                     <input type='text' id='user' name='email_usuario' value="<?php if (isset($dados['email_usuario'])) {
                                                                                 echo $dados['email_usuario'];
                                                                               } ?>" />
@@ -95,9 +87,7 @@
                   }
                   ?>
 
-                  <label class='checkbox'>
-                    <input type='checkbox' value='TRUE' /> Mantenha-me conectado
-                  </label>
+                  <h6><a style="color:#dd163b;" href="cadastro_funcionario.php">Cadastrar Novo Funcionário</a></h6>
 
                   <input type='submit' id='do_login' name="SendLogin" value='ENTRAR' />
                 </div>
@@ -106,9 +96,7 @@
           </div>
           <div class='box-info'>
             <p><button onclick="closeLoginInfo();" class='b b-info'>
-                <span class="material-symbols-outlined">
-                  close
-                </span>
+                <span class="material-symbols-outlined" style="color:white">close</span>
               </button>
             <h3>Ajuda</h3>
             </p>
@@ -117,7 +105,7 @@
             <button onclick="" class='b-support'> Contate-nos</button>
             <div class='line-wh'></div>
             <!-- <button onclick="criarconta.php" class='b-cta' title='Cadastre-se!'> CADASTRAR</button> -->
-            <a type="submit" href="cadastro.php" class="b-cta text-center">Novo Cadastro</a>
+            <a type="submit" href="cadastro_funcionario.php" class="b-cta text-center">Novo Cadastro</a>
           </div>
         </div>
       </main>

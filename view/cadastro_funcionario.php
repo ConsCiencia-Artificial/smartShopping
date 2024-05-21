@@ -72,7 +72,7 @@ session_start();
                                     </button>
 
                                     <p class="field">
-                                        <label for="user">NOME DE USUÁRIO</label>
+                                        <label for="user">NOME DO FUNCIONÁRIO</label>
                                         <input type="text" id="floatingName" name="nome_usuario">
                                     </p>
                                     <p class="field">
@@ -82,13 +82,13 @@ session_start();
                                                                                                             } ?>">
                                     </p>
                                     <p class="field">
-                                        <label for="user">SENHA</label>
+                                        <label for="user">SENHA CORPORATIVA</label>
                                         <input type="password" id="floatingPassword" name="senha_usuario" <?php if (isset($dados["senha_usuario"])) {
                                                                                                                 echo $dados["senha_usuario"];
                                                                                                             } ?>>
                                     </p>
                                     <p class="field">
-                                        <label for="user">CONFIRME SUA SENHA</label>
+                                        <label for="user">CONFIRMAÇÃO DE SENHA</label>
                                         <input type="password" id="floatingPasswordConfirmation" name="confsenha_usuario">
                                     </p>
 
@@ -109,7 +109,7 @@ session_start();
                         <button onclick="" class="b-support"> Esqueceu a senha?</button>
                         <button onclick="" class="b-support"> Contate-nos</button>
                         <div class="line-wh"></div>
-                        <a type="submit" href="login.php" class="b-cta text-center">Voltar</a>
+                        <a type="submit" href="login_empresa.php" class="b-cta text-center">Voltar</a>
                     </div>
                 </div>
             </main>
