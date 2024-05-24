@@ -16,7 +16,7 @@ if (!empty($_POST)) {
         $stmt->bindParam(":codigo", $codigo);
 
         $stmt->execute();
-
+ 
         $variavel = "Cadastro concluido!!";
         header("Location: ../../login.php?variavel=" . urlencode($variavel));
         // echo "<script> alert(Cadastrado com Successo)</script>";

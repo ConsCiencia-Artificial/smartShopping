@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('conexao.php');
+include_once '../app/controller/conexao.php';
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +53,7 @@ include_once('conexao.php');
     <div class="container-fluid">
         <div class="row">
             <!-- NAVBAR -->
-            <?php include 'view/partial/index/navbar.php'; ?>
+            <?php include '../view/partial/index/navbar.php'; ?>
 
             <!-- PUBLICAÇÃO -->
             <main role="main" class="col-md-9 ml-sm-auto px">
