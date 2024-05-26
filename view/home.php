@@ -71,7 +71,7 @@ if ($_POST) {
   $comentario = $_POST['comentario'];
   $comentarista = $_SESSION['nome_usuario'];
   $foto_comentarista = $_SESSION['imagem'];
-  $id_post = $post['id_post'];
+  $id_post = $_POST['id_post'];
 
 
   if (!empty($comentario)) {
@@ -81,9 +81,9 @@ if ($_POST) {
 
 
 
-      $sql = "INSERT INTO comentario (comentario, comentarista, foto_comentarista) VALUES (?, ?, ?)";
+      $sql = "INSERT INTO comentario (comentario, comentarista, foto_comentarista, id_post) VALUES (?, ?, ?, ?)";
       $stmt = $conn->prepare($sql);
-      $stmt->execute([$comentario, $comentarista, $foto_comentarista]);
+      $stmt->execute([$comentario, $comentarista, $foto_comentarista, $id_post]);
 
 
       $_SESSION['comentario'] = $comentario;
@@ -186,32 +186,33 @@ if ($_POST) {
                             <div class="comment-widgets">
 
 
+                            
+                        <?php
+                          $sql = "SELECT * FROM comentario ORDER BY id_comentario DESC LIMIT 2";
+                          $stmt = $conn->prepare($sql);
+                          $stmt->execute();
+
+                          while ($coment = $stmt->fetch()) {
+
+
+                        ?>
+
 
                               <!-- Comment Row  acoplamento-->
                               <div class="d-flex flex-row comment-row m-t-0">
-                                <div class="p-2"><img src="<?php //  echo $coment['foto_comentarista'], $post['id_post'];  
+                                <div class="p-2"><img src="<?php   echo $coment['foto_comentarista'];  
                                                             ?>" alt="user" width="50" class="rounded-circle"></div>
                                 <div class="comment-text w-100">
-                                  <h6 class="font-medium"><?php // echo $coment['comentarista'];  
-                                                          ?></h6> <span class="m-b-15 d-block"><?php // echo $coment['comentario'], $post['id_post'];  
+                                  <h6 class="font-medium"><?php  echo $coment['comentarista'];  
+                                                          ?></h6> <span class="m-b-15 d-block"><?php  echo $coment['comentario'];  
                                                                                                 ?></span>
                                   <div class="comment-footer">
                                     <span class="text-muted float-right">14 de Janeiro <?php echo $post['id_post']; ?></span>
                                   </div>
                                 </div>
-
+                            
                               </div>
-                              <div class="d-flex flex-row comment-row">
-                                <div class="p-2"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                <div class="comment-text active w-100">
-                                  <h6 class="font-medium">Diego Andrade</h6>
-                                  <span class="m-b-15 d-block">Tem na cor laranja? </span>
-                                  <div class="comment-footer">
-                                    <span class="text-muted float-right">Hoje, Há 2h atrás</span>
-                                  </div>
-                                </div>
-
-                              </div>
+                              
                             </div>
                             <a onclick="vermais()" id="btnVerMais" style="text-align: center;">Carregar mais...</a>
                             <!-- Card -->
@@ -220,16 +221,17 @@ if ($_POST) {
                       </div>
                       <!-- FEEDBACK -->
 
-
+                      <?php } ?>
                       <div class="col">
-                        <div class="card-body">
+                        <div class="card-body" style="text-align: end; margin-right: 50px;">
                           <form action="" method="POST"><?php echo $post['id_post']; ?>
                             <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
                             <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px"><?php echo $post['id_post']; ?>
-                            <button onclick="feedback()" type="submit" value="<?php echo $post['id_post']; ?>" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+                            <button onclick="feedback()" type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
                           </form>
                         </div>
                       </div>
+                      
                     </div>
                   </div>
                 </div>
