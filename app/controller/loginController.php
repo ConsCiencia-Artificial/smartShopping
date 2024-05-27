@@ -21,7 +21,7 @@ if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
         $_SESSION['nivel_acesso'] = $row['nivel_acesso'];
         $conn = null;
         // var_dump($_SESSION); die;
-        header("Location: ../../view/home.php");
+        header("Location: ../../index.php");
     } else {
         $variavel = "Usuário ou senha inválido!";
         header("Location: ../../view/login.php?variavel=" . urlencode($variavel));

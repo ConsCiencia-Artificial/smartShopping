@@ -7,7 +7,7 @@ body {
 	font-optical-sizing: auto;
 	font-weight: weight;
 	font-style: normal;
-	
+
 }
 
 section {
@@ -103,6 +103,14 @@ footer {
 
 .navbar {
 	display: block;
+}
+
+.nav-link.disabled {
+	color: #e2e2e2;
+}
+
+.img-radius {
+	border-radius: 4rem;
 }
 
 .js .anime {
