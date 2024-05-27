@@ -4,9 +4,16 @@
         <div class="row">
             <div class="col-sm center">
                 <!-- NAVBAR -->
-                <img src="assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm">
-                <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
-
+                <?php
+                // var_dump($_SESSION); die;
+                if (!empty($_SESSION['email_usuario'])) {
+                ?>
+                    <img src="<?php echo $_SESSION['imagem'] ?>" alt="logo" width="105" class="img-fluid margin-top-comm">
+                    <p class="text-light fw-bolder mt-3">Seja bem vindo! <br> <?php echo $_SESSION['nome_usuario'] ?></p>
+                <?php } else { ?>  
+                    <img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm">
+                    <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+                <?php } ?>
 
                 <a class="nav-link d-grid gap-2 mt-2" href="#">
                     <button type="button" class="btn btn-outline-light">Pesquisar</button>
@@ -26,10 +33,10 @@
                     <a class="nav-link d-grid gap-2 mt-2" href="view/home.php">
                         <button type="button" class="btn btn-outline-light">Home</button>
                     </a>
-                    <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
+                    <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
                         <button type="button" class="btn btn-outline-light">Perfil</button>
                     </a>
-                    <a class="nav-link d-grid gap-2 mt-2" href="app/controller/sair.php">
+                    <a class="nav-link d-grid gap-2 mt-2" href="/..app/controller/sair.php">
                         <button type="submit" class="btn btn-outline-light">Sair</button>
                     </a>
                 <?php } else { ?>

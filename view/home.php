@@ -22,19 +22,7 @@ include_once '../app/controller/conexao.php';
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&display=swap" rel="stylesheet">
   <?php include 'partial/index/index_style.php'; ?>
 </head>
-<header>
-  <nav class="navbar bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand"></a>
-      <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
-        <input type="file" id="img_post" name="img_post">
-        <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
-
-        <button class="btn btn-outline-danger" type="submit">Postar</button>
-      </form>
-    </div>
-  </nav>
-</header>
+<?php include 'partial/index/card_postagem.php'; ?>
 <?php
 
 
@@ -103,58 +91,28 @@ if ($_POST) {
 
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class="row">
-      <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #dd163b;">
-        <div class="sidebar-sticky">
-          <div class="row">
-            <div class="col-sm center">
-              <!-- NAVBAR -->
-              <img src="<?php echo $_SESSION['imagem'] ?>" alt="logo" width="105" class="img-fluid margin-top-comm">
-              <p class="text-light fw-bolder mt-3">Seja bem vindo! <br> <?php echo $_SESSION['nome_usuario'] ?></p>
+      <?php include 'partial/index/navbar.php'; ?>
 
-              <!-- Adicionar "href" -->
-              <a class="nav-link d-grid gap-2 mt-2" href="../app\controller/sair.php">
-                <button type="button" class="btn btn-outline-light">Logout</button>
-              </a>
-              <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
-                <button type="button" class="btn btn-outline-light">Perfil</button>
-              </a>
-              <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Pesquisar</button>
-              </a>
-              <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Contatos</button>
-              </a>
-              <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Sobre</button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
 
-      <?php
+      <main role="main" class="col-md-9 ml-sm-auto px">
+
+        <div class="container-fluid">
+
+          <?php
 
 
 
-      $sql = "SELECT * FROM post ORDER BY id_post DESC";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
+          $sql = "SELECT * FROM post ORDER BY id_post DESC";
+          $stmt = $conn->prepare($sql);
+          $stmt->execute();
 
-      while ($post = $stmt->fetch()) {
-
-        $_SESSION['id_post'] = $post['id_post'];
+          while ($post = $stmt->fetch()) {
 
 
-
-
-      ?>
-
-
-        <main role="main" class="col-md-9 ml-sm-auto px">
-          <div class="container-fluid">
-            <div class="card mb-4 shadow-lg rounded-top" style="max-width: 720px;">
+          ?>
+            <div class="card mb-4 shadow-lg rounded-top " style="max-width: 720px;">
               <div class="row g-0 rounded-top">
                 <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
                   <div class="p-2" id="comentarioCliente1">
@@ -177,94 +135,86 @@ if ($_POST) {
                       </div>
 
 
+
                       <div class="row d-flex">
                         <div class="col">
                           <div class="card">
                             <div class="card-body text-center">
                               <h4 class="card-title">Últimos comentários</h4>
                             </div>
-                            <div class="comment-widgets">
+
+                            <?php
+                            $id_post = $post['id_post'];
+                            $sql_comentarios = "SELECT * FROM comentario WHERE id_post = ? ORDER BY id_comentario DESC LIMIT 2";
+                            $stmt_comentarios = $conn->prepare($sql_comentarios);
+                            $stmt_comentarios->execute([$id_post]);
+
+                            while ($coment = $stmt_comentarios->fetch()) {
+                            ?>
+
+                              <div class="comment-widgets">
 
 
-                            
-                        <?php
-                          $sql = "SELECT * FROM comentario ORDER BY id_comentario DESC LIMIT 2";
-                          $stmt = $conn->prepare($sql);
-                          $stmt->execute();
-
-                          while ($coment = $stmt->fetch()) {
 
 
-                        ?>
+                                <!-- Comment Row  acoplamento-->
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                  <div class="p-2"><img src="<?php echo $coment['foto_comentarista'];
+                                                              ?>" alt="user" width="50" class="rounded-circle"></div>
+                                  <div class="comment-text w-100">
+                                    <h6 class="font-medium"><?php echo $coment['comentarista'];
+                                                            ?></h6> <span class="m-b-15 d-block"><?php echo $coment['comentario'];
+                                                                                                  ?></span>
+                                    <div class="comment-footer">
+                                      <span class="text-muted float-right">14 de Janeiro</span>
 
+                                    </div>
 
-                              <!-- Comment Row  acoplamento-->
-                              <div class="d-flex flex-row comment-row m-t-0">
-                                <div class="p-2"><img src="<?php   echo $coment['foto_comentarista'];  
-                                                            ?>" alt="user" width="50" class="rounded-circle"></div>
-                                <div class="comment-text w-100">
-                                  <h6 class="font-medium"><?php  echo $coment['comentarista'];  
-                                                          ?></h6> <span class="m-b-15 d-block"><?php  echo $coment['comentario'];  
-                                                                                                ?></span>
-                                  <div class="comment-footer">
-                                    <span class="text-muted float-right">14 de Janeiro <?php echo $post['id_post']; ?></span>
                                   </div>
+
                                 </div>
-                            
+
                               </div>
-                              
-                            </div>
-                            <a onclick="vermais()" id="btnVerMais" style="text-align: center;">Carregar mais...</a>
-                            <!-- Card -->
+
+
+                              <!-- Card -->
                           </div>
+                        <?php }  ?>
                         </div>
+
                       </div>
                       <!-- FEEDBACK -->
 
-                      <?php } ?>
-                      <div class="col">
-                        <div class="card-body" style="text-align: end; margin-right: 50px;">
-                          <form action="" method="POST"><?php echo $post['id_post']; ?>
-                            <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
-                            <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px"><?php echo $post['id_post']; ?>
-                            <button onclick="feedback()" type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
-                          </form>
-                        </div>
-                      </div>
-                      
+
+
+
+                    </div>
+                  </div>
+                  <div class="col">
+
+                    <div class="card-body" style="text-align: end; margin-right: 50px;">
+
+                      <form action="" method="POST">
+
+                        <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
+                        <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px">
+                        <button onclick="feedback()" type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
-          </div>
-        </main>
-      <?php
-      }
 
-      ?>
+        </div>
+      <?php }  ?>
 
-      <!-- Comment Row -->
+
+      </main>
+
 
     </div>
-    <p class="card-text"><small class="text-muted"></small></p>
-  </div>
-  </div>
-  </div>
-
-
-  <!-- PUBLICAÇÃO -->
-
-  <!-- Teste -->
-
-
-  <!-- Fim das publicações -->
-  </div>
-
-  </main>
-
-
-  </div>
   </div>
 </body>
 <script src="../script.js"></script>
