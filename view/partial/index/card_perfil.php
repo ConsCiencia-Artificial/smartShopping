@@ -30,14 +30,15 @@ include_once '../app/controller/conexao.php';
                                         <h3>Configurações</h3>
                                     </div>
                                     <div class="col-2">
-                                        <button class="btn btn-outline-dark border-dark center"><span class="material-symbols-outlined">edit</span></button>
+                                        <button class="btn btn-outline-dark border-dark center" ><span class="material-symbols-outlined" onclick="edicao()">edit</span></button>
                                     </div>
                                 </div>
                                 <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Informações</h4>
                                 <div class="row">
                                     <div class="col-sm-6">
+                                    
                                         <h5 class="m-b-10 f-w-600">Telefone</h5>
-                                        <h4 class="text-muted f-w-400">Não cadastrado</h4>
+                                        <input type="text" id="tel_usuario"  <?php if(isset($tel_usuario)){ ?> value="<?php  echo $_SESSION['tel_usuario'];} else{ ?>" value="Não cadastrado" disabled > <?php }; ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">CPF</h5>
@@ -51,8 +52,7 @@ include_once '../app/controller/conexao.php';
                                 <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Entrega</h4>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h5 class="m-b-10 f-w-600">Endereço para entrega</h5>
-                                        <h4 class="text-muted f-w-400">Não cadastrado</h4>
+                                        <input type="text" id="end_usuario" <?php if(isset($end_usuario)){ ?> value="<?php  echo $_SESSION['end_usuario'];} else{ ?>" value="Não cadastrado" disabled > <?php }; ?>
                                     </div>
                                     <div class="col-sm-6">
 
@@ -61,8 +61,7 @@ include_once '../app/controller/conexao.php';
                                 <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Pagamento</h4>
                                 <div class="row">
                                     <div class="col-sm">
-                                        <h5 class="m-b-10 f-w-600">Forma de pagamento atual</h5>
-                                        <h4 class="text-muted f-w-400">Não cadastrado</h4>
+                                        <input type="text" id="pagamento" disabled <?php if(isset($pagamenteo)){ ?> value="<?php  echo $_SESSION['pagamento'];} else{ ?>" value="Não cadastrado" > <?php }; ?>
                                     </div>
                                 </div>
                             </div>
@@ -73,3 +72,4 @@ include_once '../app/controller/conexao.php';
         </div>
     </div>
 </div>
+<script src="edit.js"></script>

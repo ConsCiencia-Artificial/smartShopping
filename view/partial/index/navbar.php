@@ -25,10 +25,10 @@
                     <a class="nav-link d-grid gap-2 mt-2" href="view/home.php">
                         <button type="button" class="btn btn-outline-light">Publicar</button>
                     </a>
-                    <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
+                    <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
                         <button type="button" class="btn btn-outline-light">Perfil</button>
                     </a>
-                    <a class="nav-link d-grid gap-2 mt-2" href="/..app/controller/sair.php">
+                    <a class="nav-link d-grid gap-2 mt-2" href="app/controller/sair.php">
                         <button type="submit" class="btn btn-outline-light">Sair</button>
                     </a>
                 <?php } else { ?>

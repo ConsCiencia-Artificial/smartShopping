@@ -140,7 +140,7 @@ if ($_POST) {
 
 
 
-      $sql = "SELECT * FROM post ORDER BY id_post DESC";
+      $sql = "SELECT * FROM post ORDER BY id_post DESC LIMIT 1";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
 
@@ -160,14 +160,14 @@ if ($_POST) {
               <div class="row g-0 rounded-top">
                 <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
                   <div class="p-2" id="comentarioCliente1">
-                    <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
+                    <img src="<?php echo '../'.$post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
                   </div>
                   <div class="comment-text w-100 p-2">
                     <h6 class="font-medium text-light"><?php echo $post['postador']; ?></h6>
                   </div>
                 </div>
                 <div class="col-md-6 post-padd">
-                  <img src="<?php echo $post['img_post']; ?>" class="img-fluid rounded-1" alt="...">
+                  <img src="<?php echo '../'.$post['img_post']; ?>" class="img-fluid rounded-1" alt="...">
                 </div>
                 <div class="col-md-6">
                   <div class="card-body card-text-color">
@@ -190,12 +190,13 @@ if ($_POST) {
 
                             
                         <?php
-                          $sql = "SELECT * FROM comentario ORDER BY id_comentario DESC LIMIT 2";
-                          $stmt = $conn->prepare($sql);
-                          $stmt->execute();
 
-                          while ($coment = $stmt->fetch()) {
+                          $id_post = $post['id_post'];
+                            $sql_comentarios = "SELECT * FROM comentario WHERE id_post = ? ORDER BY id_comentario DESC LIMIT 2";
+                            $stmt_comentarios = $conn->prepare($sql_comentarios);
+                            $stmt_comentarios->execute([$id_post]);
 
+                            while ($coment = $stmt_comentarios->fetch()) {
 
                         ?>
 
@@ -226,9 +227,9 @@ if ($_POST) {
                       <?php } ?>
                       <div class="col">
                         <div class="card-body" style="text-align: end; margin-right: 50px;">
-                          <form action="" method="POST"><?php echo $post['id_post']; ?>
+                          <form action="" method="POST">
                             <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
-                            <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px"><?php echo $post['id_post']; ?>
+                            <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px">
                             <button onclick="feedback()" type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
                           </form>
                         </div>
