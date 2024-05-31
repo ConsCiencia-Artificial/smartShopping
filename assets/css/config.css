@@ -1,0 +1,266 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:400,700";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Google icon */
+
+.material-symbols-outlined2 {
+    color: #ffffff;
+}
+
+/* Fim Google icon */
+
+body,
+html {
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #181b22;
+
+}
+
+.padding {
+    padding: 2rem !important
+}
+
+.user-card-full {
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    border: none;
+    margin-bottom: 30px;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+    background: #dd163b;
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 4rem;
+}
+
+.container .fakeImg {
+    background: no-repeat center;
+    background-size: cover;
+}
+
+.container {
+    display: inline-block;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px) {
+    p {
+        font-size: 14px;
+    }
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa3 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.col-xl-6 {
+    width: 100%;
+}
+
+/*--------------------
+SIDE BAR
+---------------------*/
+.margin-top-comm {
+    margin-top: 3%;
+}
+
+.center {
+    text-align: center;
+    justify-content: center;
+}
+
+.btn {
+    margin-bottom: 2%;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-light {
+    /* Cor da borda (transparente)*/
+    --bs-btn-border-color: #83696c00;
+
+    /* Cor da borda (quando cursor estiver em cima) (transparente)*/
+    --bs-btn-hover-border-color: #f8f9fc00;
+
+    /* Background */
+    --bs-btn-hover-bg: #e8e8e8;
+
+    /* Texto */
+    --bs-btn-hover-color: #000000;
+}
+
+.btn {
+    margin-bottom: 2%;
+    transition: all 0.2s ease;
+}
+
+.row {
+    justify-content: flex-end;
+}
+
+.sidebar {
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    /* Coloca atrás do navbar */
+    padding: 48px 0 0;
+    /* Altura do navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Conteúdo com rolagem, se a viewport é menor que o conteúdo. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+    .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+    }
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+}

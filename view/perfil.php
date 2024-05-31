@@ -1,3 +1,7 @@
+<?php
+session_start();
+include_once '../app/controller/conexao.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -39,24 +43,60 @@
                             <a class="nav-link d-grid gap-2 mt-2" href="#">
                                 <button type="button" class="btn btn-outline-light">Sobre</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Contatos</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="home.php">
-                                <button type="button" class="btn btn-outline-light">Publicar</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2 disabled" href="#">
-                                <button type="button" class="btn btn-outline-light">Perfil</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">
-                                <button type="button" class="btn btn-outline-light">Sair</button>
-                            </a>
+                            <!-- Verificar se está logado -->
+                            <?php
+                            // var_dump($_SESSION); die;
+                            if (empty($_SESSION['email_usuario'])) {
+                            ?>
+                                <a class="nav-link d-grid gap-2 mt-2" href="chat.php">
+                                    <button type="button" class="btn btn-outline-light">Contatos</button>
+                                </a>
+                                <a class="nav-link d-grid gap-2 mt-2" href="home.php">
+                                    <button type="button" class="btn btn-outline-light">Publicar</button>
+                                </a>
+                                <a class="nav-link d-grid gap-2 mt-2 disable">
+                                    <button type="button" class="btn btn-outline-light disabled">Perfil</button>
+                                </a>
+                                <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">
+                                    <button type="submit" class="btn btn-outline-light">Sair</button>
+                                </a>
+                            <?php } else { ?>
+                                <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">
+                                    <button type="button" class="btn btn-outline-light">Sair</button>
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
             </nav>
-            <main role="main" class="col-md-9 ml-sm-auto px">
-                <?php include 'partial/index/card_perfil.php'; ?>
+            <main role="main" class="col-md-9 ms-md-auto px">
+                <div class="padding padding-left center">
+                    <div class="col-md-10">
+                        <!-- Column -->
+                        <div class="card"> <img class="card-img-top" src="https://i.imgur.com/K7A78We.jpg" alt="Plano de Fundo do Usuário">
+                            <div class="card-body little-profile text-center">
+                                <div class="pro-img"><img src="<?php echo '../'.$_SESSION['imagem']; ?>" alt="Imagem de Perfil do Usuário"></div>
+                                <h2 class="m-b-0"><?php echo $_SESSION['nome_usuario']; ?></h2>
+                                <h4>Conheça uma variedade de produtos!</h4>
+                                <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn b-cta btn-md btn-rounded" data-abc="true">Seguir</a>
+                                <div class="row text-center m-t-20">
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">0</h2>
+                                        <h5>Artigos</h5>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">0</h2>
+                                        <h5>Seguidores</h5>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">0</h2>
+                                        <h5>Seguindo</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>

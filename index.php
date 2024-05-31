@@ -83,7 +83,7 @@ if ($_POST) {
     } catch (PDOException $e) {
       echo $sql . "<br>" . $e->getMessage();
     }
-    header('Location: home.php');
+    header('Location: index.php');
     exit;
   }
 }
@@ -92,7 +92,7 @@ if ($_POST) {
 
 
 
-<body>
+<body style="background-image: url(assets/img/pgs-rep.png)">
   <div class="container-fluid ">
     <div class="row">
       <?php include 'view/partial/index/navbar.php'; ?>
@@ -121,10 +121,14 @@ if ($_POST) {
               <div class="row g-0 rounded-top">
                 <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
                   <div class="p-2" id="comentarioCliente1">
+                  <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
                     <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
+                  </a>
                   </div>
                   <div class="comment-text w-100 p-2">
-                    <h6 class="font-medium text-light"><?php echo $post['postador']; ?></h6>
+                  <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
+                    <h6 class="font-medium text-light" ><?php echo $post['postador']; ?></h6>
+                  </a>
                   </div>
                 </div>
                 <div class="col-md-6 post-padd">
@@ -160,15 +164,6 @@ if ($_POST) {
 
                               <div class="comment-widgets">
 
-
-
-
-
-
-
-
-
-
                                 <!-- Comment Row  acoplamento-->
                                 <div class="d-flex flex-row comment-row m-t-0">
                                   <div class="p-2"><img src="<?php echo $coment['foto_comentarista'];
@@ -181,17 +176,6 @@ if ($_POST) {
                                       <span class="text-muted float-right">14 de Janeiro</span>
 
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
                                   </div>
 
                                 </div>
@@ -207,32 +191,6 @@ if ($_POST) {
 
                       </div>
                       <!-- FEEDBACK -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                   </div>
                   <div class="col">
@@ -245,7 +203,7 @@ if ($_POST) {
 
                         <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
                         <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px">
-                        <button onclick="feedback()" type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+                        <button type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
                       </form>
                     </div>
                   </div>
