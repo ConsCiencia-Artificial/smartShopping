@@ -11,11 +11,10 @@ if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
      senha_usuario='$senha'");
     $select->execute();
 
-    if ($select->fetch(PDO::FETCH_ASSOC) == true) {
+    $row = $select->fetch();
 
-        $row = $select->fetch();
-
-
+    if ($row) {
+        // session_destroy();
         $_SESSION["email_usuario"] = $row['email_usuario'];
         $_SESSION['nome_usuario'] = $row['nome_usuario'];
         $_SESSION['imagem'] = $row['imagem'];
@@ -23,9 +22,7 @@ if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
         $conn = null;
         // var_dump($_SESSION); die;
         header("Location: ../../index.php");
-
     } else {
-       
         $variavel = "Usuário ou senha inválido!";
         header("Location: ../../view/login.php?variavel=" . urlencode($variavel));
     }
