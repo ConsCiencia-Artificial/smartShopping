@@ -1,3 +1,11 @@
+<?php
+session_start();
+include_once('conexao.php');
+if(!$_SESSION['email_usuario']){
+    header("Location:../view/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
