@@ -100,11 +100,6 @@ body {
     padding: 4% !important
 }
 
-/*
-.padding-left {
-    padding-left: 15% !important
-}
-*/
 .m-t-20 {
     margin-top: 20px
 }
@@ -114,6 +109,7 @@ body {
     background-color: #dd163b;
     color: #ffffff;
 }
+
 .b-cta:hover {
     color: #fff;
     background-color: #000000;
@@ -219,42 +215,65 @@ SIDE BAR
 }
 
 /* PERFIL */
-/*
 
-
-html body .m-b-0 {
-    margin-bottom: 0px
+.TabControl {
+    width: 100%;
+    overflow: hidden;
+    height: 400px
 }
 
-h3 {
-    line-height: 30px;
-    font-size: 21px
+.TabControl #header {
+    width: 100%;
+    overflow: hidden;
+    cursor: hand;
+}
+
+.TabControl #content {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+}
+
+.TabControl .abas {
+    display: inline;
+}
+
+.aba {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #dd163bc7
+}
+
+.ativa {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #dd163bc7;
 }
 
 
-
-html body .m-t-10 {
-    margin-top: 10px
+.ativa span,
+.selected span {
+    color: #fff
 }
 
-
-
-
-
-
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #455a64;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400
+.TabControl #content {
+    background: #c9c9c9;
 }
 
-p {
-    margin-top: 0;
-    margin-bottom: 1rem
+.TabControl .conteudo {
+    width: 100%;
+    background: #ffffff;
+    display: none;
+    height: 100%;
+    color: #000000;
+}
+
+.selected {
+    max-width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #dd163b;
 }

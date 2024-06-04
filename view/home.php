@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
-if(!$_SESSION['email_usuario']){
+if (!$_SESSION['email_usuario']) {
     header("Location:../view/login.php");
     exit;
 }
@@ -20,6 +20,7 @@ if(!$_SESSION['email_usuario']){
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="../style.css">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,7 +88,7 @@ if(!$_SESSION['email_usuario']){
                                     <?php
                                     if (!empty($_SESSION['imagem'])) {
                                     ?>
-                                        <img src="<?php echo'../'.$_SESSION['imagem'];  ?>" width="40" class="img-radius" alt="User-Profile-Image">
+                                        <img src="<?php echo '../' . $_SESSION['imagem'];  ?>" width="40" class="img-radius" alt="User-Profile-Image">
                                     <?php } else { ?>
                                         <img src="../assets/img/default-icon.jpg" width="40" class="img-radius" alt="User-Profile-Image">
                                     <?php } ?>
@@ -98,10 +99,11 @@ if(!$_SESSION['email_usuario']){
                             </div>
                             <div class="col-md-6 post-padd center">
                                 <!-- <input type="file" id="img_post" name="img_post" src="../assets/img/svg/plus.svg"> -->
-                                <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">            
-                                <button class="btn btn-outline-dark border-dark" type="button" style="width: 100%; height: 30rem;">
-                                    <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 15%;"><input type="file" id="img_post" name="img_post">
-                                </button>
+                                <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
+                                    <button class="btn btn-outline-dark border-dark" type="button" style="width: 100%; height: 30rem;">
+                                        <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 15%;">
+                                        <input class="btn btn-outline-dark" type="file" id="img_post" name="img_post">
+                                    </button>
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body card-text-color">
@@ -109,7 +111,7 @@ if(!$_SESSION['email_usuario']){
                                     <div class="col">
                                         <!-- comentário -->
                                         <div class="d-flex flex-row comment-row m-t-0 floating">
-                                        <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
+                                            <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
 
                                             <!-- <input class="form-control me-2" style="width: 100%;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
 

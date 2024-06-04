@@ -1,9 +1,7 @@
 <?php
 session_start();
 include_once 'app/controller/conexao.php';
-
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,10 +22,7 @@ include_once 'app/controller/conexao.php';
   <?php include 'view/partial/index/index_style.php'; ?>
 </head>
 
-
-
 <?php
-
 
 if ($_POST) {
   $descricao = $_POST["descricao"];
@@ -45,9 +40,6 @@ if ($_POST) {
       $stmt = $conn->prepare($sql);
       $stmt->execute([$descricao, $postador, $foto_postador, $foto_destino]);
 
-
-
-
       $conn = null;
     } catch (PDOException $e) {
       echo $sql . "<br>" . $e->getMessage();
@@ -64,14 +56,8 @@ if ($_POST) {
   $foto_comentarista = $_SESSION['imagem'];
   $id_post = $_POST['id_post'];
 
-
   if (!empty($comentario)) {
     try {
-
-
-
-
-
       $sql = "INSERT INTO comentario (comentario, comentarista, foto_comentarista, id_post) VALUES (?, ?, ?, ?)";
       $stmt = $conn->prepare($sql);
       $stmt->execute([$comentario, $comentarista, $foto_comentarista, $id_post]);
@@ -90,25 +76,13 @@ if ($_POST) {
 }
 ?>
 
-
-
-
 <body style="background-image: url(assets/img/pgs-rep.png)">
   <div class="container-fluid ">
     <div class="row">
       <?php include 'view/partial/index/navbar.php'; ?>
-
-
       <main role="main" class="col-md-9 ml-sm-auto px">
-
-
-
         <div class="container-fluid">
-
           <?php
-
-
-
           $sql = "SELECT * FROM post ORDER BY id_post DESC";
           $stmt = $conn->prepare($sql);
           $stmt->execute();
@@ -122,14 +96,14 @@ if ($_POST) {
               <div class="row g-0 rounded-top">
                 <div class="d-flex flex-row comment-row m-t-0 align-items-center rounded-top" style="background-color: #dd163b;">
                   <div class="p-2" id="comentarioCliente1">
-                  <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
-                    <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
-                  </a>
+                    <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
+                      <img src="<?php echo $post['foto_postador']; ?>" alt="Vendedor" width="40" class="rounded-circle">
+                    </a>
                   </div>
                   <div class="comment-text w-100 p-2">
-                  <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
-                    <h6 class="font-medium text-light" ><?php echo $post['postador']; ?></h6>
-                  </a>
+                    <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
+                      <h6 class="font-medium text-light"><?php echo $post['postador']; ?></h6>
+                    </a>
                   </div>
                 </div>
                 <div class="col-md-6 post-padd">
@@ -144,15 +118,12 @@ if ($_POST) {
                         <span class="m-b-15 d-block"><?php echo $post['descricao']; ?></span>
                       </div>
 
-
-
                       <div class="row d-flex">
                         <div class="col">
                           <div class="card">
                             <div class="card-body text-center">
                               <h4 class="card-title">Últimos comentários</h4>
                             </div>
-
 
                             <?php
                             $id_post = $post['id_post'];
@@ -162,65 +133,43 @@ if ($_POST) {
 
                             while ($coment = $stmt_comentarios->fetch()) {
                             ?>
-
                               <div class="comment-widgets">
-
                                 <!-- Comment Row  acoplamento-->
                                 <div class="d-flex flex-row comment-row m-t-0">
                                   <div class="p-2"><img src="<?php echo $coment['foto_comentarista'];
                                                               ?>" alt="user" width="50" class="rounded-circle"></div>
                                   <div class="comment-text w-100">
-                                    <h6 class="font-medium"><?php echo $coment['comentarista'];
-                                                            ?></h6> <span class="m-b-15 d-block"><?php echo $coment['comentario'];
-                                                                                                  ?></span>
+                                    <h6 class="font-medium">
+                                      <?php echo $coment['comentarista']; ?>
+                                    </h6>
+                                    <span class="m-b-15 d-block"><?php echo $coment['comentario']; ?></span>
                                     <div class="comment-footer">
                                       <span class="text-muted float-right">14 de Janeiro</span>
-
                                     </div>
                                   </div>
-
                                 </div>
-
                               </div>
-
-
-                              <!-- Card -->
-
+                            <?php }  ?>
                           </div>
-                        <?php }  ?>
                         </div>
-
+                        <!-- FEEDBACK -->
                       </div>
-                      <!-- FEEDBACK -->
                     </div>
-                  </div>
-                  <div class="col">
-
-
-
-                    <div class="card-body" style="text-align: end; margin-right: 50px;">
-
-                      <form action="" method="POST">
-
-                        <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
-                        <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px">
-                        <button type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
-                      </form>
+                    <div class="col">
+                      <div class="card-body" style="text-align: end; margin-right: 50px;">
+                        <form action="" method="POST">
+                          <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
+                          <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px">
+                          <button type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-
-        </div>
-      <?php }  ?>
-
-
-
+          <?php }  ?>
       </main>
-
-
     </div>
   </div>
 </body>

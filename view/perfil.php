@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
-if(!$_SESSION['email_usuario']){
+if (!$_SESSION['email_usuario']) {
     header("Location:../view/login.php");
     exit;
 }
@@ -15,7 +15,7 @@ if(!$_SESSION['email_usuario']){
     <title>PG | Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../assets/js/login.js"></script>
+    <script type="text/javascript" src="../assets/js/perfil.js"></script>
 
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="../assets/css/perfil.css">
@@ -77,9 +77,18 @@ if(!$_SESSION['email_usuario']){
                 <div class="padding padding-left center">
                     <div class="col-md-10">
                         <!-- Column -->
-                        <div class="card"> <img class="card-img-top" src="https://i.imgur.com/K7A78We.jpg" alt="Plano de Fundo do Usuário">
+                        <div class="card">
+                            <img class="card-img-top" src="https://i.imgur.com/K7A78We.jpg" alt="Plano de Fundo do Usuário">
                             <div class="card-body little-profile text-center">
-                                <div class="pro-img"><img src="<?php echo '../'.$_SESSION['imagem']; ?>" alt="Imagem de Perfil do Usuário"></div>
+                                <div class="pro-img">
+                                    <?php
+                                    if (!empty($_SESSION['imagem'])) {
+                                    ?>
+                                        <img src="<?php echo $_SESSION['imagem'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
+                                    <?php } else { ?>
+                                        <img src="../assets/img/default-icon.jpg" width="128" class="img-radius" alt="User-Profile-Image">
+                                    <?php } ?>
+                                </div>
                                 <h2 class="m-b-0"><?php echo $_SESSION['nome_usuario']; ?></h2>
                                 <h4>Conheça uma variedade de produtos!</h4>
                                 <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn b-cta btn-md btn-rounded" data-abc="true">Seguir</a>
@@ -98,13 +107,39 @@ if(!$_SESSION['email_usuario']){
                                     </div>
                                 </div>
                             </div>
+                            <div class="TabControl">
+                                <div id="header">
+                                    <ul style="list-style-type:none" class="abas">
+                                        <div class="row">
+                                            <li class="col-sm" style="padding: 0; cursor: pointer;">
+                                                <div class="aba">
+                                                    <span>Produtos</span>
+                                                </div>
+                                            </li>
+                                            <li class="col-sm" style="padding: 0; cursor: pointer;">
+                                                <div class="aba">
+                                                    <span>Funcionários</span>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                                <div id="content">
+                                    <div class="conteudo">
+                                        Conteúdo da aba 1
+                                    </div>
+                                    <div class="conteudo">
+                                        Conteúdo da aba 2
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </main>
         </div>
     </div>
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 

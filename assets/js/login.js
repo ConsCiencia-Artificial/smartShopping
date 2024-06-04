@@ -53,3 +53,4 @@ function closeLoginInfo() {
 $(window).on("resize", function () {
     closeLoginInfo();
 });
+
