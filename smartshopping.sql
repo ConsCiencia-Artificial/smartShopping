@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/05/2024 às 01:46
+-- Tempo de geração: 05/06/2024 às 02:57
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,6 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `funcionario`
+--
+
+CREATE TABLE `funcionario` (
+  `cd_funcionario` int(11) NOT NULL,
+  `cd_loja_fk` varchar(100) NOT NULL,
+  `nm_funcionario` varchar(100) DEFAULT NULL,
+  `cpf_funcioanario` bigint(14) DEFAULT NULL,
+  `telefone_funcionario` bigint(14) DEFAULT NULL,
+  `dt_admissao_funcionario` date DEFAULT NULL,
+  `cd_nivel_acesso` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `post`
 --
 
@@ -35,6 +51,28 @@ CREATE TABLE `post` (
   `dt_comentario` varchar(200) DEFAULT NULL,
   `hora` varchar(200) DEFAULT NULL,
   `postador` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `produto`
+--
+
+CREATE TABLE `produto` (
+  `cd_produto` varchar(11) NOT NULL,
+  `codigo_loja_fk` int(11) NOT NULL,
+  `nm_categoria_produto` varchar(30) DEFAULT NULL,
+  `vl_produto` decimal(5,2) DEFAULT NULL,
+  `qt_produto` int(11) DEFAULT NULL,
+  `ds_produto` text DEFAULT NULL,
+  `nm_fornecedor` varchar(30) DEFAULT NULL,
+  `dt_nota_produto` date DEFAULT NULL,
+  `dt_venda_produto` date DEFAULT NULL,
+  `nm_cor_produto` varchar(20) DEFAULT NULL,
+  `id_tamanho_produto` varchar(30) DEFAULT NULL,
+  `im_produto` varchar(200) DEFAULT NULL,
+  `nm_produto` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -98,10 +136,24 @@ INSERT INTO `tb_comentario` (`id`) VALUES
 --
 
 --
+-- Índices de tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD PRIMARY KEY (`cd_funcionario`),
+  ADD KEY `codigo_loja_fk` (`cd_loja_fk`);
+
+--
 -- Índices de tabela `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `produto`
+--
+ALTER TABLE `produto`
+  ADD PRIMARY KEY (`cd_produto`),
+  ADD KEY `codigo_loja_fk` (`codigo_loja_fk`);
 
 --
 -- Índices de tabela `tb_cadastro_loja`
@@ -126,6 +178,12 @@ ALTER TABLE `tb_comentario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  MODIFY `cd_funcionario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `post`
 --
 ALTER TABLE `post`
@@ -148,6 +206,16 @@ ALTER TABLE `tb_cadastro_usuario`
 --
 ALTER TABLE `tb_comentario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `produto`
+--
+ALTER TABLE `produto`
+  ADD CONSTRAINT `codigo_loja_fk` FOREIGN KEY (`codigo_loja_fk`) REFERENCES `tb_cadastro_loja` (`codigo_loja`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
