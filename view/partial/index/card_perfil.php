@@ -1,7 +1,6 @@
 <?php
-session_start();
+
 include_once '../app/controller/conexao.php';
-include_once('conexao.php');
 if(!$_SESSION['email_usuario']){
     header("Location:../view/login.php");
     exit;
@@ -20,7 +19,7 @@ if(!$_SESSION['email_usuario']){
                                     <?php
                                     if (!empty($_SESSION['imagem'])) {
                                     ?>
-                                        <img src="<?php echo $_SESSION['imagem'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
+                                        <img src="<?php echo '../'.$_SESSION['imagem'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
                                     <?php } else { ?>
                                         <img src="../assets/img/default-icon.jpg" width="128" class="img-radius" alt="User-Profile-Image">
                                     <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('conexao.php');
+include_once('../app/controller/conexao.php');
 if(!$_SESSION['email_usuario']){
     header("Location:../view/login.php");
     exit;

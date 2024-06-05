@@ -1,7 +1,10 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
-if (!$_SESSION['email_usuario']) {
+if ($_SESSION['nivel_acesso'] == '0') {
+    echo 'acesso liberado';}
+        else{
+
     header("Location:../view/login.php");
     exit;
 }
@@ -84,7 +87,7 @@ if (!$_SESSION['email_usuario']) {
                                     <?php
                                     if (!empty($_SESSION['imagem'])) {
                                     ?>
-                                        <img src="<?php echo $_SESSION['imagem'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
+                                        <img src="<?php echo '../'.$_SESSION['imagem'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
                                     <?php } else { ?>
                                         <img src="../assets/img/default-icon.jpg" width="128" class="img-radius" alt="User-Profile-Image">
                                     <?php } ?>
@@ -94,7 +97,22 @@ if (!$_SESSION['email_usuario']) {
                                 <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn b-cta btn-md btn-rounded" data-abc="true">Seguir</a>
                                 <div class="row text-center m-t-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h2 class="m-b-0 font-light">0</h2>
+                                        <?php  
+                                     $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_usuario";
+                                     $stmt = $conn->prepare($sql);
+                                     $stmt->bindValue(':nome_usuario', $_SESSION['nome_usuario']); // Substitua pelo nome de usuário desejado
+                                     $stmt->execute();
+                                     
+                                     // Obtém o resultado
+                                     $resultado = $stmt->fetch();
+                                     
+                                     // Exibe o total de posts
+                                     if(!isset($_SESSION['postador'])){
+                                     echo '<h2 class="m-b-0 font-light">'. $resultado['total_posts'];'</h2>';
+                                     } else{
+                                        echo '0';
+                                     }
+                                     ?>
                                         <h5>Artigos</h5>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
@@ -126,10 +144,22 @@ if (!$_SESSION['email_usuario']) {
                                 </div>
                                 <div id="content">
                                     <div class="conteudo">
-                                        Conteúdo da aba 1
+                                        <?php 
+                                        if(!isset($_SESSION['nm_produto'])){
+                                            echo "Sem produtos cadastrados";
+                                        } else{
+                                            echo $_SESSION['nm_produto'];
+                                        } 
+                                        ?>
                                     </div>
                                     <div class="conteudo">
-                                        Conteúdo da aba 2
+                                    <?php 
+                                        if(!isset($_SESSION['nm_funcionario'])){
+                                            echo "Sem funcionários cadastrados";
+                                        } else{
+                                            echo $_SESSION['nm_funcionario'];
+                                        } 
+                                        ?>
                                     </div>
                                 </div>
                             </div>
