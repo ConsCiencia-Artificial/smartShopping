@@ -17,7 +17,7 @@ if (!$_SESSION['email_usuario']) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="../style.css">
 
@@ -27,19 +27,6 @@ if (!$_SESSION['email_usuario']) {
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&display=swap" rel="stylesheet">
     <?php include 'partial/index/index_style.php'; ?>
 </head>
-<!-- <header>
-    <nav class="navbar bg-danger">
-        <div class="container-fluid">
-            <a class="navbar-brand"></a>
-            <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
-                <input type="file" id="img_post" name="img_post">
-
-
-
-            </form>
-        </div>
-    </nav>
-</header> -->
 
 <body style="background-image: url(../assets/img/pgs-rep.png)">
     <div class="container-fluid">
@@ -50,20 +37,21 @@ if (!$_SESSION['email_usuario']) {
                         <div class="col-sm center">
                             <!-- NAVBAR -->
                             <img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm">
-                            <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+
+                            <?php
+                            if (!empty($_SESSION['email_usuario'])) {
+                            ?>
+                                <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;"><?php echo $_SESSION['nome_usuario']; ?></p>
+                            <?php } else { ?>
+                                <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+                            <?php } ?>
 
                             <!-- Adicionar "href" -->
                             <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
                                 <button type="button" class="btn btn-outline-light">Início</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Pesquisar</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Sobre</button>
-                            </a>
                             <a class="nav-link d-grid gap-2 mt-2" href="chat.php">
-                                <button type="button" class="btn btn-outline-light">Contatos</button>
+                                <button type="button" class="btn btn-outline-light">Conversas</button>
                             </a>
                             <a class="nav-link d-grid gap-2 mt-2 disable">
                                 <button type="button" class="btn btn-outline-light disabled">Publicar</button>
@@ -75,6 +63,7 @@ if (!$_SESSION['email_usuario']) {
                                 <button type="button" class="btn btn-outline-light">Sair</button>
                             </a>
                         </div>
+                        <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
                     </div>
                 </div>
             </nav>
@@ -88,9 +77,9 @@ if (!$_SESSION['email_usuario']) {
                                     <?php
                                     if (!empty($_SESSION['imagem'])) {
                                     ?>
-                                        <img src="<?php echo '../' . $_SESSION['imagem'];  ?>" width="40" class="img-radius" alt="User-Profile-Image">
+                                        <img src="<?php echo '../' . $_SESSION['imagem'];  ?>" width="40" class="img-radius" alt="Imagem de perfil do usuário">
                                     <?php } else { ?>
-                                        <img src="../assets/img/default-icon.jpg" width="40" class="img-radius" alt="User-Profile-Image">
+                                        <img src="../assets/img/default-icon.jpg" width="40" class="img-radius" alt="Imagem de perfil do usuário">
                                     <?php } ?>
                                 </div>
                                 <div class="comment-text w-100 p-2">
@@ -100,35 +89,29 @@ if (!$_SESSION['email_usuario']) {
                             <div class="col-md-6 post-padd center">
                                 <!-- <input type="file" id="img_post" name="img_post" src="../assets/img/svg/plus.svg"> -->
                                 <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
-                                    <button class="btn btn-outline-dark border-dark" type="button" style="width: 100%; height: 30rem;">
-                                        <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 15%;">
-                                        <input class="btn btn-outline-dark" type="file" id="img_post" name="img_post">
-                                    </button>
+                                    <label for="file-upload" class="custom-file-upload">
+                                        <div class="btn btn-outline-dark border-dark center rounded">
+                                            <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 100%; height: 30rem;">
+                                        </div>
+                                    </label>
+                                    <input id="file-upload" type="file" id="img_post" name="img_post" accept="image/*" />
+                                    <!-- <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 15%;" type="file" id="img_post" name="img_post"> -->
+                                    <!-- <input class="btn" type="file" src="../assets/img/svg/plus.svg" id="img_post" name="img_post" style="width: 15%;"> -->
+                                </form>
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body card-text-color">
                                     <!--título-->
                                     <div class="col">
                                         <!-- comentário -->
-                                        <div class="d-flex flex-row comment-row m-t-0 floating">
-                                            <input class="form-control me-2" style="width: 25rem" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
+                                        <div class="d-flex flex-row comment-row m-t-0 floating" style="padding-bottom: 5%;">
+                                            <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"></textarea>
+                                            <!-- <input class="form-control me-2" style="width: 25rem;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
 
                                             <!-- <input class="form-control me-2" style="width: 100%;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
 
                                         </div>
-                                        <button class="btn btn-outline-danger" type="submit">Postar</button>
-                                        </form>
-                                        <!-- FEEDBACK -->
-                                        <!-- <div class="col">
-                                            <div class="card-body">
-                                                 <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" size="20px"> 
-
-                                                 eu 
-                                                <input class="form-control me-2" style="width: 100%;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao">
-                                                <button class="btn btn-outline-danger" type="submit">Postar</button>
-                                                 <button onclick="feedback()" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button> 
-                                            </div>
-                                        </div> -->
+                                        <button class="btn btn-outline-danger" type="submit" style="width: 98%; padding-top: 1%;">Postar</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,14 +136,12 @@ if ($_POST) {
         try {
             $foto_tmp = $_FILES["img_post"]["tmp_name"];
             $foto_destino = "../assets/uploads/" . basename($img_post);
-            $foto_caminho = "assets/uploads/" . basename($img_post);
+            $foto_caminho = "../assets/uploads/" . basename($img_post);
 
             move_uploaded_file($foto_tmp, $foto_destino);
             $sql = "INSERT INTO post (descricao, postador, foto_postador, img_post) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$descricao, $postador, $foto_postador, $foto_caminho]);
-
-
 
             $_SESSION['descricao'] = $descricao;
             $_SESSION['postador'] = $postador;
@@ -173,9 +154,6 @@ if ($_POST) {
         exit;
     }
 }
-
-
-
 ?>
 
 <script src="../script.js"></script>

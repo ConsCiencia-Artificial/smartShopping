@@ -1,13 +1,6 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
-if ($_SESSION['nivel_acesso'] == '0') {
-    echo 'acesso liberado';}
-        else{
-
-    header("Location:../view/login.php");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,26 +30,27 @@ if ($_SESSION['nivel_acesso'] == '0') {
                         <div class="col-sm center">
                             <!-- NAVBAR -->
                             <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
-                            <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+
+                            <?php
+                            if (!empty($_SESSION['email_usuario'])) {
+                            ?>
+                                <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;"><?php echo $_SESSION['nome_usuario']; ?></p>
+                            <?php } else { ?>
+                                <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+                            <?php } ?>
 
                             <!-- Verificar se está logado -->
 
                             <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
                                 <button type="button" class="btn btn-outline-light">Início</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Pesquisar</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Sobre</button>
-                            </a>
                             <!-- Verificar se está logado -->
                             <?php
                             // var_dump($_SESSION); die;
-                            if (empty($_SESSION['email_usuario'])) {
+                            if (!empty($_SESSION['email_usuario'])) {
                             ?>
                                 <a class="nav-link d-grid gap-2 mt-2" href="chat.php">
-                                    <button type="button" class="btn btn-outline-light">Contatos</button>
+                                    <button type="button" class="btn btn-outline-light">Conversas</button>
                                 </a>
                                 <a class="nav-link d-grid gap-2 mt-2" href="home.php">
                                     <button type="button" class="btn btn-outline-light">Publicar</button>
@@ -68,10 +62,11 @@ if ($_SESSION['nivel_acesso'] == '0') {
                                     <button type="submit" class="btn btn-outline-light">Sair</button>
                                 </a>
                             <?php } else { ?>
-                                <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">
-                                    <button type="button" class="btn btn-outline-light">Sair</button>
+                                <a class="nav-link d-grid gap-2 mt-2" href="login.php">
+                                    <button type="button" class="btn btn-outline-light">Entrar</button>
                                 </a>
                             <?php } ?>
+                            <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
                         </div>
                     </div>
                 </div>
@@ -87,33 +82,44 @@ if ($_SESSION['nivel_acesso'] == '0') {
                                     <?php
                                     if (!empty($_SESSION['imagem'])) {
                                     ?>
-                                        <img src="<?php echo '../'.$_SESSION['imagem'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
+                                        <img src="<?php echo '../' . $_SESSION['imagem'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
                                     <?php } else { ?>
                                         <img src="../assets/img/default-icon.jpg" width="128" class="img-radius" alt="User-Profile-Image">
                                     <?php } ?>
                                 </div>
-                                <h2 class="m-b-0"><?php echo $_SESSION['nome_usuario']; ?></h2>
+                                <h2 class="m-b-0">
+                                    <?php echo $_SESSION['nome_usuario']; ?>
+                                </h2>
                                 <h4>Conheça uma variedade de produtos!</h4>
-                                <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn b-cta btn-md btn-rounded" data-abc="true">Seguir</a>
+                                <!-- IF e ELSE para caso o funcionário seja a loja ou um usuário comum -->
+                                <?php
+                                if (!empty($_SESSION['email_usuario'])) {
+                                ?>
+                                    <a class="m-t-10 waves-effect waves-dark btn b-cta btn-md btn-rounded" data-abc="true" href="config.php">Configurar</a>
+                                <?php } else { ?>
+                                    <a class="m-t-10 waves-effect waves-dark btn b-cta btn-md btn-rounded" data-abc="true">Seguir</a>
+                                <?php } ?>
+
                                 <div class="row text-center m-t-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
-                                        <?php  
-                                     $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_usuario";
-                                     $stmt = $conn->prepare($sql);
-                                     $stmt->bindValue(':nome_usuario', $_SESSION['nome_usuario']); // Substitua pelo nome de usuário desejado
-                                     $stmt->execute();
-                                     
-                                     // Obtém o resultado
-                                     $resultado = $stmt->fetch();
-                                     
-                                     // Exibe o total de posts
-                                     if(!isset($_SESSION['postador'])){
-                                     echo '<h2 class="m-b-0 font-light">'. $resultado['total_posts'];'</h2>';
-                                     } else{
-                                        echo '0';
-                                     }
-                                     ?>
-                                        <h5>Artigos</h5>
+                                        <?php
+                                        $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_usuario";
+                                        $stmt = $conn->prepare($sql);
+                                        $stmt->bindValue(':nome_usuario', $_SESSION['nome_usuario']); // Substitua pelo nome de usuário desejado
+                                        $stmt->execute();
+
+                                        // Obtém o resultado
+                                        $resultado = $stmt->fetch();
+
+                                        // Exibe o total de posts
+                                        if (!isset($_SESSION['postador'])) {
+                                            echo '<h2 class="m-b-0 font-light">' . $resultado['total_posts'];
+                                            '</h2>';
+                                        } else {
+                                            echo '0';
+                                        }
+                                        ?>
+                                        <h5>Postagens</h5>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <h2 class="m-b-0 font-light">0</h2>
@@ -144,21 +150,21 @@ if ($_SESSION['nivel_acesso'] == '0') {
                                 </div>
                                 <div id="content">
                                     <div class="conteudo">
-                                        <?php 
-                                        if(!isset($_SESSION['nm_produto'])){
+                                        <?php
+                                        if (!isset($_SESSION['nm_produto'])) {
                                             echo "Sem produtos cadastrados";
-                                        } else{
+                                        } else {
                                             echo $_SESSION['nm_produto'];
-                                        } 
+                                        }
                                         ?>
                                     </div>
                                     <div class="conteudo">
-                                    <?php 
-                                        if(!isset($_SESSION['nm_funcionario'])){
+                                        <?php
+                                        if (!isset($_SESSION['nm_funcionario'])) {
                                             echo "Sem funcionários cadastrados";
-                                        } else{
+                                        } else {
                                             echo $_SESSION['nm_funcionario'];
-                                        } 
+                                        }
                                         ?>
                                     </div>
                                 </div>
@@ -166,7 +172,6 @@ if ($_SESSION['nivel_acesso'] == '0') {
                         </div>
                     </div>
                 </div>
-
             </main>
         </div>
     </div>

@@ -17,9 +17,9 @@ session_start();
     <link rel="stylesheet" href="../assets/css/login.css">
     <script type="text/javascript" src="../assets/js/cadastro.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-image: url(../assets/img/pgs-rep.png)">
@@ -38,15 +38,10 @@ session_start();
                             <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
                                 <button type="button" class="btn btn-outline-light">Início</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Pesquisar</button>
+                            <a class="nav-link d-grid gap-2 mt-2" href="login.php">
+                                <button type="button" class="btn btn-outline-light">Entrar</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Sobre</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Contatos</button>
-                            </a>
+                            <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
                         </div>
                     </div>
                 </div>

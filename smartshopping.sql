@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/06/2024 às 03:46
+-- Tempo de geração: 05/06/2024 às 02:57
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `funcionario` (
 --
 
 CREATE TABLE `post` (
-  `id_post` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `titulo` varchar(200) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   `imagem` varchar(200) DEFAULT NULL,
@@ -112,8 +112,7 @@ INSERT INTO `tb_cadastro_usuario` (`cd_usuario`, `nome_usuario`, `email_usuario`
 (3, 'otho.ribeiro@etec.sp.gov.br', 'otho.ribeiro@etec.sp.gov.br', '1234', ''),
 (4, 'otho.ribeiro@etec.sp.gov.brr', 'otho.ribeiro@etec.sp.gov.brr', '1234', ''),
 (5, 'aline', 'aline@gmail.com', '698d51a19d8a121ce581499d7b701668', ''),
-(6, 'aline', 'aline@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', ''),
-(7, 'Luan o Foda', 'luan@email.com', '202cb962ac59075b964b07152d234b70', '');
+(6, 'aline', 'aline@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', '');
 
 -- --------------------------------------------------------
 
@@ -147,7 +146,7 @@ ALTER TABLE `funcionario`
 -- Índices de tabela `post`
 --
 ALTER TABLE `post`
-  ADD PRIMARY KEY (`id_post`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `produto`
@@ -188,7 +187,7 @@ ALTER TABLE `funcionario`
 -- AUTO_INCREMENT de tabela `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cadastro_loja`
@@ -200,7 +199,7 @@ ALTER TABLE `tb_cadastro_loja`
 -- AUTO_INCREMENT de tabela `tb_cadastro_usuario`
 --
 ALTER TABLE `tb_cadastro_usuario`
-  MODIFY `cd_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cd_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `tb_comentario`

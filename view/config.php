@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once('../app/controller/conexao.php');
-if(!$_SESSION['email_usuario']){
+if (!$_SESSION['email_usuario']) {
     header("Location:../view/login.php");
     exit;
 }
@@ -34,26 +34,27 @@ if(!$_SESSION['email_usuario']){
                         <div class="col-sm center">
                             <!-- NAVBAR -->
                             <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
-                            <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+
+                            <?php
+                            if (!empty($_SESSION['email_usuario'])) {
+                            ?>
+                                <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;"><?php echo $_SESSION['nome_usuario']; ?></p>
+                            <?php } else { ?>
+                                <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+                            <?php } ?>
 
                             <!-- Verificar se está logado -->
 
                             <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
                                 <button type="button" class="btn btn-outline-light">Início</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Pesquisar</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Sobre</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Contatos</button>
+                            <a class="nav-link d-grid gap-2 mt-2 disable">
+                                <button type="button" class="btn btn-outline-light">Conversas</button>
                             </a>
                             <a class="nav-link d-grid gap-2 mt-2" href="home.php">
                                 <button type="button" class="btn btn-outline-light">Publicar</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2 disabled" href="#">
+                            <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
                                 <button type="button" class="btn btn-outline-light">Perfil</button>
                             </a>
                             <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">

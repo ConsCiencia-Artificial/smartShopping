@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 include_once('../app/controller/conexao.php');
-if(!$_SESSION['email_usuario']){
+if (!$_SESSION['email_usuario']) {
     header("Location:../view/login.php");
     exit;
 }
@@ -39,19 +39,20 @@ if(!$_SESSION['email_usuario']){
                         <div class="col-sm center">
                             <!-- NAVBAR -->
                             <img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm">
-                            <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+
+                            <?php
+                            if (!empty($_SESSION['email_usuario'])) {
+                            ?>
+                                <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;"><?php echo $_SESSION['nome_usuario']; ?></p>
+                            <?php } else { ?>
+                                <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
+                            <?php } ?>
 
                             <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
                                 <button type="button" class="btn btn-outline-light">Início</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Pesquisar</button>
-                            </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="#">
-                                <button type="button" class="btn btn-outline-light">Sobre</button>
-                            </a>
                             <a class="nav-link d-grid gap-2 mt-2 disable">
-                                <button type="button" class="btn btn-outline-light disabled">Contatos</button>
+                                <button type="button" class="btn btn-outline-light disabled">Conversas</button>
                             </a>
 
                             <!-- Verificar se está logado -->
@@ -62,7 +63,7 @@ if(!$_SESSION['email_usuario']){
                                 <a class="nav-link d-grid gap-2 mt-2" href="home.php">
                                     <button type="button" class="btn btn-outline-light">Publicar</button>
                                 </a>
-                                <a class="nav-link d-grid gap-2 mt-2" href="view/perfil.php">
+                                <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
                                     <button type="button" class="btn btn-outline-light">Perfil</button>
                                 </a>
                                 <a class="nav-link d-grid gap-2 mt-2" href="app/controller/sair.php">
@@ -73,6 +74,7 @@ if(!$_SESSION['email_usuario']){
                                     <button type="button" class="btn btn-outline-light">Entrar</button>
                                 </a>
                             <?php } ?>
+                            <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
                         </div>
                     </div>
                 </div>
@@ -121,8 +123,8 @@ if(!$_SESSION['email_usuario']){
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="chat-history" >
-                                    <h3 class="center" style="padding-bottom: 2%;">Hoje</h3>
+                                    <div class="chat-history">
+                                        <h3 class="center" style="padding-bottom: 2%;">Hoje</h3>
                                         <ul class="m-b-0">
                                             <li class="clearfix">
                                                 <div class="message other-message float-right"> Olá bom dia, gostaria de saber se ainda tem disponível do meu tamanho? </div>

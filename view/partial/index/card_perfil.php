@@ -34,14 +34,17 @@ if(!$_SESSION['email_usuario']){
                                         <h3>Configurações</h3>
                                     </div>
                                     <div class="col-2">
-                                        <button class="btn btn-outline-dark border-dark center"><span class="material-symbols-outlined">edit</span></button>
+                                        <button class="btn btn-outline-dark border-dark center">
+                                            Editar
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </button>
                                     </div>
                                 </div>
                                 <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Informações</h4>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">Telefone</h5>
-                                        <input type="text" id="tel_usuario"  <?php if(isset($tel_usuario)){ ?> value="<?php  echo $_SESSION['tel_usuario'];} else{ ?>" value="Não cadastrado" disabled > <?php }; ?>
+                                        <input type="text" id="tel_usuario" <?php if(isset($tel_usuario)){ ?> value="<?php  echo $_SESSION['tel_usuario'];} else{ ?>" value="Não cadastrado" disabled > <?php }; ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">CPF</h5>

@@ -33,15 +33,10 @@
               <a class="nav-link d-grid gap-2 mt-2" href="../index.php">
                 <button type="button" class="btn btn-outline-light">Início</button>
               </a>
-              <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Pesquisar</button>
+              <a class="nav-link d-grid gap-2 mt-2" href="cadastro.php">
+                <button type="button" class="btn btn-outline-light">Cadastrar</button>
               </a>
-              <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Sobre</button>
-              </a>
-              <a class="nav-link d-grid gap-2 mt-2" href="#">
-                <button type="button" class="btn btn-outline-light">Contatos</button>
-              </a>
+              <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
             </div>
           </div>
         </div>
@@ -111,7 +106,7 @@
       </main>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script src="../script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
