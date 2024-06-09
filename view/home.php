@@ -36,7 +36,7 @@ if (!$_SESSION['email_usuario']) {
                     <div class="row">
                         <div class="col-sm center">
                             <!-- NAVBAR -->
-                            <img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm">
+                            <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
 
                             <?php
                             if (!empty($_SESSION['email_usuario'])) {
@@ -63,7 +63,7 @@ if (!$_SESSION['email_usuario']) {
                                 <button type="button" class="btn btn-outline-light">Sair</button>
                             </a>
                         </div>
-                        <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
+                        <p class="center text-light" style="padding-top: 2rem;">© Consciência Artificial, 2024</p>
                     </div>
                 </div>
             </nav>
@@ -89,15 +89,27 @@ if (!$_SESSION['email_usuario']) {
                             <div class="col-md-6 post-padd center">
                                 <!-- <input type="file" id="img_post" name="img_post" src="../assets/img/svg/plus.svg"> -->
                                 <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
-                                    <label for="file-upload" class="custom-file-upload">
+                                    <label for="img_post" class="custom-file-upload">
                                         <div class="btn btn-outline-dark border-dark center rounded">
                                             <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 100%; height: 30rem;">
                                         </div>
                                     </label>
-                                    <input id="file-upload" type="file" id="img_post" name="img_post" accept="image/*" />
+                                    <input id="img_post" type="file" name="img_post" accept="image/*" />
                                     <!-- <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 15%;" type="file" id="img_post" name="img_post"> -->
                                     <!-- <input class="btn" type="file" src="../assets/img/svg/plus.svg" id="img_post" name="img_post" style="width: 15%;"> -->
                                 </form>
+
+
+                                <!-- TESTE (tentando fazer o botão de publicar funcionar) -->
+                                <!-- <form method="post" enctype="multipart/form-data">
+                                    <div>
+                                        <label for="file">Choose file to upload</label>
+                                        <input type="file" id="img_post" name="img_post" multiple />
+                                    </div>
+                                    <div>
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </form> -->
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body card-text-color">
@@ -105,7 +117,7 @@ if (!$_SESSION['email_usuario']) {
                                     <div class="col">
                                         <!-- comentário -->
                                         <div class="d-flex flex-row comment-row m-t-0 floating" style="padding-bottom: 5%;">
-                                            <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"></textarea>
+                                            <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao" style="resize: vertical; max-height: 26rem; min-height: 26rem;"></textarea>
                                             <!-- <input class="form-control me-2" style="width: 25rem;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
 
                                             <!-- <input class="form-control me-2" style="width: 100%;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->

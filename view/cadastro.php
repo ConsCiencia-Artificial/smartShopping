@@ -41,7 +41,7 @@ session_start();
                             <a class="nav-link d-grid gap-2 mt-2" href="login.php">
                                 <button type="button" class="btn btn-outline-light">Entrar</button>
                             </a>
-                            <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
+                            <p class="center text-light" style="padding-top: 2rem;">© Consciência Artificial, 2024</p>
                         </div>
                     </div>
                 </div>

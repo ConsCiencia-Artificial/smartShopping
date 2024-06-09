@@ -36,7 +36,7 @@
                         <button type="button" class="btn btn-outline-light">Entrar</button>
                     </a>
                 <?php } ?>
-                <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
+                <p class="center text-light" style="padding-top: 2rem;">© Consciência Artificial, 2024</p>
             </div>
         </div>
     </div>

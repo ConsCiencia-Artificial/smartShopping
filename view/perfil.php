@@ -66,7 +66,7 @@ include_once '../app/controller/conexao.php';
                                     <button type="button" class="btn btn-outline-light">Entrar</button>
                                 </a>
                             <?php } ?>
-                            <p class="center text-light" style="padding-top: 2rem;">© Consciência Articifial, 2024</p>
+                            <p class="center text-light" style="padding-top: 2rem;">© Consciência Artificial, 2024</p>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ include_once '../app/controller/conexao.php';
                     <div class="col-md-10">
                         <!-- Column -->
                         <div class="card">
-                            <img class="card-img-top" src="https://i.imgur.com/K7A78We.jpg" alt="Plano de Fundo do Usuário">
+                            <img class="img-cov" src="https://i.imgur.com/K7A78We.jpg" alt="Plano de Fundo do Usuário" style="height: 15rem;">
                             <div class="card-body little-profile text-center">
                                 <div class="pro-img">
                                     <?php

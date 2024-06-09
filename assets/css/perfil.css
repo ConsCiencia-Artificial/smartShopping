@@ -41,9 +41,8 @@ body {
     margin-bottom: 30px;
 }
 
-.card-img-top {
-    /* height: 300px; */
-    object-fit: contain;
+.img-cov {
+    object-fit: cover;
 }
 
 .card-no-border .card {
@@ -71,7 +70,6 @@ body {
 }
 
 .little-profile .pro-img img {
-    object-fit: contain;
     width: 128px;
     height: 128px;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
