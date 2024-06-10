@@ -113,6 +113,12 @@ session_start();
     </div>
 </body>
 
+<!-- ACESSIBILIDADE -->
+<?php include 'partial/index/leitor.php'; ?>
+<?php include 'partial/index/libras.php'; ?>
+<script src="../assets/js/leitura.js"></script>
+<script src="../assets/js/texto.js"></script>
+
 </html>
 
 <?php

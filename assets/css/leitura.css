@@ -1,0 +1,42 @@
+.acessibilidade {
+    margin-bottom: -70px;
+    margin-right: 10px;
+}
+
+.botao {
+    padding-left: 180%;
+    padding-bottom: 50px;
+}
+
+#limpar {
+    margin-left: 10px;
+}
+
+.mais {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.menos {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.controles {
+    margin-top: 10px;
+}
+
+.controles button {
+    margin-right: 10px;
+}
+
+.alto-contraste {
+    background-color: #000;
+    color: #fff;
+}
+
+.baixo-contraste {
+    background-color: #f0f0f086;
+    color: #000;
+}
