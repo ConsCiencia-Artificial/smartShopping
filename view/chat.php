@@ -38,9 +38,15 @@ if (!$_SESSION['email_usuario']) {
                     <div class="row">
                         <div class="col-sm center">
                             <!-- NAVBAR -->
+                            <?php
+                            if (!empty($_SESSION['email_usuario'])) {
+                            ?>
+                            <a href="perfil.php"><img src="<?php echo '../'.$_SESSION['imagem']; ?>"  width="105" class="img-fluid margin-top-comm"></a>
+                            <?php } else { ?>
+
                             <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
 
-                            <?php
+                            <?php }
                             if (!empty($_SESSION['email_usuario'])) {
                             ?>
                                 <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;"><?php echo $_SESSION['nome_usuario']; ?></p>

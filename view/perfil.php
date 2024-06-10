@@ -112,7 +112,7 @@ include_once '../app/controller/conexao.php';
                                         $resultado = $stmt->fetch();
 
                                         // Exibe o total de posts
-                                        if (!isset($_SESSION['postador'])) {
+                                        if (isset($_SESSION['postador'])) {
                                             echo '<h2 class="m-b-0 font-light">' . $resultado['total_posts'];
                                             '</h2>';
                                         } else {

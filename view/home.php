@@ -86,18 +86,20 @@ if (!$_SESSION['email_usuario']) {
                                     <h6 class="font-medium text-light"><?php echo $_SESSION['nome_usuario']; ?></h6>
                                 </div>
                             </div>
+                            <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
                             <div class="col-md-6 post-padd center">
                                 <!-- <input type="file" id="img_post" name="img_post" src="../assets/img/svg/plus.svg"> -->
-                                <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
+                               
                                     <label for="img_post" class="custom-file-upload">
                                         <div class="btn btn-outline-dark border-dark center rounded">
-                                            <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 100%; height: 30rem;">
+                                            <img class="center rounded" src="../assets/img/svg/plus.svg"  style="width: 100%; height: 30rem;">
+                                            <input id="img_post" type="file" name="img_post" accept="image/*" />
                                         </div>
                                     </label>
-                                    <input id="img_post" type="file" name="img_post" accept="image/*" />
+                                    
                                     <!-- <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 15%;" type="file" id="img_post" name="img_post"> -->
                                     <!-- <input class="btn" type="file" src="../assets/img/svg/plus.svg" id="img_post" name="img_post" style="width: 15%;"> -->
-                                </form>
+                            
 
 
                                 <!-- TESTE (tentando fazer o botão de publicar funcionar) -->
@@ -116,6 +118,7 @@ if (!$_SESSION['email_usuario']) {
                                     <!--título-->
                                     <div class="col">
                                         <!-- comentário -->
+                                         
                                         <div class="d-flex flex-row comment-row m-t-0 floating" style="padding-bottom: 5%;">
                                             <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao" style="resize: vertical; max-height: 26rem; min-height: 26rem;"></textarea>
                                             <!-- <input class="form-control me-2" style="width: 25rem;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
@@ -127,6 +130,7 @@ if (!$_SESSION['email_usuario']) {
                                     </div>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -148,7 +152,7 @@ if ($_POST) {
         try {
             $foto_tmp = $_FILES["img_post"]["tmp_name"];
             $foto_destino = "../assets/uploads/" . basename($img_post);
-            $foto_caminho = "../assets/uploads/" . basename($img_post);
+            $foto_caminho = "assets/uploads/" . basename($img_post);
 
             move_uploaded_file($foto_tmp, $foto_destino);
             $sql = "INSERT INTO post (descricao, postador, foto_postador, img_post) VALUES (?, ?, ?, ?)";
