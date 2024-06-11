@@ -166,8 +166,6 @@ if ($_POST) {
         } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
-        header('Location: home.php');
-        exit;
     }
 }
 ?>
