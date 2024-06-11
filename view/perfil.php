@@ -152,9 +152,11 @@ include_once '../app/controller/conexao.php';
                                     <div class="conteudo">
                                         <?php
                                         if (!isset($_SESSION['nm_produto'])) {
-                                            echo "Sem produtos cadastrados";
+                                            // echo "Sem produtos cadastrados";
+                                            include_once 'partial/index/post.php';
                                         } else {
                                             echo $_SESSION['nm_produto'];
+                                            
                                         }
                                         ?>
                                     </div>

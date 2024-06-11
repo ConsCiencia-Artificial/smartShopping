@@ -99,7 +99,8 @@ if (!$_SESSION['email_usuario']) {
                                     <div class="row border-top border-bottom">
                                         <div class="row main align-items-center" style="justify-content: flex-start">
                                             <div class="col-2">
-                                                <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                                                <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg">
+                                            </div>
                                             <div class="col-6">
                                                 <div class="row text-muted">Camisa (categoria)</div>
                                                 <div class="row">Camisa básica (nome do produto)</div>
@@ -113,7 +114,8 @@ if (!$_SESSION['email_usuario']) {
                                     <div class="row border-top border-bottom">
                                         <div class="row main align-items-center" style="justify-content: flex-start">
                                             <div class="col-2">
-                                                <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                                                <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg">
+                                            </div>
                                             <div class="col-6">
                                                 <div class="row text-muted">Camisa (categoria)</div>
                                                 <div class="row">Camisa básica (nome do produto)</div>
@@ -127,7 +129,8 @@ if (!$_SESSION['email_usuario']) {
                                     <div class="row border-top border-bottom">
                                         <div class="row main align-items-center" style="justify-content: flex-start">
                                             <div class="col-2">
-                                                <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                                                <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg">
+                                            </div>
                                             <div class="col-6">
                                                 <div class="row text-muted">Camisa (categoria)</div>
                                                 <div class="row">Camisa básica (nome do produto)</div>
@@ -156,12 +159,22 @@ if (!$_SESSION['email_usuario']) {
                                         </select>
                                         <p>CUPOM</p>
                                         <input id="code" placeholder="Insira um cupom válido">
+                                        <p>FORMA DE PAGAMENTO</p>
+                                        <select>
+                                            <option class="text" selected>Boleto</option>
+                                            <option class="text">PIX</option>
+                                            <option class="text">Cartão Cadastrado</option>
+                                            <option class="text">+ Adicionar Cartão</option>
+                                        </select>
                                     </form>
                                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                                         <div class="col">VALOR TOTAL</div>
                                         <div class="col text-right">R$XX,XX</div>
                                     </div>
-                                    <button class="btn">CONFERIR</button>
+
+                                    <div class="center">
+                                        <button class="btn btn-lg btn-light text-center" style="margin-top: 25%;">AVANÇAR</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

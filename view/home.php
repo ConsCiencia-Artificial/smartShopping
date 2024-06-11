@@ -86,24 +86,25 @@ if (!$_SESSION['email_usuario']) {
                                     <h6 class="font-medium text-light"><?php echo $_SESSION['nome_usuario']; ?></h6>
                                 </div>
                             </div>
-                            <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">
-                            <div class="col-md-6 post-padd center">
-                                <!-- <input type="file" id="img_post" name="img_post" src="../assets/img/svg/plus.svg"> -->
-                               
+                            <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST" >
+                                
+                                <div class="col-md-6 post-padd center">
+                                    <!-- <input type="file" id="img_post" name="img_post" src="../assets/img/svg/plus.svg"> -->
+
                                     <label for="img_post" class="custom-file-upload">
                                         <div class="btn btn-outline-dark border-dark center rounded">
-                                            <img class="center rounded" src="../assets/img/svg/plus.svg"  style="width: 100%; height: 30rem;">
+                                            <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 100%; height: 30rem;">
                                             <input id="img_post" type="file" name="img_post" accept="image/*" />
                                         </div>
                                     </label>
-                                    
+
                                     <!-- <img class="center rounded" src="../assets/img/svg/plus.svg" style="width: 15%;" type="file" id="img_post" name="img_post"> -->
                                     <!-- <input class="btn" type="file" src="../assets/img/svg/plus.svg" id="img_post" name="img_post" style="width: 15%;"> -->
-                            
 
 
-                                <!-- TESTE (tentando fazer o botão de publicar funcionar) -->
-                                <!-- <form method="post" enctype="multipart/form-data">
+
+                                    <!-- TESTE (tentando fazer o botão de publicar funcionar) -->
+                                    <!-- <form method="post" enctype="multipart/form-data">
                                     <div>
                                         <label for="file">Choose file to upload</label>
                                         <input type="file" id="img_post" name="img_post" multiple />
@@ -112,24 +113,25 @@ if (!$_SESSION['email_usuario']) {
                                         <button type="submit">Submit</button>
                                     </div>
                                 </form> -->
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-body card-text-color">
-                                    <!--título-->
-                                    <div class="col">
-                                        <!-- comentário -->
-                                         
-                                        <div class="d-flex flex-row comment-row m-t-0 floating" style="padding-bottom: 5%;">
-                                            <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao" style="resize: vertical; max-height: 26rem; min-height: 26rem;"></textarea>
-                                            <!-- <input class="form-control me-2" style="width: 25rem;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body card-text-color">
+                                        <!--título-->
+                                        <div class="col">
+                                            <!-- comentário -->
 
-                                            <!-- <input class="form-control me-2" style="width: 100%;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
+                                            <div class="d-flex flex-row comment-row m-t-0 floating" style="padding-bottom: 5%;">
+                                                <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao" style="resize: vertical; max-height: 26rem; min-height: 26rem;"></textarea>
+                                                <!-- <input class="form-control me-2" style="width: 25rem;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
 
+                                                <!-- <input class="form-control me-2" style="width: 100%;" type="text" placeholder="Qual seu próximo sucesso de vendas?" aria-label="publicação" name="descricao"> -->
+
+                                            </div>
+                                            <?php include 'partial/index/upload2.php'; ?>
+                                            <button class="btn btn-outline-danger" type="submit" style="width: 98%; padding-top: 1%;">Postar</button>
                                         </div>
-                                        <button class="btn btn-outline-danger" type="submit" style="width: 98%; padding-top: 1%;">Postar</button>
                                     </div>
                                 </div>
-                            </div>
                             </form>
                         </div>
                     </div>
@@ -166,6 +168,8 @@ if ($_POST) {
         } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
+        header('Location: home.php');
+        exit;
     }
 }
 ?>
