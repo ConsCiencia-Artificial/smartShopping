@@ -1,5 +1,12 @@
 <?php
+include_once '../app/controller/conexao.php';
 
+
+
+
+
+
+if(!isset($_SESSION['cd_produto'])){
 
 ?>
 
@@ -8,7 +15,7 @@
     <ul class="cards">
         <li class="cards__item">
             <div class="card">
-                <div class="card__image card__image--fence"></div>
+                <div class=" <?php $_SESSION['im_produto']; ?>"></div>
                 <div class="card__content">
                     <div class="card__title">Flex</div>
                     <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
@@ -48,3 +55,9 @@
         </li>
     </ul>
 </div>
+
+<?php
+
+}
+
+?>
