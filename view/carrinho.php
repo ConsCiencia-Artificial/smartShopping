@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
+include '../app/controller/carrinhoController.php';
 if (!$_SESSION['email_usuario']) {
     header("Location:../view/login.php");
     exit;
@@ -93,7 +94,17 @@ if (!$_SESSION['email_usuario']) {
                                             <div class="col-9">
                                                 <h4><b>Itens adicionados ao carrinho</b></h4>
                                             </div>
-                                            <div class="col-3 align-self-center text-right text-muted">3 itens</div>
+                                            <div class="col-3 align-self-center text-right text-muted">
+                                                <?php 
+                                                if (!isset($_SESSION['id_carrinho'])) {
+                                                    echo '<h2 class="m-b-0 font-light">' . $res['total_itens'].'</h2>';
+                                                } else {
+                                                    echo '0 ';
+                                                }
+                                                
+                                               
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row border-top border-bottom">

@@ -1,3 +1,9 @@
+<?php
+
+
+?>
+
+
 <div class="row">
     <ul class="cards">
         <li class="cards__item">

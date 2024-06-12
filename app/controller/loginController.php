@@ -19,10 +19,14 @@ if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
         $_SESSION['nome_usuario'] = $row['nome_usuario'];
         $_SESSION['imagem'] = $row['imagem'];
         $_SESSION['nivel_acesso'] = $row['nivel_acesso'];
+        $_SESSION['codigo'] = $row['codigo'];
         $conn = null;
         // var_dump($_SESSION); die;
+        if ($_SESSION['imagem'] == null) {
+            header("Location: ../../view/config.php");
+        } else {
         header("Location: ../../index.php");
-    } else {
+    } } else {
         $variavel = "Usuário ou senha inválido!";
         header("Location: ../../view/login.php?variavel=" . urlencode($variavel));
     }
