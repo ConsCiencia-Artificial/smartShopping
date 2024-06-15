@@ -1,4 +1,3 @@
-<img src="assets/img/svg/access_icon.svg" style="width: 50px;" alt="">
 <div vw class="enabled">
     <div vw-access-button="" class="active">
         <img class="access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="assets/img/svg/access_icon.svg">

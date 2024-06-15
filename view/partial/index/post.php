@@ -1,60 +1,86 @@
 <?php
 include_once '../app/controller/conexao.php';
 
-
-
-
-
-
-if(!isset($_SESSION['cd_produto'])){
-
+if (!isset($_SESSION['cd_produto'])) {
 ?>
+    <div class="row" style="margin-right: 0px; margin-left: 0px;">
+        <ul class="cards">
+            <li class="cards__item">
+                <div class="card text-dark d-flex ">
+
+                    <?php
+                    try {
+                        // Supondo que a conexão com o banco de dados já esteja estabelecida usando PDO
+                        // $conn é a conexão ativa
+
+                        // Consulta SQL para obter a URL da imagem, a descrição e o nome do produto
+                        $sql = "SELECT im_produto, ds_produto, nm_produto FROM produto WHERE id_loja = :id";
+                        $stmt = $conn->prepare($sql);
+
+                        if (empty($fk_loja)) {
+                            $fk_loja = $_SESSION['fk_loja'];
+                        }
+
+                        $stmt->bindParam(':id', $fk_loja, PDO::PARAM_INT);
+                        $stmt->execute();
 
 
-<div class="row">
-    <ul class="cards">
-        <li class="cards__item">
-            <div class="card">
-                <div class=" <?php $_SESSION['im_produto']; ?>"></div>
-                <div class="card__content">
-                    <div class="card__title">Flex</div>
-                    <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
-                    <button class="btn btn--block card__btn">Button</button>
+                        // Verificar se alguma linha foi retornada
+                        if ($stmt->rowCount() > 0) {
+
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                $imageUrl = $row['im_produto'];
+                                $descricao = $row['ds_produto'];
+                                $nomeProduto = $row['nm_produto'];
+
+                                // Ajustar o caminho da imagem para voltar um diretório
+                                $adjustedImageUrl = '../' . $imageUrl;
+                                
+                                if (isset($adjustedImageUrl) && $adjustedImageUrl != null) : ?>
+                                    <div class="col m-2 border border-dark">
+                                    <div class="center">
+                                        <img src="<?php echo htmlspecialchars($adjustedImageUrl); ?>" alt="Imagem do Produto" style="max-width: 30%; height: auto;padding-top: 10%;">
+                                    </div>
+                                <?php else : ?>
+                                    <p>Imagem não disponível.</p>
+                                <?php endif; ?>
+
+
+
+                                <!-- Código 2 -->
+                                
+                                    <div class="card__content" style="display: flex !important;">
+                                        <div class="fw-bolder mt-3" style="display: block !important;">
+                                            <h4><?php echo htmlspecialchars($nomeProduto); ?></h4>
+                                        </div>
+                                        <?php if (isset($descricao) && $descricao != null) : ?>
+                                            <h6 class="descricao-resumida"><?php echo htmlspecialchars(substr($descricao, 0, 100)); ?></h6>
+                                            <h6 class="descricao-completa"><?php echo htmlspecialchars($descricao); ?></h6>
+                                            <button class="btn-saiba-mais btn btn-link">Leia mais</button>
+                                        <?php else : ?>
+                                            <p>Descrição não disponível.</p>
+                                        <?php endif; ?>
+                                        <button class="btn btn-outline-danger">Botão</button>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <h6>Nenhum produto encontrado!</h6>
+                    <?php
+                        }
+                    } catch (PDOException $e) {
+                        echo "Erro: " . $e->getMessage();
+                    }
+                    ?>
+
+
                 </div>
-            </div>
-        </li>
-        <li class="cards__item">
-            <div class="card">
-                <div class="card__image card__image--river"></div>
-                <div class="card__content">
-                    <div class="card__title">Flex Grow</div>
-                    <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
-                    <button class="btn btn--block card__btn">Button</button>
-                </div>
-            </div>
-        </li>
-        <li class="cards__item">
-            <div class="card">
-                <div class="card__image card__image--record"></div>
-                <div class="card__content">
-                    <div class="card__title">Flex Shrink</div>
-                    <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative numbers are invalid.</p>
-                    <button class="btn btn--block card__btn">Button</button>
-                </div>
-            </div>
-        </li>
-        <li class="cards__item">
-            <div class="card">
-                <div class="card__image card__image--flowers"></div>
-                <div class="card__content">
-                    <div class="card__title">Flex Basis</div>
-                    <p class="card__text">This defines the default size of an element before the remaining space is distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means "look at my width or height property."</p>
-                    <button class="btn btn--block card__btn">Button</button>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
+            </li>
+        </ul>
+    </div>
+
 
 <?php
 

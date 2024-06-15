@@ -41,10 +41,10 @@ if (!$_SESSION['email_usuario']) {
                             <?php
                             if (!empty($_SESSION['email_usuario'])) {
                             ?>
-                            <a href="perfil.php"><img src="<?php echo '../'.$_SESSION['imagem']; ?>"  width="105" class="img-fluid margin-top-comm"></a>
+                                <a href="perfil.php"><img src="<?php echo '../' . $_SESSION['imagem']; ?>" width="105" class="img-fluid margin-top-comm"></a>
                             <?php } else { ?>
 
-                            <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
+                                <a href="../index.php"><img src="../assets/img/logo.png" alt="logo" width="105" class="img-fluid margin-top-comm"></a>
 
                             <?php }
                             if (!empty($_SESSION['email_usuario'])) {
@@ -66,9 +66,15 @@ if (!$_SESSION['email_usuario']) {
                             // var_dump($_SESSION); die;
                             if (!empty($_SESSION['email_usuario'])) {
                             ?>
-                                <a class="nav-link d-grid gap-2 mt-2" href="home.php">
-                                    <button type="button" class="btn btn-outline-light">Publicar</button>
-                                </a>
+                                <div class="nav-link d-grid gap-2 mt-2 dropdown">
+                                    <button class="btn btn-outline-light dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Postagens
+                                    </button>
+                                    <ul class="dropdown-menu center" style="--bs-dropdown-min-width: 100% !important;">
+                                        <li><a class="dropdown-item" href="home.php">Nova Postagem</a></li>
+                                        <li><a class="dropdown-item" href="produto.php">Novo Produto</a></li>
+                                    </ul>
+                                </div>
                                 <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
                                     <button type="button" class="btn btn-outline-light">Perfil</button>
                                 </a>
@@ -165,14 +171,15 @@ if (!$_SESSION['email_usuario']) {
             </main>
         </div>
     </div>
-    </body>
-    
-    <!-- ACESSIBILIDADE -->
-    <?php include 'partial/index/leitor.php'; ?>
-    <?php include 'partial/index/libras.php'; ?>
-    <script src="../assets/js/leitura.js"></script>
-    <script src="../assets/js/texto.js"></script>
-    
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+
+<!-- ACESSIBILIDADE -->
+<?php include 'partial/index/leitor.php'; ?>
+<?php include 'partial/index/libras.php'; ?>
+<script src="../assets/js/leitura.js"></script>
+<script src="../assets/js/texto.js"></script>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </html>

@@ -148,7 +148,7 @@ if ($_POST) {
                                   </div>
                                 </div>
                               </div>
-                            <?php }  ?>
+                            <?php } ?>
                           </div>
                         </div>
                         <!-- FEEDBACK -->
@@ -167,7 +167,7 @@ if ($_POST) {
                 </div>
               </div>
             </div>
-          <?php }  ?>
+          <?php } ?>
       </main>
     </div>
   </div>

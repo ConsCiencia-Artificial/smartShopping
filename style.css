@@ -393,3 +393,38 @@ footer {
 	background: rgba(0, 0, 0, 0.05)
 }
 
+
+
+/* NAVBAR DROP*/
+.sidenav a,
+.dropdown-btn {
+	display: block;
+	border: none;
+	background: none;
+	width: 100%;
+	cursor: pointer;
+	outline: none;
+}
+
+/* On mouse-over */
+
+/* Add an active class to the active dropdown button */
+.active {
+	color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+	display: none;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+
+	.sidenav a {
+		font-size: 18px;
+	}
+}

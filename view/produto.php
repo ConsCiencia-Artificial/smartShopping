@@ -121,20 +121,20 @@ if (!$_SESSION['email_usuario']) {
                                             <form>
                                                 <div class="row">
                                                     <p class='field'>
-                                                    <div class="col">
+                                                    <div class="col-12">
                                                         <label for='user'>Nome</label>
                                                     </div>
                                                     <div class="col">
-                                                        <input type='text' id='user' name='' />
+                                                        <input type='text' id='user' name='' style="width: 100%;" />
                                                     </div>
                                                     <span id='valida' class='i i-warning'></span>
                                                     </p>
                                                     <p class='field'>
-                                                    <div class="col">
+                                                    <div class="col-12">
                                                         <label for='pass'>Categoria</label>
                                                     </div>
                                                     <div class="col">
-                                                        <select id="categoria" name="categoria">
+                                                        <select id="categoria" name="categoria" style="width: 100%;">
                                                             <option value="acessorio">Acessórios</option>
                                                             <option value="aparelho">Aparelhos</option>
                                                             <option value="decoracao">Decoração</option>
@@ -149,51 +149,75 @@ if (!$_SESSION['email_usuario']) {
                                                     </div>
                                                     <span id='valida' class='i i-warning'></span>
                                                     </p>
-                                                    <p class='field'>
                                                     <div class="col">
-                                                        <label for='user'>Valor</label>
+                                                        <p class='field'>
+                                                        <div class="col-12">
+                                                            <label for='user'>Valor</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type='number' id='user' name='' style="width: 100%;" />
+                                                        </div>
+                                                        </p>
                                                     </div>
                                                     <div class="col">
-                                                        <input type='number' id='user' name='' />
-                                                    </div>
-                                                    <span id='valida' class='i i-warning'></span>
-                                                    </p>
-                                                    <p class='field'>
-                                                        <label for='user'>Quantidade</label>
-                                                        <input type='number' id='user' name='' />
                                                         <span id='valida' class='i i-warning'></span>
-                                                    </p>
+                                                        <p class='field'>
+                                                        <div class="col-12">
+                                                            <label for='user'>Quantidade</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type='number' id='user' name='' style="width: 100%;" />
+                                                        </div>
+                                                        <span id='valida' class='i i-warning'></span>
+                                                        </p>
+                                                    </div>
                                                     <p class='field'>
+                                                    <div class="col-12">
                                                         <label for='user'>Fornecedor</label>
-                                                        <input type='text' id='user' name='' />
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type='text' id='user' name='' style="width: 100%;" />
                                                         <span id='valida' class='i i-warning'></span>
+                                                    </div>
                                                     </p>
-                                                    <p class='field'>
-                                                        <label for='user'>Data de Remessa</label>
-                                                        <input type='date' id='user' name='' />
-                                                        <span id='valida' class='i i-warning'></span>
-                                                    </p>
-                                                    <p class='field'>
-                                                        <label for='user'>Cor</label>
-                                                        <select id="cor" name="cor">
-                                                            <option value="amarelo">Amarelo</option>
-                                                            <option value="azul">Azul</option>
-                                                            <option value="bege">Bege</option>
-                                                            <option value="branco">Branco</option>
-                                                            <option value="cinza">Cinza</option>
-                                                            <option value="dourado">Dourado</option>
-                                                            <option value="laranja">Laranja</option>
-                                                            <option value="marrom">Marrom</option>
-                                                            <option value="prata">Prata</option>
-                                                            <option value="preto">Preto</option>
-                                                            <option value="rosa">Rosa</option>
-                                                            <option value="roxo">Roxo</option>
-                                                            <option value="verde">Verde</option>
-                                                            <option value="vermelho">Vermelho</option>
-                                                            <option value="outro">Outro</option>
-                                                        </select>
-                                                        <span id='valida' class='i i-warning'></span>
-                                                    </p>
+                                                    <div class="col">
+                                                        <p class='field'>
+                                                        <div class="col-12">
+                                                            <label for='user'>Data de Remessa</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type='date' id='user' name='' style="width: 100%;" />
+                                                            <span id='valida' class='i i-warning'></span>
+                                                        </div>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <p class='field'>
+                                                        <div class="col-12">
+                                                            <label for='user'>Cor</label>.
+                                                        </div>
+                                                        <div class="col">
+                                                            <select id="cor" name="cor" style="width: 100%;" >
+                                                                <option value="amarelo">Amarelo</option>
+                                                                <option value="azul">Azul</option>
+                                                                <option value="bege">Bege</option>
+                                                                <option value="branco">Branco</option>
+                                                                <option value="cinza">Cinza</option>
+                                                                <option value="dourado">Dourado</option>
+                                                                <option value="laranja">Laranja</option>
+                                                                <option value="marrom">Marrom</option>
+                                                                <option value="prata">Prata</option>
+                                                                <option value="preto">Preto</option>
+                                                                <option value="rosa">Rosa</option>
+                                                                <option value="roxo">Roxo</option>
+                                                                <option value="verde">Verde</option>
+                                                                <option value="vermelho">Vermelho</option>
+                                                                <option value="outro">Outro</option>
+                                                            </select>
+                                                            <span id='valida' class='i i-warning'></span>
+                                                        </div>
+                                                        </p>
+                                                    </div>
                                                     <p class='field'>
                                                         <label for='user'>Tamanho</label>
                                                         <select id="cars" name="cars">
@@ -206,7 +230,7 @@ if (!$_SESSION['email_usuario']) {
                                                         <span id='valida' class='i i-warning'></span>
                                                     </p>
                                                     <div class="d-flex flex-row comment-row m-t-0 floating" style="padding-bottom: 5%;">
-                                                        <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual a descrição do seu produto?" aria-label="publicação" name="descricao" style="resize: vertical; max-height: 10rem; min-height: 10rem;"></textarea>
+                                                        <textarea class="form-control me-2" rows="18" type="text" placeholder="Qual a descrição do seu produto?" aria-label="publicação" name="descricao" style="resize: vertical; max-height: 10rem; min-height: 10rem;" maxlength="250"></textarea>
                                                     </div>
                                                 </div>
                                             </form>

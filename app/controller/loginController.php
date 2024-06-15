@@ -20,6 +20,7 @@ if ($_POST['email_usuario'] && $_POST['senha_usuario']) {
         $_SESSION['imagem'] = $row['imagem'];
         $_SESSION['nivel_acesso'] = $row['nivel_acesso'];
         $_SESSION['codigo'] = $row['codigo'];
+        $_SESSION['fk_loja'] = $row['cd_loja_fk'];
         $conn = null;
         // var_dump($_SESSION); die;
         if ($_SESSION['imagem'] == null) {

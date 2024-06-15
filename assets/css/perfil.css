@@ -279,6 +279,17 @@ SIDE BAR
     background: #dd163b;
 }
 
+.btn-outline-danger {
+    --bs-btn-color: #dd163b;
+    --bs-btn-border-color: #dd163b;
+    --bs-btn-hover-bg: #dd163b;
+    --bs-btn-hover-border-color: #dd163b;
+    --bs-btn-active-bg: #dd163b;
+    --bs-btn-active-border-color: #dd163b;
+    --bs-btn-disabled-color: #dd163b;
+    --bs-btn-disabled-border-color: #dd163b;
+}
+
 /* FREEFRONTEND / Postagens */
 
 @gray-darker:               #444444;
@@ -315,11 +326,8 @@ img {
 .cards__item {
   display: flex;
   padding: 1rem;
-  @media(min-width: 40rem) {
-    width: 50%;
-  }
   @media(min-width: 56rem) {
-    width: 33.3333%;
+    width: 50%;
   }
 }
 
@@ -330,15 +338,10 @@ img {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  &:hover {
-    .card__image {
-      filter: contrast(100%);
-    }
-  }
 }
 
 .card__content {
-  /* display: flex; */
+  display: flex !important;
   flex: 1 1 auto;
   flex-direction: column;
   padding: 1rem;
@@ -400,3 +403,11 @@ img {
   margin-bottom: 1.25rem;
 }
 
+.descricao-produto {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+.descricao-completa {
+    display: none;
+}

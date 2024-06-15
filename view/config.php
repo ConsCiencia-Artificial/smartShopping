@@ -51,9 +51,15 @@ if (!$_SESSION['email_usuario']) {
                             <a class="nav-link d-grid gap-2 mt-2 disable">
                                 <button type="button" class="btn btn-outline-light">Conversas</button>
                             </a>
-                            <a class="nav-link d-grid gap-2 mt-2" href="home.php">
-                                <button type="button" class="btn btn-outline-light">Publicar</button>
-                            </a>
+                            <div class="nav-link d-grid gap-2 mt-2 dropdown">
+                                <button class="btn btn-outline-light dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Postagens
+                                </button>
+                                <ul class="dropdown-menu center" style="--bs-dropdown-min-width: 100% !important;">
+                                    <li><a class="dropdown-item" href="home.php">Nova Postagem</a></li>
+                                    <li><a class="dropdown-item" href="produto.php">Novo Produto</a></li>
+                                </ul>
+                            </div>
                             <a class="nav-link d-grid gap-2 mt-2" href="perfil.php">
                                 <button type="button" class="btn btn-outline-light">Perfil</button>
                             </a>

@@ -12,6 +12,7 @@ include_once '../app/controller/conexao.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="../assets/js/perfil.js"></script>
+    <script type="text/javascript" src="../assets/js/mais.js"></script>
 
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="../assets/css/perfil.css">
@@ -52,9 +53,15 @@ include_once '../app/controller/conexao.php';
                                 <a class="nav-link d-grid gap-2 mt-2" href="chat.php">
                                     <button type="button" class="btn btn-outline-light">Conversas</button>
                                 </a>
-                                <a class="nav-link d-grid gap-2 mt-2" href="home.php">
-                                    <button type="button" class="btn btn-outline-light">Publicar</button>
-                                </a>
+                                <div class="nav-link d-grid gap-2 mt-2 dropdown">
+                                    <button class="btn btn-outline-light dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Postagens
+                                    </button>
+                                    <ul class="dropdown-menu center" style="--bs-dropdown-min-width: 100% !important;">
+                                        <li><a class="dropdown-item" href="home.php">Nova Postagem</a></li>
+                                        <li><a class="dropdown-item" href="produto.php">Novo Produto</a></li>
+                                    </ul>
+                                </div>
                                 <a class="nav-link d-grid gap-2 mt-2 disable">
                                     <button type="button" class="btn btn-outline-light disabled">Perfil</button>
                                 </a>
@@ -156,7 +163,6 @@ include_once '../app/controller/conexao.php';
                                             include_once 'partial/index/post.php';
                                         } else {
                                             echo $_SESSION['nm_produto'];
-                                            
                                         }
                                         ?>
                                     </div>
