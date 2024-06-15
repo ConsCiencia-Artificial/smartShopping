@@ -83,9 +83,9 @@ if ($_POST) {
       <main role="main" class="col-md-9 ml-sm-auto px">
         <div class="container-fluid">
           <?php
-          $sql = "SELECT * FROM post ORDER BY id_post DESC";
+          $sql = "SELECT * FROM post ORDER BY id DESC";
           $stmt = $conn->prepare($sql);
-          $stmt->execute();
+          $stmt->execute();   
 
           while ($post = $stmt->fetch()) {
 
@@ -113,7 +113,7 @@ if ($_POST) {
                     <!--título-->
                     <div class="col">
                       <!-- comentário -->
-                      <div class="d-flex flex-row comment-row m-t-0">
+                      <div   class="d-flex flex-row comment-row m-t-0">
                         <span class="m-b-15 d-block"><?php echo $post['descricao']; ?></span>
                       </div>
 
@@ -156,11 +156,11 @@ if ($_POST) {
                     </div>
                     <div class="col">
                       <div class="card-body" style="text-align: end; margin-right: 50px;">
-                        <form action="" method="POST">
+                        <  action="" method="POST">
                           <input type="hidden" name="id_post" value="<?php echo $post['id_post']; ?>">
                           <input type="text" class="rounded border border-secondary p-1 border-opacity-25" id="comentario" name="comentario" size="20px">
                           <button type="submit" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .35rem; --bs-btn-font-size: .85rem; margin-bottom: 7px;">Enviar</button>
-                        </form>
+                        </>
                       </div>
                     </div>
                   </div>
