@@ -95,7 +95,13 @@ include_once '../app/controller/conexao.php';
                                     <?php } ?>
                                 </div>
                                 <h2 class="m-b-0">
-                                    <?php echo $_SESSION['nome_usuario']; ?>
+                                    <?php if (!empty($_SESSION['email_usuario'])) {
+                                        echo $_SESSION['nome_usuario'];
+                                    } elseif ($_SESSION['nome_loja']) {
+
+
+                                        echo $_SESSION['nome_loja'];
+                                    } ?>
                                 </h2>
                                 <h4>Conheça uma variedade de produtos!</h4>
                                 <!-- IF e ELSE para caso o funcionário seja a loja ou um usuário comum -->
@@ -110,21 +116,45 @@ include_once '../app/controller/conexao.php';
                                 <div class="row text-center m-t-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <?php
-                                        $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_usuario";
-                                        $stmt = $conn->prepare($sql);
-                                        $stmt->bindValue(':nome_usuario', $_SESSION['nome_usuario']); // Substitua pelo nome de usuário desejado
-                                        $stmt->execute();
 
-                                        // Obtém o resultado
-                                        $resultado = $stmt->fetch();
+                                        if (!empty($_SESSION['email_usuario'])) {
 
-                                        // Exibe o total de posts
-                                        if (!isset($_SESSION['postador'])) {
-                                            echo '<h2 class="m-b-0 font-light">' . $resultado['total_posts'];
-                                            '</h2>';
-                                        } else {
-                                            echo '0';
+                                            $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_usuario";
+                                            $stmt = $conn->prepare($sql);
+                                            $stmt->bindValue(':nome_usuario', $_SESSION['nome_usuario']); // Substitua pelo nome de usuário desejado
+                                            $stmt->execute();
+
+                                            // Obtém o resultado
+                                            $resultado = $stmt->fetch();
+
+                                            // Exibe o total de posts
+                                            if (!isset($_SESSION['postador'])) {
+                                                echo '<h2 class="m-b-0 font-light">' . $resultado['total_posts'];
+                                                '</h2>';
+                                            } else {
+                                                echo '0';
+                                            }
+
+                                        } elseif ($_SESSION['nome_loja']) {
+
+                                            $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_loja";
+                                            $stmt = $conn->prepare($sql);
+                                            $stmt->bindValue(':nome_loja', $_SESSION['nome_loja']); // Substitua pelo nome de usuário desejado
+                                            $stmt->execute();
+
+                                            // Obtém o resultado
+                                            $resultado = $stmt->fetch();
+
+                                            // Exibe o total de posts
+                                            if (!isset($_SESSION['postador'])) {
+                                                echo '<h2 class="m-b-0 font-light">' . $resultado['total_posts'];
+                                                '</h2>';
+                                            } else {
+                                                echo '0';
+                                            }
+
                                         }
+
                                         ?>
                                         <h5>Postagens</h5>
                                     </div>
@@ -159,7 +189,7 @@ include_once '../app/controller/conexao.php';
                                     <div class="conteudo">
                                         <?php
                                         if (!isset($_SESSION['nm_produto'])) {
-                                            // echo "Sem produtos cadastrados";
+                                            echo "Sem produtos cadastrados";
                                             include_once 'partial/index/post.php';
                                         } else {
                                             echo $_SESSION['nm_produto'];

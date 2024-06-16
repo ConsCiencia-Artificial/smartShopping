@@ -22,7 +22,7 @@ if (!empty($_POST)) {
         // echo "<script> alert(Cadastrado com Successo)</script>";
 
         // Mensagem de erro ao tentar ir até a página de Login novamente
-        // header("location: login.php");
+        // header("Location: ../../view/login.php?
     } catch (PDOException $e) {
         echo "Erro ao cadastrar: " . $e->getMessage();
     }

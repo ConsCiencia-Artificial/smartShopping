@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
-if (!$_SESSION['email_usuario']) {
+if (!$_SESSION['email_usuario'] || !$_SESSION['email_loja']) {
     header("Location:../view/login.php");
     exit;
 }

@@ -63,7 +63,7 @@ session_start();
                             <h2 style="padding-top: 15px;">CADASTRAR</h2>
                         </div>
                         <div class="box-login">
-                            <form action="../app/controller/cadastro_cliente.php" method="POST">
+                            <form action="../app/controller/cadastro_empresa.php" method="POST">
                                 <div class="fieldset-body" id="login_form">
                                     <button type="button" onclick="openLoginInfo();" class="b b-form i i-more" title="Mais Informações">
                                         <span class="material-symbols-outlined">
@@ -73,24 +73,25 @@ session_start();
 
                                     <p class="field">
                                         <label for="user">NOME DO FUNCIONÁRIO</label>
-                                        <input type="text" id="floatingName" name="nome_usuario">
+                                        <input type="text" id="floatingName" name="nome_loja">
                                     </p>
                                     <p class="field">
                                         <label for="user">EMAIL</label>
-                                        <input type="text" id="floatingEmail" name="email_usuario" value="<?php if (isset($dados["email_usuario"])) {
-                                                                                                                echo $dados["email_usuario"];
+                                        <input type="text" id="floatingEmail" name="email_loja" value="<?php if (isset($dados["email_loja"])) {
+                                                                                                                echo $dados["email_loja"];
                                                                                                             } ?>">
                                     </p>
                                     <p class="field">
                                         <label for="user">SENHA CORPORATIVA</label>
-                                        <input type="password" id="floatingPassword" name="senha_usuario" <?php if (isset($dados["senha_usuario"])) {
-                                                                                                                echo $dados["senha_usuario"];
+                                        <input type="password" id="floatingPassword" name="senha_loja" <?php if (isset($dados["senha_loja"])) {
+                                                                                                                echo $dados["senha_loja"];
                                                                                                             } ?>>
                                     </p>
                                     <p class="field">
                                         <label for="user">CONFIRMAÇÃO DE SENHA</label>
-                                        <input type="password" id="floatingPasswordConfirmation" name="confsenha_usuario">
+                                        <input type="password" id="floatingPasswordConfirmation" name="confsenha_loja">
                                     </p>
+                                    <h6>Você não é funcionario? volte para o cadastro de usuário! <a style="color:#dd163b;" href="cadastro.php">Cadastre-se!</a></h6>
 
                                     <input type="submit" id="do_login" name="SendLogin" value="CADASTRAR" />
                                 </div>

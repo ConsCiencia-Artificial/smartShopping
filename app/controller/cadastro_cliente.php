@@ -23,7 +23,7 @@ if (!empty($_POST)) {
     } catch (PDOException $e) {
        // var_dump($nome_usuario);
         $variavel = "Erro ao cadastrar!";
-       // header("Location: ../../view/cadastro.php?variavel=" . urlencode($variavel));
+       header("Location: ../../view/cadastro.php?variavel=" . urlencode($variavel));
     }
     $conn = null;
 }

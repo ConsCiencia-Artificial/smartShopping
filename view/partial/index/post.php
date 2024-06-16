@@ -14,10 +14,10 @@ if (!isset($_SESSION['cd_produto'])) {
                         // $conn é a conexão ativa
 
                         // Consulta SQL para obter a URL da imagem, a descrição e o nome do produto
-                        $sql = "SELECT im_produto, ds_produto, nm_produto FROM produto WHERE id_loja = :id";
+                        $sql = "SELECT im_produto, ds_produto, nm_produto FROM produto WHERE codigo_loja = :codigo_loja";
                         $stmt = $conn->prepare($sql);
 
-                        if (empty($fk_loja)) {
+                        if (!empty($fk_loja)) {
                             $fk_loja = $_SESSION['fk_loja'];
                         }
 

@@ -60,13 +60,7 @@ $row = $select->fetch();
             <input class="form-check-input" type="checkbox" name="editar" id="editar">
            </div>
 
-           <?php
-
-           if (!isset($_POST['editar'])) {
-            echo "checkbox marcado! <br/>";
-           } else {
-            echo "checkbox não marcado! <br/>";
-           } ?>
+           
           </div>
           <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Informações</h4>
           <div class="row">
@@ -107,6 +101,9 @@ $row = $select->fetch();
            <div class="col-sm">
             <input type="text" id="pagamento" disabled <?php if (isset($pagamenteo)) { ?> value="<?php echo $_SESSION['pagamento'];
                                                                                                 } else { ?>" value="Não cadastrado"> <?php }; ?>
+           </div>
+           <div class="col-sm">
+              <input type="submit" value="Gravar">
            </div>
           </div>
          </div>

@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once '../app/controller/conexao.php';
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -59,7 +64,7 @@
               <h2 style="padding-top: 15px;">EMPRESA</h2>
             </div>
             <div class='box-login'>
-              <form action="../app/controller/loginController.php" method="POST">
+              <form action="../app/controller/loginEmpresaController.php" method="POST">
                 <div class='fieldset-body' id='login_form'>
                   <button type="button" onclick="openLoginInfo();" class='b b-form i i-more' title='Mais Informações'>
                     <span class="material-symbols-outlined">
@@ -68,15 +73,15 @@
                   </button>
                   <p class='field'>
                     <label for='user'>E-MAIL CORPORATIVO</label>
-                    <input type='text' id='user' name='email_usuario' value="<?php if (isset($dados['email_usuario'])) {
-                                                                                echo $dados['email_usuario'];
+                    <input type='text' id='user' name='email_loja' value="<?php if (isset($dados['email_loja'])) {
+                                                                                echo $dados['email_loja'];
                                                                               } ?>" />
                     <span id='valida' class='i i-warning'></span>
                   </p>
                   <p class='field'>
                     <label for='pass'>SENHA</label>
-                    <input type='password' id='pass' name='senha_usuario' value="<?php if (isset($dados['senha_usuario'])) {
-                                                                                    echo $dados['senha_usuario'];
+                    <input type='password' id='pass' name='senha_loja' value="<?php if (isset($dados['senha_loja'])) {
+                                                                                    echo $dados['senha_loja'];
                                                                                   } ?>" />
                     <span id='valida' class='i i-close'></span>
                   </p>
@@ -89,7 +94,7 @@
 
                   <h6><a style="color:#dd163b;" href="cadastro_funcionario.php">Cadastrar Novo Funcionário</a></h6>
 
-                  <input type='submit' id='do_login' name="SendLogin" value='ENTRAR' />
+                  <input type='submit' id='do_login'  value='ENTRAR' />
                 </div>
               </form>
             </div>

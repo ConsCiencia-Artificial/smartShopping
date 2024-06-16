@@ -9,7 +9,9 @@
                 if (!empty($_SESSION['email_usuario'])) {
                 ?>
                     <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;"><?php echo $_SESSION['nome_usuario']; ?></p>
-                <?php } else { ?>
+                <?php } elseif (!empty($_SESSION['email_loja'])) { ?>
+                    <p class="text-light fw-bolder mt-3" style="text-transform: uppercase;"><?php echo $_SESSION['nome_loja']; ?></p>
+                    <?php } else {?>
                     <p class="text-light fw-bolder mt-3">PRAIA GRANDE SHOPPING</p>
                 <?php } ?>
                 <a class="nav-link d-grid gap-2 mt-2 disable" style="color: #fff;">
@@ -17,7 +19,7 @@
                 </a>
                 <!-- Verificar se está logado -->
                 <?php
-                if (!empty($_SESSION['email_usuario'])) {
+                if (!empty($_SESSION['email_usuario']) || !empty($_SESSION['email_loja'])) {
                 ?>
                     <a class="nav-link d-grid gap-2 mt-2" href="view/chat.php">
                         <button type="button" class="btn btn-outline-light">Conversas</button>
