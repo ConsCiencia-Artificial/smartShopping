@@ -1,6 +1,6 @@
 <?php
 include_once '../app/controller/conexao.php';
-if (!$_SESSION['email_usuario']) {
+if (!$_SESSION['nivel_acesso'] == '0') {
   header("Location:../view/login.php");
   exit;
 }

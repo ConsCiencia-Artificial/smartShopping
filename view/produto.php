@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
-if (!$_SESSION['email_usuario']) {
+if ($_SESSION['nivel_acesso'] == 1) {
     header("Location:../view/login.php");
     exit;
 }
@@ -89,7 +89,7 @@ if (!$_SESSION['email_usuario']) {
                                     <?php } ?>
                                 </div>
                                 <div class="comment-text w-100 p-2">
-                                    <h6 class="font-medium text-light"><?php echo $_SESSION['nome_usuario']; ?></h6>
+                                    <h6 class="font-medium text-light"><?php echo $_SESSION['nm_funcionario']; ?></h6>
                                 </div>
                             </div>
                             <form class="d-flex justify-content-between" enctype="multipart/form-data" method="POST">

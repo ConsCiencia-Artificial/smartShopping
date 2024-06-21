@@ -1,10 +1,7 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
-if (!$_SESSION['email_usuario']) {
-    header("Location:../view/login.php");
-    exit;
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -72,7 +69,32 @@ if (!$_SESSION['email_usuario']) {
                                 <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">
                                     <button type="submit" class="btn btn-outline-light">Sair</button>
                                 </a>
-                            <?php } else { ?>
+                            <?php } elseif (!empty($_SESSION['email_funcionario'])) {
+
+                            ?>
+                                <a class="nav-link d-grid gap-2 mt-2" href="chat.php">
+                                    <button type="button" class="btn btn-outline-light">Conversas</button>
+                                </a>
+                                <div class="nav-link d-grid gap-2 mt-2 dropdown">
+                                    <button class="btn btn-outline-light dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Postagens
+                                    </button>
+                                    <ul class="dropdown-menu center" style="--bs-dropdown-min-width: 100% !important;">
+                                        <li><a class="dropdown-item" href="home.php">Nova Postagem</a></li>
+                                        <li><a class="dropdown-item" href="produto.php">Novo Produto</a></li>
+                                    </ul>
+                                </div>
+                                <a class="nav-link d-grid gap-2 mt-2 disable">
+                                    <button type="button" class="btn btn-outline-light disabled">Perfil</button>
+                                </a>
+                                <a class="nav-link d-grid gap-2 mt-2" href="../app/controller/sair.php">
+                                    <button type="submit" class="btn btn-outline-light">Sair</button>
+                                </a>
+
+
+
+                            <?php
+                            } else { ?>
                                 <a class="nav-link d-grid gap-2 mt-2" href="login.php">
                                     <button type="button" class="btn btn-outline-light">Entrar</button>
                                 </a>
@@ -101,16 +123,16 @@ if (!$_SESSION['email_usuario']) {
                                 <h2 class="m-b-0">
                                     <?php if (!empty($_SESSION['email_usuario'])) {
                                         echo $_SESSION['nome_usuario'];
-                                    } elseif ($_SESSION['nome_loja']) {
+                                    } elseif ($_SESSION['nm_funcionario']) {
 
 
-                                        echo $_SESSION['nome_loja'];
+                                        echo $_SESSION['nm_funcionario'];
                                     } ?>
                                 </h2>
                                 <h4>Conheça uma variedade de produtos!</h4>
                                 <!-- IF e ELSE para caso o funcionário seja a loja ou um usuário comum -->
                                 <?php
-                                if (!empty($_SESSION['email_usuario'])) {
+                                if (!empty($_SESSION['email_funcionario'])) {
                                 ?>
                                     <a class="m-t-10 waves-effect waves-dark btn b-cta btn-md btn-rounded" data-abc="true" href="config.php">Configurar</a>
                                 <?php } else { ?>
@@ -120,7 +142,7 @@ if (!$_SESSION['email_usuario']) {
                                 <div class="row text-center m-t-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <?php
-//
+                                        //
                                         if (!empty($_SESSION['email_usuario'])) {
 
                                             $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_usuario";
@@ -138,12 +160,11 @@ if (!$_SESSION['email_usuario']) {
                                             } else {
                                                 echo '<h2 class="m-b-0 font-light"> 0  </h2>';
                                             }
+                                        } elseif ($_SESSION['nm_funcionario']) {
 
-                                        } elseif ($_SESSION['nome_loja']) {
-
-                                            $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_loja";
+                                            $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nm_funcionario";
                                             $stmt = $conn->prepare($sql);
-                                            $stmt->bindValue(':nome_loja', $_SESSION['nome_loja']); // Substitua pelo nome de usuário desejado
+                                            $stmt->bindValue(':nm_funcionario', $_SESSION['nm_funcionario']); // Substitua pelo nome de usuário desejado
                                             $stmt->execute();
 
                                             // Obtém o resultado
@@ -156,7 +177,6 @@ if (!$_SESSION['email_usuario']) {
                                             } else {
                                                 echo '0';
                                             }
-
                                         }
 
                                         ?>

@@ -2,26 +2,26 @@
 session_start();
 include_once('conexao.php');
 
-if ($_POST['email_loja'] && $_POST['senha_loja']) {
-    $email_loja = $_POST['email_loja'];
-    $senha_loja = md5($_POST['senha_loja']); 
+if ($_POST['email_funcionario'] && $_POST['senha_funcionario']) {
+    $email_funcionario = $_POST['email_funcionario'];
+    $senha_funcionario = md5($_POST['senha_funcionario']); 
 
     // Use placeholders na sua consulta SQL
-    $select_empresa = $conn->prepare("SELECT * FROM tb_cadastro_loja where email_loja = '$email_loja' and senha_loja = '$senha_loja'");
+    $select_empresa = $conn->prepare("SELECT * FROM tb_cadastro_funcionario where email_funcionario = '$email_funcionario' and senha_funcionario = '$senha_funcionario'");
     $select_empresa->execute();
 
     $row_empresa = $select_empresa->fetch();
 
     if ($row_empresa) { 
         // Defina as sessões aqui
-        $_SESSION['nome_loja'] = $row_empresa['nome_loja'];
-        $_SESSION['email_loja'] = $row_empresa['email_loja'];
-        $_SESSION['nome_categoria_loja'] = $row_empresa['nome_categoria_loja'];
-        $_SESSION['img_loja'] = $row_empresa['img_loja'];
+        $_SESSION['nm_funcionario'] = $row_empresa['nm_funcionario'];
+        $_SESSION['email_funcionario'] = $row_empresa['email_funcionario'];
+        $_SESSION['img_funcionario'] = $row_empresa['img_funcionario'];
+        $_SESSION['nivel_acesso'] = $row_empresa['nivel_acesso'];
         // ... outras sessões
 
         // Redirecione com base na condição da imagem da loja
-        header("Location: " . ($row_empresa['img_loja'] == null ? "../../view/config_empresa.php" : "../../index.php"));
+        header("Location: " . ($row_empresa['img_funcionario'] == null ? "../../view/config_empresa.php" : "../../index.php"));
         exit();
     } else {
         var_dump($row_empresa);
@@ -31,7 +31,7 @@ if ($_POST['email_loja'] && $_POST['senha_loja']) {
     }
 } else {
     $variavel = "O usuário ou a senha não foram preenchidos";
-    header("Location: ../../view/login.php?variavel=" . urlencode($variavel));
+    header("Location: ../../view/login_empresa.php?variavel=" . urlencode($variavel));
     exit(); // Certifique-se de sair após o redirecionamento
 }
 ?>

@@ -1,17 +1,17 @@
 <?php
 include_once '../app/controller/conexao.php';
-if (!$_SESSION['email_loja']) {
+if ($_SESSION['nivel_acesso'] == 1) {
     header("Location:../view/login_empresa.php");
     exit;
 }
-$cod = $_SESSION['email_loja'];
+$cod = $_SESSION['email_funcionario'];
 
 // Use placeholders na sua consulta SQL
-$sql_loja = "SELECT * FROM tb_cadastro_loja WHERE email_loja = :email_loja";
+$sql_loja = "SELECT * FROM tb_cadastro_loja WHERE email_funcionario = :email_funcionario";
 $select = $conn->prepare($sql_loja);
 
 // Passe os valores como um array no método execute()
-$select->execute([':email_loja' => $cod]);
+$select->execute([':email_funcionario' => $cod]);
 
 $row = $select->fetch();
 ?>
@@ -26,12 +26,12 @@ $row = $select->fetch();
         <div class="row align-items-end card-block text-center text-white">
          <div class="m-b-25">
           <?php
-          if (!empty($_SESSION['img_loja'])) {
+          if (!empty($_SESSION['img_funcionario'])) {
           ?>
-           <img src="<?php echo '../' . $_SESSION['img_loja'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
-          <?php } else { ?><label for="img_post" class="custom-file-upload">
+           <img src="<?php echo '../' . $_SESSION['img_funcionario'];  ?>" width="128" class="img-radius" alt="User-Profile-Image">
+          <?php } else { ?><label for="img_funcionario" class="custom-file-upload">
            <img class="center rounded" src="../assets/img/default-icon.jpg" width="128" class="img-radius" alt="User-Profile-Image">
-           <input id="img_post" type="file" name="img_post" accept="image/*" disabled />
+           <input id="img_post" type="file" name="img_funcionario" accept="image/*" disabled />
          </label>
           <?php } ?>
          </div>
@@ -40,7 +40,7 @@ $row = $select->fetch();
          
 
 
-         <h1 class="f-w-600"><?php echo $_SESSION['nome_loja'];  ?></h1>
+         <h1 class="f-w-600"><?php echo $_SESSION['nm_funcionario'];  ?></h1>
         </div>
        </div>
        <div class="col-sm-8">

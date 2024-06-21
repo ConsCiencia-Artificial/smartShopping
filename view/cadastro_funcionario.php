@@ -74,23 +74,23 @@ session_start();
 
                                     <p class="field">
                                         <label for="user">NOME DO FUNCIONÁRIO</label>
-                                        <input type="text" id="floatingName" name="nome_loja">
+                                        <input type="text" id="floatingName" name="nm_funcionario">
                                     </p>
                                     <p class="field">
                                         <label for="user">EMAIL</label>
-                                        <input type="text" id="floatingEmail" name="email_loja" value="<?php if (isset($dados["email_loja"])) {
-                                                                                                                echo $dados["email_loja"];
+                                        <input type="text" id="floatingEmail" name="email_funcionario" value="<?php if (isset($dados["email_funcionario"])) {
+                                                                                                                echo $dados["email_funcionario"];
                                                                                                             } ?>">
                                     </p>
                                     <p class="field">
                                         <label for="user">SENHA CORPORATIVA</label>
-                                        <input type="password" id="floatingPassword" name="senha_loja" <?php if (isset($dados["senha_loja"])) {
-                                                                                                                echo $dados["senha_loja"];
+                                        <input type="password" id="floatingPassword" name="senha_funcionario" <?php if (isset($dados["senha_funcionario"])) {
+                                                                                                                echo $dados["senha_funcionario"];
                                                                                                             } ?>>
                                     </p>
                                     <p class="field">
                                         <label for="user">CONFIRMAÇÃO DE SENHA</label>
-                                        <input type="password" id="floatingPasswordConfirmation" name="confsenha_loja">
+                                        <input type="password" id="floatingPasswordConfirmation" name="confsenha_funcionario">
                                     </p>
                                     <h6>Você não é funcionario? volte para o cadastro de usuário! <a style="color:#dd163b;" href="cadastro.php">Cadastre-se!</a></h6>
 

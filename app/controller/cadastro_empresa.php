@@ -1,20 +1,22 @@
 <?php
 //Verificar se a senha não será cadastrada vazia!!!
 if (!empty($_POST)) {
-    $nome_loja = $_POST['nome_loja'];
-    $email_loja = $_POST['email_loja'];
-    $senha_loja = md5($_POST['senha_loja']);
+    $nm_funcionario = $_POST['nm_funcionario'];
+    $email_funcionario = $_POST['email_funcionario'];
+    $senha_funcionario = md5($_POST['senha_funcionario']);
+    $nivel_funcionario = 1;
     
     include_once('conexao.php');
     
     
 
     try {
-        $stmt_empresa = $conn->prepare("INSERT INTO tb_cadastro_loja(nome_loja, email_loja, senha_loja) VALUES (:nome_loja, :email_loja, :senha_loja)");
+        $stmt_empresa = $conn->prepare("INSERT INTO tb_cadastro_funcionario(nm_funcionario, email_funcionario, senha_funcionario, nivel_acesso) VALUES (:nm_funcionario, :email_funcionario, :senha_funcionario, :nivel_acesso)");
 
-        $stmt_empresa->bindParam(':nome_loja', $nome_loja);
-        $stmt_empresa->bindParam(':email_loja', $email_loja);
-        $stmt_empresa->bindParam(':senha_loja', $senha_loja);
+        $stmt_empresa->bindParam(':nm_funcionario', $nm_funcionario);
+        $stmt_empresa->bindParam(':email_funcionario', $email_funcionario);
+        $stmt_empresa->bindParam(':senha_funcionario', $senha_funcionario);
+        $stmt_empresa->bindParam(':nivel_acesso', $nivel_funcionario);
         
         $stmt_empresa->execute();
 
@@ -23,7 +25,8 @@ if (!empty($_POST)) {
     } catch (PDOException $e) {
        // var_dump($nome_usuario);
         $variavel = "Erro ao cadastrar!";
-        header("Location: ../../view/cadastro_empresa.php?variavel=" . urlencode($variavel));
+        //header("Location: ../../view/cadastro_funcionario.php?variavel=" . urlencode($variavel));
+        var_dump($_SESSION['email_funcionario']);
     }
     $conn = null;
 }

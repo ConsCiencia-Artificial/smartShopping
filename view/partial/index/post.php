@@ -1,5 +1,9 @@
 <?php
 include_once '../app/controller/conexao.php';
+if (!$_SESSION['nivel_acesso'] >= 1) {
+    header("Location:../view/login.php");
+    exit;
+}
 
 if (!isset($_SESSION['cd_produto'])) {
 ?>

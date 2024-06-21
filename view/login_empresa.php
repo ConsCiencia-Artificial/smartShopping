@@ -73,15 +73,15 @@ include_once '../app/controller/conexao.php';
                   </button>
                   <p class='field'>
                     <label for='user'>E-MAIL CORPORATIVO</label>
-                    <input type='text' id='user' name='email_loja' value="<?php if (isset($dados['email_loja'])) {
-                                                                                echo $dados['email_loja'];
+                    <input type='text' id='user' name='email_funcionario' value="<?php if (isset($dados['email_funcionario'])) {
+                                                                                echo $dados['email_funcionario'];
                                                                               } ?>" />
                     <span id='valida' class='i i-warning'></span>
                   </p>
                   <p class='field'>
                     <label for='pass'>SENHA</label>
-                    <input type='password' id='pass' name='senha_loja' value="<?php if (isset($dados['senha_loja'])) {
-                                                                                    echo $dados['senha_loja'];
+                    <input type='password' id='pass' name='senha_funcionario' value="<?php if (isset($dados['senha_funcionario'])) {
+                                                                                    echo $dados['senha_funcionario'];
                                                                                   } ?>" />
                     <span id='valida' class='i i-close'></span>
                   </p>
