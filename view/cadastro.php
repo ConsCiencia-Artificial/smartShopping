@@ -87,8 +87,7 @@ session_start();
                                         <label for="user">CONFIRME SUA SENHA</label>
                                         <input type="password" id="floatingPasswordConfirmation" name="confsenha_usuario">
                                     </p>
-                                    <h6>Trabalha no Shopping? <a style="color:#dd163b;" href="cadastro_funcionario.php">Cadastre-se como funcionário!</a></h6>
-
+                                    
                                     <input type="submit" id="do_login" name="SendLogin" value="CADASTRAR" />
                                 </div>
                             </form>

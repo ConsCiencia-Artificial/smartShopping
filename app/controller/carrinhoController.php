@@ -1,9 +1,9 @@
 <?php
 include_once 'conexao.php';
 
-$sql = "SELECT COUNT(*) AS total_itens FROM carrinho WHERE id_comprador = :codigo LIMIT 3";
+$sql = "SELECT COUNT(*) AS total_itens FROM carrinho WHERE cd_comprador = :codigo";
 $stmt = $conn->prepare($sql);
-$stmt->bindValue(':codigo', $_SESSION['id_comprador']); // Substitua pelo nome de usuário desejado
+$stmt->bindValue(':codigo', $_SESSION['cd_comprador']); // Substitua pelo nome de usuário desejado
 $stmt->execute();
 
 // Obtém o resultado

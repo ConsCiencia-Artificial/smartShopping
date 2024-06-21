@@ -6,6 +6,31 @@ if (!$_SESSION['email_usuario']) {
     header("Location:../view/login.php");
     exit;
 }
+
+if ($_POST) {
+  $comentario = $_POST['comentario'];
+  $comentarista = $_SESSION['nome_usuario'] || $_SESSION['nome_loja'];
+  $foto_comentarista = $_SESSION['imagem'] || $_SESSION['img_loja'];
+  $id_post = $_POST['id_post'];
+
+  if (!empty($comentario)) {
+    try {
+      $sql = "INSERT INTO comentario (comentario, comentarista, foto_comentarista, id_post) VALUES (?, ?, ?, ?)";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute([$comentario, $comentarista, $foto_comentarista, $id_post]);
+
+
+      $_SESSION['comentario'] = $comentario;
+      $_SESSION['comentarista'] = $comentarista;
+      $_SESSION['foto_comentarista'] = $foto_comentarista;
+      $conn = null;
+    } catch (PDOException $e) {
+      echo $sql . "<br>" . $e->getMessage();
+    }
+    header('Location: index.php');
+    exit;
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +121,7 @@ if (!$_SESSION['email_usuario']) {
                                             </div>
                                             <div class="col-3 align-self-center text-right text-muted">
                                                 <?php 
-                                                if (!isset($_SESSION['id_carrinho'])) {
+                                                if (!isset($_SESSION['cd_carrinho'])) {
                                                     echo '<h2 class="m-b-0 font-light">' . $res['total_itens'].'</h2>';
                                                 } else {
                                                     echo '0 ';
@@ -107,21 +132,30 @@ if (!$_SESSION['email_usuario']) {
                                             </div>
                                         </div>
                                     </div>
+                                    <?php
+                                        $id_carrinho = $car['cd_carrinho'];
+                                        $sql_carrinho = "SELECT * FROM carrinho WHERE cd_carrinho = ?";
+                                        $stmt_carrinho = $conn->prepare($sql_carrinho);
+                                        $stmt_carrinho->execute([$id_carrinho]);
+
+                                        while ($carr = $stmt_carrinho->fetch()) {
+                                    ?>
                                     <div class="row border-top border-bottom">
                                         <div class="row main align-items-center" style="justify-content: flex-start">
                                             <div class="col-2">
-                                                <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg">
+                                                <img class="img-fluid" src="<?php echo $_SESSION['im_produto']; ?>" >
                                             </div>
                                             <div class="col-6">
-                                                <div class="row text-muted">Camisa (categoria)</div>
-                                                <div class="row">Camisa básica (nome do produto)</div>
+                                                <div class="row text-muted"><?php echo $_SESSION['nm_produto_fk'].'(categoria)' ?></div>
+                                                <div class="row"><?php echo $_SESSION['nm_produto_fk'].'(categoria)' ?></div>
                                             </div>
                                             <div class="col">
                                                 <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
                                             </div>
-                                            <div class="col">R$12,34 <span class="close">&#10005;</span></div>
+                                            <div class="col"><?php echo 'R$ '.$_SESSION['vl_produto_fk']; ?> <span class="close">&#10005;</span></div>
                                         </div>
                                     </div>
+                                    <?php }?>
                                     <div class="row border-top border-bottom">
                                         <div class="row main align-items-center" style="justify-content: flex-start">
                                             <div class="col-2">

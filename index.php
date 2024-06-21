@@ -26,8 +26,8 @@ include_once 'app/controller/conexao.php';
 
 if ($_POST) {
   $descricao = $_POST["descricao"];
-  $postador = $_SESSION["nome_usuario"] || $_SESSION['nome_loja'];
-  $foto_postador = $_SESSION["imagem"] || $_SESSION['img_loja'];
+  $postador = $_SESSION["nome_usuario"];
+  $foto_postador = $_SESSION["imagem"];
   $img_post = $_FILES["img_post"]["name"];
 
   if (!empty($descricao) && !empty($img_post)) {
@@ -52,8 +52,8 @@ if ($_POST) {
 <?php
 if ($_POST) {
   $comentario = $_POST['comentario'];
-  $comentarista = $_SESSION['nome_usuario'] || $_SESSION['nome_loja'];
-  $foto_comentarista = $_SESSION['imagem'] || $_SESSION['img_loja'];
+  $comentarista = $_SESSION['nome_usuario'];
+  $foto_comentarista = $_SESSION['imagem'];
   $id_post = $_POST['id_post'];
 
   if (!empty($comentario)) {

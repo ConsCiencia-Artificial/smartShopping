@@ -1,6 +1,10 @@
 <?php
 session_start();
 include_once '../app/controller/conexao.php';
+if (!$_SESSION['email_usuario']) {
+    header("Location:../view/login.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -116,7 +120,7 @@ include_once '../app/controller/conexao.php';
                                 <div class="row text-center m-t-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <?php
-
+//
                                         if (!empty($_SESSION['email_usuario'])) {
 
                                             $sql = "SELECT COUNT(*) AS total_posts FROM post WHERE postador = :nome_usuario";
@@ -132,7 +136,7 @@ include_once '../app/controller/conexao.php';
                                                 echo '<h2 class="m-b-0 font-light">' . $resultado['total_posts'];
                                                 '</h2>';
                                             } else {
-                                                echo '0';
+                                                echo '<h2 class="m-b-0 font-light"> 0  </h2>';
                                             }
 
                                         } elseif ($_SESSION['nome_loja']) {
@@ -167,7 +171,7 @@ include_once '../app/controller/conexao.php';
                                         <h5>Seguindo</h5>
                                     </div>
                                 </div>
-                            </div>
+                            </div><!--
                             <div class="TabControl">
                                 <div id="header">
                                     <ul style="list-style-type:none" class="abas">
@@ -176,7 +180,9 @@ include_once '../app/controller/conexao.php';
                                                 <div class="aba">
                                                     <span>Produtos</span>
                                                 </div>
+                                                
                                             </li>
+                                            
                                             <li class="col-sm" style="padding: 0; cursor: pointer;">
                                                 <div class="aba">
                                                     <span>Funcionários</span>
@@ -187,26 +193,27 @@ include_once '../app/controller/conexao.php';
                                 </div>
                                 <div id="content">
                                     <div class="conteudo">
-                                        <?php
+                                        
+                                        <?php /*
                                         if (!isset($_SESSION['nm_produto'])) {
                                             echo "Sem produtos cadastrados";
-                                            include_once 'partial/index/post.php';
                                         } else {
                                             echo $_SESSION['nm_produto'];
-                                        }
+                                        }*/
                                         ?>
                                     </div>
                                     <div class="conteudo">
-                                        <?php
+                                        
+                                        <?php /*
                                         if (!isset($_SESSION['nm_funcionario'])) {
                                             echo "Sem funcionários cadastrados";
                                         } else {
                                             echo $_SESSION['nm_funcionario'];
-                                        }
+                                        }*/
                                         ?>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

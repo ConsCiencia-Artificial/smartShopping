@@ -83,7 +83,7 @@
                   ?>
 
                   <h6>Primeira vez aqui? <a style="color:#dd163b;" href="cadastro.php">Cadastre-se!</a></h6>
-                  <h6>Login funcionário. <a style="color:#dd163b;" href="login_empresa.php">Entre!</a></h6>
+                 
 
                   <input type='submit' id='do_login' name="SendLogin" value='ENTRAR' />
                 </div>
